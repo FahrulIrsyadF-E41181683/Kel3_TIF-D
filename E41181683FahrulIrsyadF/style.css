@@ -1,12 +1,8 @@
-<style type="text/css">
+
 body {
-    margin: 1;
-    font-size: 16px;
-    line-height: 1.5;
-    background: #b300b3;
-    font-family: 'Segoe UI', 'Courier New';
-    
-  }
+  background-image: url("https://www.jaringfutsalpengaman.com/wp-content/uploads/2018/07/24.jpg");
+  background-size: 1366px 768px;
+}
   html {
     box-sizing: border-box;
   }
@@ -21,15 +17,16 @@ body {
     padding-left: 0;
     position: relative;
     text-align: right;
-    border : 2px solid #b6b7ff;
+    border : 4px solid #000270;
   }
   
   h1 {
     width: 500px;
     margin: 100px auto 20px;
     text-align: center;
-    text-shadow: 3px 3px black;
-    color: whitesmoke;
+    /*text-shadow: 3px 3px black;*/
+    color: rgb(255, 255, 255);
+    border: 4px #0004fa;
   }
   
   .nav {
