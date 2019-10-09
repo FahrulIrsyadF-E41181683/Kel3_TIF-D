@@ -1,0 +1,81 @@
+body {
+    /*margin: 1;
+    font: size 16px;
+    line-height: 1.5; */
+    background: url('http://hotelwisatabwalk.com/wp-content/uploads/2018/08/futsal.png');
+    background-size: 1024px 768px;
+    /*background-attachment: fixed; /*cara menampilkan gambar tidak dapat di scroll*/
+    /*background-repeat: no-repeat;*/ /*tanpa pengulangan kalau revolusinya kecil, maka background tidak penuh di layar*/
+    font-family: Arial, Helvetica, sans-serif; 
+}
+html{
+    box-sizing: border-box;
+}
+*,*:before, *:after {
+    box-sizing: border-box;
+}
+nav ul {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    position: relative;
+    text-align: right;
+    border: 5px solid rgb(11, 21, 151);
+}
+h1 {
+    width: 500px;
+    margin: 100px auto 20px;
+    text-align: center;
+    /*text-shadow: 3px 3px bisque;*/
+    color: whitesmoke;
+}
+.nav {
+    width: 392;
+    background: #f9f9fa;
+    color: rgb(167, 162, 247);
+    margin :0 auto;
+}
+.nav a{
+    display: block;
+    padding: 0 16px;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: inherit;
+    color: rgb(167, 162, 247);
+}
+.nav-menu{
+    line-height: 45px;
+    text-transform: uppercase;
+    font-weight: 700;
+    
+}
+.nav-menu-item{
+    display: inline-block;
+    position: relative;
+}
+.nav-menu-item:hover {
+    background-color: darkgray;
+}
+.nav-menu-item:hover .nav-submenu {
+    display: block;
+}
+.nav-submenu {
+    font-weight: 300;
+    text-transform: none;
+    width: 220px;
+    background-color: #ffffff;
+    text-decoration: none;
+    display: none;
+    position: absolute;
+    text-align: left;
+}
+.nav-menu-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+button{
+    position: center; 
+    background-color: rgb(29, 236, 39);
+    text-align: center;
+    color: white;
+    }
