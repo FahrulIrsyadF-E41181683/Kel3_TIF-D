@@ -1,0 +1,175 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300);
+
+/* Awal Base CSS */
+body {
+	margin:0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.judul {
+    font-family: 'Franklin Gothic Medium';
+	text-align: center;
+	color: hsl(202, 100%, 50%);
+}
+
+.nama {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    float: left;
+	font-size: 28px;
+	margin: 16px; 
+	color: white;	
+}
+
+header{
+	text-align: center;
+	color: #232323;
+}
+
+header .judul{
+	font-size: 17pt;
+}
+
+header .deskripsi{
+	font-size: 11pt;
+}
+/* Akhir Base CSS */
+
+/* Navbar CSS */
+.navbar {
+	width: 950px;
+    margin: auto;
+    text-align: center;
+}
+
+nav.menu ul {
+    overflow:hidden;
+	list-style-type: none;
+	padding:3;
+	margin:0 0 0;
+	background-color: hsl(202, 100%, 50%);
+	box-shadow: 1px 1px 1px 0px rgba(204,204,204,0.55);
+}
+
+nav.menu ul li {
+	margin: 0;
+	float: left;
+}
+
+nav.menu ul a {
+	padding:20px;
+	display:block;
+	font-weight:600;
+	font-size: 16px;
+	color:#fff;
+	text-transform: uppercase;
+	transition: all 0.5s ease;
+	text-decoration: none;
+}
+
+nav.menu ul a:hover {
+    text-decoration: underline;
+	background:#0068a5;
+}   
+/* Akhir Navbar CSS */
+
+/* Sidebar CSS */
+.sidebar {
+	float:right;
+	width:275px;
+}
+
+.sidebar .widget {
+	padding:40px;
+	margin:5 0 25px;	
+	background-color: #202020;
+	color: white;
+	border-bottom: 2px solid #fff;
+	transition: all 0.5s ease;
+}
+
+.sidebar .widget:hover {
+    border-bottom: 3px solid #3498db;
+}
+
+.sidebar .widget h2 {
+	padding:0;
+	margin:0 0 15px;
+	color:#3498db;
+	font-size: 18px;
+	font-weight:800;
+	text-transform: uppercase;
+}
+
+.sidebar .widget p {
+	font-size: 14px;
+}
+
+.sidebar .widget .more-info {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.sidebar .widget p:last-child {
+	margin:0;
+}
+/* Akhir Sidebar CSS */
+
+/* Konten CSS */
+.blog {
+	float:center;
+	background-color: rgb(255, 255, 255);
+}
+
+.konten {
+	width: 600px;
+	padding: 25px;
+	margin: 25px auto;
+	background: #002c49;
+	border: 1px solid #ffffff;
+	box-shadow: 3px 3px 10px rgb(53, 53, 53);	
+	transition: all 0.5s ease;
+}
+
+.konten img {
+	min-width: 650px;
+	margin:0 0 25px -25px;
+	max-width: 650px;
+}
+
+.konten h3 {
+	padding:0;
+	margin:0 0 15px;
+	font-weight: normal;
+	color: rgb(219, 219, 219);
+	font-size: 20px;
+	font-family: 'Segoe UI';
+	font-style: italic;
+}
+
+.konten p {
+	color: #ffffff;
+	font-family: monospace;
+	font-size: 18px;;
+}
+
+.konten .more-info {
+	color:rgb(255, 255, 255);
+	text-decoration: none;
+	transition: all 0.5s ease;
+	font-weight: 700; 
+}
+
+.konten .more-info:hover {
+    margin-left: 15px;
+}
+
+.post-info {
+	float: right;
+	font-size: 12px;
+	margin: -10px 0 15px;
+	text-transform: uppercase;
+	color: white;
+}
+
+/* Akhir Konten CSS */	
