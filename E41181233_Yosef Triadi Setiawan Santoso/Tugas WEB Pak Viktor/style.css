@@ -1,0 +1,74 @@
+
+body {
+  background-image: url("https://www.jaringfutsalpengaman.com/wp-content/uploads/2018/07/24.jpg");
+  background-size: 1366px 768px;
+}
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  nav ul {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    position: relative;
+    text-align: right;
+    border : 4px solid #000270;
+  }
+  
+  h1 {
+    width: 500px;
+    margin: 100px auto 20px;
+    text-align: center;
+    /*text-shadow: 3px 3px black;*/
+    color: rgb(255, 255, 255);
+    border: 4px #0004fa;
+  }
+  
+  .nav {
+    width: 392;
+    background: #f9f9fa;
+    color: rgb(167, 162, 247);
+    margin: 0 auto;
+  }
+  .nav a {
+    display: block;
+    padding: 0 16px;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: inherit;
+    
+    color: rgb(167, 162, 247);
+  }
+  .nav-menu {
+    line-height: 45px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .nav-menu-item {
+    display: inline-block;
+    position: relative;
+  }
+  .nav-menu-item:hover {
+    background-color: #b6b7ff;
+  }
+  .nav-menu-item:hover .nav-submenu {
+    display: block;
+  }
+  .nav-submenu {
+    font-weight: 300;
+    text-transform: none;
+    width: 220px;
+    background-color: #ffffff;
+    text-decoration: none;
+    display: none;
+    position: absolute;
+    text-align: left;
+  }
+  .nav-submenu-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
