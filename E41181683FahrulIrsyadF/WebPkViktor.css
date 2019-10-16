@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+*{
+    padding: 0;
+    margin: 0 ;
+}
+body{
+margin: 0;
+padding: 0;
+font-family: 'Roboto', sans-serif;
+}
+
+#logo h1{
+    font-weight: 900;
+}
+#logo h3{
+    font-weight: 300;
+    font-size: 1.15rem;
+}
+header{
+    font-family: 'Roboto', sans-serif;
+    /* margin: 20px; */
+    padding: 20px;
+    color: white;
+    background-color: #D1230c; 
+    overflow: hidden;
+    border-bottom: 5px solid rgb(151, 0, 25);
+}
+header nav{
+    /* text-align: right; */
+    margin-right:30px ;
+    margin-top: 0px;
+}
+
+header nav ul{
+    list-style: none;
+    float: right;
+}
+header nav li{
+    display: inline-block;
+    font-size: 20px;
+    padding: 15px;
+}
+header a h1 {
+    font-weight: bold;
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+}
+
+#logo{
+    float: left;
+}
+.content img{
+    width: 200px;
+    overflow: hidden;
+    float: left;
+}
+
+#content{
+   color: grey;
+    width: 80%;
+    margin: auto;
+    height: auto;
+}
+#content .tulisan{
+    padding-top: 50px;
+}
+#content li{
+    padding: 30px 0 0 0 ;
+    list-style: none;
+}
+#content img{
+    float: left;
+    margin: 2rem;
+    max-width: 12rem;
+    height: auto;
+    padding: 0 30px 0 0 ;
+    border-right: 2px solid grey;
+}
+#gambar{
+    width: 20%;
+    float: left;
+    text-align: center;;
+}
+
+
+footer{
+    color: white;
+    text-align: center;
+    background-color: #d1230d;
+    padding: 40px 0 25px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
