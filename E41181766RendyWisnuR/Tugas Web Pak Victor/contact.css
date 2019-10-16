@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+/*Logo*/
+#logo{
+    float: left;
+}
+#logo h1{
+    font-weight: 900;
+}
+#logo h3{
+    font-weight: 300;
+    font-size: 1.15rem;
+}
+/* Navbar*/
+nav li {
+    display: inline-block;
+    font-size: 20px;
+    padding: 15px;
+}
+nav ul{
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    list-style: none;
+    float: right;
+}
+
+header{
+    overflow: hidden;
+    background-color: #d1230c;
+}
+
+header a{
+    text-decoration: none;
+    color: #fff;
+    padding: 20px;
+}
+
+.container{
+    padding: 20px 40px;
+    overflow: hidden;
+    display: flex;
+    margin: 150px 40px;
+}
+/*Konten*/
+.konten{
+    border-right: 3px solid grey;
+}
+
+.konten #contact{
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.konten h3{
+    width: auto;
+    margin: 10px 20px;
+    padding: 5px 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.kontak{
+    width: 300px;
+    margin-left: 20px;
+}
+
+.kontak .icon{
+    width: 500px;
+}
+
+.icon ul li{
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.icon img{
+    width: 40px;
+    display: block;
+    float: left;
+    padding: 5px;
+}
+
+.kontak h3{
+    margin-top: 30px;
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+footer{
+    text-align: center;
+}
+
+.social{
+    padding: 20px;
+}
+
+.social li{
+    display: inline-block;
+}
+
+.social img{
+    width: 50px;
+}
+
