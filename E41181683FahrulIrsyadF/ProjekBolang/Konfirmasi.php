@@ -61,18 +61,6 @@ include('connector.php');
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-12 control-label" for="tanggal">Tanggal Pembayaran</label>
-                                <div class="col-sm-4 col-xs-12">
-                                    <div class="input-group date">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </span>
-                                        <input id="tanggal" name="tanggal" type="text" class="form-control"
-                                            data-date-format="DD/MM/YYYY" placeholder="20/11/2019" required readonly />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="col-sm-4 col-xs-12 control-label" for="jumlah">Jumlah Pembayaran</label>
                                 <div class="col-sm-4 col-xs-12">
                                     <div class="input-group">

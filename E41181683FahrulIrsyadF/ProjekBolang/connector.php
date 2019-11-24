@@ -1,6 +1,6 @@
 <?php
 //koneksi ke database mysql, silahkan di rubah dengan koneksi agan sendiri
-$koneksi = mysqli_connect("localhost","root","","db_sibolang2");
+$koneksi = mysqli_connect("localhost","root","","db_coba");
 
 //cek jika koneksi ke mysql gagal, maka akan tampil pesan berikut
 if (mysqli_connect_error()){
