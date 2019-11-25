@@ -21,7 +21,7 @@ include('connector.php');
     <style media="screen" id="csstoday"></style>
     <link href="//static.domainesia.com/assets/css/datepicker.min.css" rel="stylesheet" type="text/css"
         media="screen" />
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <script>(function (i, s, o, g, r, a, m) { i["GoogleAnalyticsObject"] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, "script", "//www.domainesia.com/assets/js/analytics.js", "ga"); ga("create", "UA-43136956-5", "auto");</script>
 </head>
 
@@ -33,13 +33,13 @@ include('connector.php');
                     <input type="hidden" name="csrfToken" value="VAWVHvqEmLPl0qEiNzGiDQbD2vNKpQ/hgPiuGufD78M=" />
                     <fieldset>
                         <div class="form-group">
-                            <label class="col-sm-4 col-xs-12 control-label" for="invoice">No. Tagihan/Invoice <i
+                            <label class="col-sm-4 col-xs-12 control-label" for="invoice">ID Transaksi <i
                                     class="fa fa-question-circle" rel="popover" data-html="true"
                                     data-content="Pastikan penulisan nomor invoice sesuai dengan yang Anda terima, kesalahan penulisan sepenuhnya menjadi tanggung jawab Anda."></i></label>
                             <div class="col-sm-4 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon">#</span>
-                                    <input id="invoice" name="invoice" placeholder="41163" class="form-control"
+                                    <input id="invoice" name="idtransaksi" placeholder="" class="form-control"
                                         type="text" rel="popover" data-html="true"
                                         data-content="<img src='//static.domainesia.com/assets/images/invoice.png'>"
                                         autocomplete="off" required />
@@ -77,7 +77,7 @@ include('connector.php');
                                 <div class="col-sm-4 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp.</span>
-                                        <input id="jumlah" name="jumlah" class="form-control" placeholder="99.500"
+                                        <input id="jumlah" name="jumlah" class="form-control" placeholder=""
                                             type="text" required />
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@ include('connector.php');
                             <div class="form-group">
                                 <label class="col-sm-4 col-xs-12 control-label" for="bank">Bank Tujuan</label>
                                 <div class="col-sm-4 col-xs-12">
-                                    <input id="bank" name="bank" placeholder="BCA / Mandiri"
+                                    <input id="bank" name="bank" placeholder=""
                                         class="form-control input-md" type="text" required />
                                 </div>
                             </div>
