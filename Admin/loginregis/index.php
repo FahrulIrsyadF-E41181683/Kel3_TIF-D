@@ -29,17 +29,23 @@
 </head>
 <body>
 	<!--Cek Pesan Notifikasi-->
-    <!--<?php
+    <?php
         if(isset($_GET['pesan'])){
             if($_GET['pesan'] == "gagal"){
-                echo "Login Gagal! Username dan Password Salah!";
+                echo "<div class='alert alert-primary' role='alert'>
+				<h5>Login Gagal! Username dan Password Salah!</h5>
+			  	</div>";
             }else if($_GET['pesan'] == "logout"){
-                echo "Anda telah berhasil logout!";
+                echo "<div class='alert alert-primary' role='alert'>
+				<h5>Anda telah berhasil log out !</h5>
+			  	</div>";
             }else if($_GET['pesan'] == "belum_login"){
-                echo "Anda harus login terlebih dahulu";
+                echo "<div class='alert alert-primary' role='alert'>
+				<h5>Anda harus login terlebih dahulu</h5>
+			  	</div>";
             }
         }
-    ?>-->
+    ?>
 
 <div class="limiter">
 	<div class="container-login100">
@@ -51,7 +57,7 @@
 				</span>
 
 			<div class="wrap-input100 validate-input" data-validate = "Dibutuhkan username !">
-				<input class="input100" type="text" name="username" placeholder="Username">
+				<input class="input100" type="text" name="username" placeholder="Username" autocomplete="off">
 				<span class="focus-input100-1"></span>
 				<span class="focus-input100-2"></span>
 			</div>
