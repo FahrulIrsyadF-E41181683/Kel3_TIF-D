@@ -74,7 +74,7 @@
 				</button>
 			</div>
 
-			<div class="text-center p-t-45 p-b-4">
+<!--			<div class="text-center p-t-45 p-b-4">
 				<span class="txt1">
 					Buat akun baru?
 				</span>
@@ -83,6 +83,7 @@
 					Daftar
 				</a>
 			</div>
+-->
 
 <!--		<div class="text-center">
 				<span class="txt1">
