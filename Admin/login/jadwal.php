@@ -59,12 +59,13 @@
                 Bank
               </a>
             </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="pelanggan.php"><!--../../pages/tables/basic-tables.html-->
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
+                Pelanggan
+              </a>
+            </div>
           </nav>
-        </div>
-        <div class="profile-actions">
-          <a href="#">Settings</a>
-          <span class="divider"></span>
-          <a href="logout.php">Logout</a>
         </div>
       </div>
     </aside>
@@ -195,11 +196,15 @@
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
+          <button class="mdc-fab mdc-fab--extended" style="background-color: #7a00ff">
+            <span class="material-icons mdc-fab__icon">add</span>
+              <span class="mdc-fab__label">Tambah</span>
+                </button> 
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                 <div class="mdc-card p-0">
-                  <h6 class="card-title card-padding pb-0">Data Jadwal</h6>
+                  <h6 class="card-title card-padding pb-0">Data Jadwal</h6>                  
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -208,6 +213,7 @@
                           <th>Jam</th>
                           <th>Status</th>
                           <th>Harga Sewa</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -215,45 +221,77 @@
                           <td class="text-left">Lapangan 1</td>
                           <td>1.59</td>
                           <td>
-                          <button class="mdc-button mdc-button--raised">  
+                          <button class="mdc-button mdc-button--raised" style="background-color: #00b67a">  
                             <span class="mdc-button__ripple"></span>
                               Aktif
                           </button>
                           </td>
                           <td>25000</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                         <tr>
                           <td class="text-left">Lapangan 2</td>
                           <td>1.59</td>                          
                           <td>
-                          <button class="mdc-button mdc-button--raised">  
+                          <button class="mdc-button mdc-button--raised" style="background-color: #ff420f">  
                             <span class="mdc-button__ripple"></span>
                               Non-Aktif
                           </button>
                           </td>
                           <td>25000</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                         <tr>
                           <td class="text-left">Lapangan 3</td>
                           <td>1.4</td>
                           <td>
-                          <button class="mdc-button mdc-button--raised">  
+                          <button class="mdc-button mdc-button--raised" style="background-color: #00b67a">  
                             <span class="mdc-button__ripple"></span>
                               Aktif
                           </button>
                           </td>
                           <td>25000</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                         <tr>
                           <td class="text-left">Lapangan 4</td>
                           <td>1.7</td>
                           <td>
-                          <button class="mdc-button mdc-button--raised">  
+                          <button class="mdc-button mdc-button--raised" style="background-color: #ff420f">  
                             <span class="mdc-button__ripple"></span>
                               Non-Aktif
                           </button>
                           </td>
                           <td>25000</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -262,9 +300,9 @@
               </div>
         </main>
         <!-- partial:../../partials/_footer.html -->
-        <footer>
-
-        </footer>
+        <footer>          
+          
+        </footer> 
         <!-- partial -->
       </div>
     </div>

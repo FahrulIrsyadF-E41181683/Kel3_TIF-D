@@ -59,12 +59,13 @@
                 Bank
               </a>
             </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="pelanggan.php"><!--../../pages/tables/basic-tables.html-->
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
+                Pelanggan
+              </a>
+            </div>
           </nav>
-        </div>
-        <div class="profile-actions">
-          <a href="#">Settings</a>
-          <span class="divider"></span>
-          <a href="logout.php">Logout</a>
         </div>
       </div>
     </aside>
@@ -194,7 +195,11 @@
       </header>
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
-        <main class="content-wrapper">
+        <main class="content-wrapper">    
+        <button class="mdc-fab mdc-fab--extended" style="background-color: #7a00ff">
+            <span class="material-icons mdc-fab__icon">add</span>
+              <span class="mdc-fab__label">Tambah</span>
+                </button>
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
@@ -206,24 +211,57 @@
                         <tr>
                           <th class="text-left">Nama Bank</th>
                           <th>Rekening Bank</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td class="text-left">BRI</td>
-                          <td>123456789012345</td>
+                          <td>123456789012345</td>                          
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                         <tr>
                           <td class="text-left">Mandiri</td>
                           <td>123456789012345</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                         <tr>
                           <td class="text-left">Mandiri Syariah</td>
                           <td>123456789012345</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                         <tr>
                           <td class="text-left">BNI</td>
                           <td>123456789012345</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">edit</i>
+                          </button>                                                                         
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
                         </tr>
                       </tbody>
                     </table>

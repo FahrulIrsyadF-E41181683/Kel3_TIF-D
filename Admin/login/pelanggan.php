@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Admin | Jadwal</title>
+  <title>Admin | Bank</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -42,25 +42,25 @@
         <div class="mdc-list-group">
           <nav class="mdc-list mdc-drawer-menu">
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link active" href="#">
+              <a class="mdc-drawer-link" href="home.php">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
                 Home
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="jadwal.php">
+              <a class="mdc-drawer-link" href="jadwal.php"><!--../../pages/forms/basic-forms.html-->
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">track_changes</i>
                 Jadwal
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="bank.php">
+              <a class="mdc-drawer-link" href="bank.php"><!--../../pages/tables/basic-tables.html-->
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
                 Bank
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="pelanggan.php"><!--../../pages/tables/basic-tables.html-->
+              <a class="mdc-drawer-link active" href="#"><!--../../pages/tables/basic-tables.html-->
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
                 Pelanggan
               </a>
@@ -198,9 +198,79 @@
         <main class="content-wrapper">
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                <div class="mdc-card p-2">
-                  <h6 class="card-title card-padding pb-0">Selamat Datang</h6>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-0">
+                  <h6 class="card-title card-padding pb-0">DATA PELANGGAN</h6>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-left">Nama</th>
+                          <th>Email</th>
+                          <th>No. Telepon</th>
+                          <th>Password</th>
+                          <th>Foto</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-left">Fahrul</td>
+                          <td>fahrul@gmail.com</td>
+                          <td>123456789012</td>
+                          <td>fahrul123</td>
+                          <td>...</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised" style="background-color: #00b67a">  
+                            <span class="mdc-button__ripple"></span>
+                              Aktif
+                          </button>
+                          </td>
+                          <td>                                                                        
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-left">Yosef</td>
+                          <td>yosef@gmail.com</td>
+                          <td>123456789012</td>
+                          <td>yosef123</td>
+                          <td>...</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised" style="background-color: #ff420f">  
+                            <span class="mdc-button__ripple"></span>
+                              Non-Aktif
+                          </button>
+                          </td>
+                          <td>                                                                        
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-left">Rendy</td>
+                          <td>rendy@gmail.com</td>
+                          <td>123456789012</td>
+                          <td>rendy123</td>
+                          <td>...</td>
+                          <td>
+                          <button class="mdc-button mdc-button--raised" style="background-color: #00b67a">  
+                            <span class="mdc-button__ripple"></span>
+                              Aktif
+                          </button>
+                          </td>
+                          <td>                                                                      
+                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                            <i class="material-icons mdc-button__icon">delete</i>
+                          </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
