@@ -195,73 +195,50 @@
       </header>
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
-        <main class="content-wrapper">    
-        <button type="button" class="mdc-fab mdc-fab--extended" style="background-color: #7a00ff">
-            <span class="material-icons mdc-fab__icon">add</span>
-              <a href="tambah_bank.php"class="mdc-fab__label" style="color: white;">Tambah</a>
-                </button>
+        <main class="content-wrapper">                                                  
+            <button type="button" class="mdc-fab mdc-fab--extended" style="background-color: #7a00ff">
+                <span class="material-icons mdc-fab__icon">save</span>
+                    <a href="bank.php"class="mdc-fab__label" style="color: white;">Simpan</a>
+            </button>
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                 <div class="mdc-card p-0">
-                  <h6 class="card-title card-padding pb-0">DATA BANK</h6>
+                  <h6 class="card-title card-padding pb-0">TAMBAH DATA BANK</h6>
                   <div class="table-responsive">
                     <table class="table">
-                      <thead>
-                        <tr>
-                          <th class="text-left">Nama Bank</th>
-                          <th>Rekening Bank</th>
-                          <th>Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-left">BRI</td>
-                          <td>123456789012345</td>                          
-                          <td>
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">edit</i>
-                          </button>                                                                         
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">delete</i>
-                          </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-left">Mandiri</td>
-                          <td>123456789012345</td>
-                          <td>
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">edit</i>
-                          </button>                                                                         
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">delete</i>
-                          </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-left">Mandiri Syariah</td>
-                          <td>123456789012345</td>
-                          <td>
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">edit</i>
-                          </button>                                                                         
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">delete</i>
-                          </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-left">BNI</td>
-                          <td>123456789012345</td>
-                          <td>
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">edit</i>
-                          </button>                                                                         
-                          <button class="mdc-button mdc-button--raised icon-button filled-button--secondary">
-                            <i class="material-icons mdc-button__icon">delete</i>
-                          </button>
-                          </td>
+                        <tbody>
+                            <tr>
+                                <td>
+                            <div class="mdc-text-field mdc-text-field--outlined">
+                                <input class="mdc-text-field__input" id="text-field-hero-input">
+                            <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                    <label for="text-field-hero-input" class="mdc-floating-label">Nama Bank</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                            </div>
+                                </td>
+                                <td>
+                            <div class="mdc-text-field mdc-text-field--outlined">
+                                <input class="mdc-text-field__input" id="text-field-hero-input">
+                            <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                    <label for="text-field-hero-input" class="mdc-floating-label">Rekening Bank</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                            </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> 
+                                </td>
+                            </tr>
+                        </tbody>
                         </tr>
                       </tbody>
                     </table>

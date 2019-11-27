@@ -198,7 +198,7 @@
         <main class="content-wrapper">
           <button class="mdc-fab mdc-fab--extended" style="background-color: #7a00ff">
             <span class="material-icons mdc-fab__icon">add</span>
-              <span class="mdc-fab__label">Tambah</span>
+            <a href="tambah_jadwal.php"class="mdc-fab__label" style="color: white;">Tambah</a>
                 </button> 
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
