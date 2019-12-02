@@ -43,10 +43,6 @@
                                           </div>  
                                           
                                         </div>
-                                                    <div class="modal-footer">
-                                                            <input type="reset" class="btn btn-secondary" value="Reset" style="color:white;">
-                                                            <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
-                                                    </div>
                                                     </form>
                                                     </div>
                                                 </div>
