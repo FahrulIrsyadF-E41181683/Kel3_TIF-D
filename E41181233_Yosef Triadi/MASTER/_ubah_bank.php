@@ -16,10 +16,10 @@ $no_rek = $_POST['no_rek'];
   $sql = mysqli_query($connect, $query); // Eksekusi/ Jalankan query dari variabel $query
   if($sql){ // Cek jika proses simpan ke database sukses atau tidak
     // Jika Sukses, Lakukan :
-    echo "<script>alert('Data Berhasil Disimpan');document.location.href='index.php?page=bank'</script>\n"; // Redirect ke halaman admin.php
+    echo "<script>alert('Data Berhasil Disimpan');document.location.href='home.php?page=bank'</script>\n"; // Redirect ke halaman admin.php
   }else{
     // Jika Gagal, Lakukan :
-    echo "<script>alert('Data Gagal Disimpan karena gagal terhubung ke server');document.location.href='index.php?page=bank'</script>\n";
+    echo "<script>alert('Data Gagal Disimpan karena gagal terhubung ke server');document.location.href='home.php?page=bank'</script>\n";
    }
 
 ?>

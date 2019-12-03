@@ -1,0 +1,96 @@
+
+/* Footer */
+footer {
+    padding-top: 30px;
+    height: 570px;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #282828;
+   color: #c7c7c7;
+   color: white;
+   text-align: center;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+
+footer ul{
+    display:grid;
+    grid-template-columns: 30% 30% 40%;
+    list-style: none;
+}
+footer h2{
+    text-align: left;
+    padding: 0 0 20px 0;
+}
+footer p{
+    text-align: justify;
+    display: flex;
+}
+footer li{
+    padding: 0;
+    margin: 0;
+}
+
+
+footer ul .logo .gambar{
+    padding : 20px 0 0 0px;
+    margin: 0;
+}
+footer ul .logo .gambar img{
+    border: solid 1px black;
+    padding: 0;
+    margin: 0 40px 0 40px;
+}
+
+
+footer .M1 {
+    text-align: center;
+}
+footer .menu{
+    display: inline-block;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    list-style-type:circle;
+}
+footer .menu1 {
+    padding: 30px 0 0 0;
+    margin: 0 0 0 0;
+}
+footer .menu1 a{
+    color: white;
+}
+
+footer .kontak{
+    display: inline-block;
+}
+footer .kontak1{
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    float: left;
+    width: 322px;
+}
+footer .kontak1 img{
+    float: left;
+    padding: 0 20px 0 0 ;
+}
+
+
+footer .logo2 ul{
+    display: inline-block;
+}
+footer .logo2 li{
+    justify-self: center;
+}
+footer .logo2 img{
+   width: 100px;
+   float: left;
+   padding: 0;
+   margin: 0;
+}
+footer .logo2 p{
+    float: left;
+    padding: 20px 0 0 20px;
+    margin: 0;
+ }
