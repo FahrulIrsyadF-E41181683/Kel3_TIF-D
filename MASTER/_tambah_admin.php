@@ -38,12 +38,12 @@ if(in_array($ekstensi, $ekstensi_diperbolehkan) === true | move_uploaded_file($t
                                              VALUES ('$id_admin', '$nm_admin', '$no_hp',      '$email',      '$alamat',      '$password',      '$fotobaru');"); // Eksekusi/ Jalankan query dari variabel $query
   if($sql){ // Cek jika proses simpan ke database sukses atau tidak
     // Jika Sukses, Lakukan :
-      echo "<script>alert('Data Berhasil Disimpan');document.location.href='index.php?page=admin'</script>\n"; // Redirect ke halaman admin.php
+      echo "<script>alert('Data berhasil disimpan');document.location.href='home.php?page=admin'</script>\n"; // Redirect ke halaman admin.php
   }else{
     // Jika Gagal, Lakukan :
-    echo "<script>alert('Ekstensi gagal');document.location.href='index.php?page=admin'</script>\n";
+    echo "<script>alert('Gagal menyimpan data');document.location.href='home.php?page=admin'</script>\n";
   }
 }else{
   // Jika gambar gagal diupload, Lakukan :
-  echo "<script>alert('Data Gagal Disimpan karena gagal upload foto');document.location.href='index.php?page=admin'</script>\n";
+  echo "<script>alert('Data gagal disimpan karena gagal upload foto');document.location.href='home.php?page=admin'</script>\n";
 }} ?>

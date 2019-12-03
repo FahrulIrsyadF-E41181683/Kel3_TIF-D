@@ -48,7 +48,7 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 
-                                    <a class="text-center" href="index.php"> <h4>Ubah Data Admin</h4></a>
+                                    <a class="text-center" href="home.php"> <h4>Ubah Data Admin</h4></a>
         
                                 <form action="_ubah_admin.php" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
                                     <div class="form-group">

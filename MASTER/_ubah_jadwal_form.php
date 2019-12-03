@@ -48,21 +48,17 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 
-                                    <a class="text-center" href="index.php"> <h4>Ubah Data Jadwal</h4></a>
+                                    <a class="text-center" href="home.php"> <h4>Ubah Data Jadwal</h4></a>
         
                                 <form action="_ubah_bank.php" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
+                                    <label class="col-form-label">ID Jadwal</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control"  name="id" value="<?php echo $id; ?>">
                                     </div>
-                                    <label class="col-form-label">Nama Bank</label>
+                                    <label class="col-form-label">Jam</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control"  name="nm_bank" value="<?php echo $data['NAMA_BANK'];?>">
+                                        <input type="text" class="form-control"  name="jam" value="<?php echo $data['jam'];?>">
                                     </div>
-                                    <label class="col-form-label">No Rekening</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-default" name="no_rek" value="<?php echo $data['NO_REKENING'];?>">
-                                    </div>
-
                                     <button class="btn login-form__btn submit w-100" name="simpan">Simpan</button>
                                 </form>
                                 

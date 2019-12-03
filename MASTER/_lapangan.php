@@ -40,8 +40,8 @@
                                                                 </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                            <input type="reset" class="btn btn-secondary" value="Reset" style="color:white;">
-                                                            <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                                                            <input type="reset" class="btn btn-danger" value="Reset" style="color:white;">
+                                                            <button type="submit" name="simpan" class="btn btn-info">Simpan</button>
                                                     </div>
                                                     </form>
                                                     </div>
@@ -66,7 +66,7 @@
                                                                 <div class="form-group col col-md-6 ml-auto">
                                                                     <label class="col-form-label">Nama Lapangan</label>
                                                                     <input type="text" name="nm_suplier" class="form-control input-default" placeholder="Nama Admin">
-                                                                    <label class="col-form-label">Harga</label>
+                                                                    <label class="col-form-label">Harga Sewa</label>
                                                                     <textarea type="text" name="alamat" class="form-control input-default" placeholder="Alamat" style="height:184px;"></textarea>
                                                                     <!-- <label class="col-form-label">No Hp</label>
                                                                     <input type="text" name="no_hp" class="form-control input-default" maxlength="13" 

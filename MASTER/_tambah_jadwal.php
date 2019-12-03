@@ -23,9 +23,9 @@ if($row>0){
                                 VALUES ('$id_jd', '$jam');"); // Eksekusi/ Jalankan query dari variabel $query
   if($sql){ // Cek jika proses simpan ke database sukses atau tidak
     // Jika Sukses, Lakukan :
-      echo "<script>alert('Data Berhasil Disimpan');document.location.href='index.php?page=jadwal'</script>\n"; // Redirect ke halaman admin.php
+      echo "<script>alert('Data Berhasil Disimpan');document.location.href='home.php?page=jadwal'</script>\n"; // Redirect ke halaman admin.php
   }else{
     // Jika Gagal, Lakukan :
-    echo "<script>alert('Ekstensi tidak diperbolehkan');document.location.href='#'</script>\n";
+    echo "<script>alert('Gagal menyimpan data');document.location.href='home.php?page=jadwal'</script>\n";
   }
 } ?>

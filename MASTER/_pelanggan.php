@@ -55,8 +55,8 @@
                                                                 </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                            <input type="reset" class="btn btn-secondary" value="Reset" style="color:white;">
-                                                            <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                                                            <input type="reset" class="btn btn-danger" value="Reset" style="color:white;">
+                                                            <button type="submit" name="simpan" class="btn btn-info">Simpan</button>
                                                     </div>
                                                     </form>
                                                     </div>

@@ -2,8 +2,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body">
-                            
+                            <div class="card-body">                         
                                 <div class="table-responsive">
                                 <div class="col-sm-12">
                                         <div class="col-sm-12 col-md-6">
@@ -12,7 +11,6 @@
                                             </label>
                                         </div>
                                         <div class="col-sm-12 col-md-6">
-                                        
                                               <button type="button" class="btn mb-1 btn-primary btn-lg" data-toggle="modal" data-target="#tambahmodal" data-whatever="@getbootstrap">TAMBAH DATA</button>
                                         <!-- tambah -->                                          
                                               <div class="modal fade" id="tambahmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
@@ -20,8 +18,8 @@
                                                      <div class="modal-content">
                                                          <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">TAMBAH DATA</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                                    aria-hidden="true">&times;</span>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
                                                             </button>
                                                     </div>
                                                     <div class="modal-body">
@@ -34,25 +32,14 @@
                                                                 </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                            <input type="reset" class="btn btn-secondary" value="Reset" style="color:white;">
-                                                            <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                                                            <input type="reset" class="btn btn-danger" value="Reset" style="color:white;">
+                                                            <button type="submit" name="simpan" class="btn btn-info">Simpan</button>
                                                     </div>
                                                     </form>
-                                                    </div>
                                                 </div>
-                                          </div>  
-                                          
-                                        </div>
-                                                    <div class="modal-footer">
-                                                            <input type="reset" class="btn btn-secondary" value="Reset" style="color:white;">
-                                                            <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
-                                                    </div>
-                                                    </form>
-                                                    </div>
-                                                </div>
-                                          </div>  
-
-                                </div>
+                                            </div>
+                                        </div>    
+                                    </div>
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>

@@ -44,16 +44,16 @@ if(isset($_POST['ubahfoto'])){ // Jika user menceklis checkbox yang ada di form 
 
     if($sql){ // Cek jika proses simpan ke database sukses atau tidak
       // Jika Sukses, Lakukan :
-      header("location: index.php?page=admin"); // Redirect ke halaman index.php
+      header("location: home.php?page=admin"); // Redirect ke halaman home.php
     }else{
       // Jika Gagal, Lakukan :
       echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
-      echo ("location: index.php?page=admin");
+      echo ("location: home.php?page=admin");
     }
   }else{
     // Jika gambar gagal diupload, Lakukan :
-    echo "Maaf, Gambar gagal untuk diupload.";
-    echo "<br><a href='form_ubah.php'>Kembali Ke Form</a>";
+    echo "Maaf, gambar gagal untuk diupload";
+    echo "<br><a href='home.php?page=admin'>Kembali Ke Form</a>";
   }
 }else{ // Jika user tidak menceklis checkbox yang ada di form ubah, lakukan :
   // Proses ubah data ke Database
@@ -61,10 +61,10 @@ if(isset($_POST['ubahfoto'])){ // Jika user menceklis checkbox yang ada di form 
   $sql = mysqli_query($connect, $query); // Eksekusi/ Jalankan query dari variabel $query
   if($sql){ // Cek jika proses simpan ke database sukses atau tidak
     // Jika Sukses, Lakukan :
-    echo "<script>alert('Data Berhasil Disimpan');document.location.href='index.php?page=admin'</script>\n"; // Redirect ke halaman admin.php
+    echo "<script>alert('Data Berhasil Disimpan');document.location.href='home.php?page=admin'</script>\n"; // Redirect ke halaman admin.php
   }else{
     // Jika Gagal, Lakukan :
-    echo "<script>alert('Data Gagal Disimpan karena gagal terhubung ke server');document.location.href='index.php?page=admin'</script>\n";
+    echo "<script>alert('Data gagal disimpan');document.location.href='home.php?page=admin'</script>\n";
    }
 }
 ?>
