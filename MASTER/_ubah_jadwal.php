@@ -11,14 +11,14 @@ $jam = $_POST['jam'];
 
 
   // Proses ubah data ke Database
-  $query = "UPDATE `bank` SET `NAMA_BANK`='$nm_bank',`NO_REKENING`='$no_rek' WHERE ID_BANK='".$id."'" ;
+  $query = "UPDATE `jadwal` SET `jam`='$jam' WHERE ID_JADWAL='".$id."'" ;
   $sql = mysqli_query($connect, $query); // Eksekusi/ Jalankan query dari variabel $query
   if($sql){ // Cek jika proses simpan ke database sukses atau tidak
     // Jika Sukses, Lakukan :
-    echo "<script>alert('Data berhasil disimpan');document.location.href='home.php?page=bank'</script>\n"; // Redirect ke halaman admin.php
+    echo "<script>alert('Data berhasil disimpan');document.location.href='home.php?page=jadwal'</script>\n"; // Redirect ke halaman jadwal.php
   }else{
     // Jika Gagal, Lakukan :
-    echo "<script>alert('Data gagal disimpan');document.location.href='home.php?page=bank'</script>\n";
+    echo "<script>alert('Data gagal disimpan');document.location.href='home.php?page=jadwal'</script>\n";
    }
 
 ?>

@@ -50,7 +50,7 @@
                                 
                                     <a class="text-center" href="home.php"> <h4>Ubah Data Jadwal</h4></a>
         
-                                <form action="_ubah_bank.php" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
+                                <form action="_ubah_jadwal.php" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
                                     <label class="col-form-label">ID Jadwal</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control"  name="id" value="<?php echo $id; ?>">

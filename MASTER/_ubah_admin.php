@@ -47,13 +47,11 @@ if(isset($_POST['ubahfoto'])){ // Jika user menceklis checkbox yang ada di form 
       header("location: home.php?page=admin"); // Redirect ke halaman home.php
     }else{
       // Jika Gagal, Lakukan :
-      echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
-      echo ("location: home.php?page=admin");
+      echo "<script>alert('Gagal Simpan ke Database');document.location.href='home.php?page=admin'</script>\n";
     }
   }else{
     // Jika gambar gagal diupload, Lakukan :
-    echo "Maaf, gambar gagal untuk diupload";
-    echo "<br><a href='home.php?page=admin'>Kembali Ke Form</a>";
+    echo "<script>alert('Gagal Upload Gambar');document.location.href='home.php?page=admin'</script>\n";
   }
 }else{ // Jika user tidak menceklis checkbox yang ada di form ubah, lakukan :
   // Proses ubah data ke Database

@@ -37,7 +37,7 @@
     $query1 = "Select * from admin WHERE ID_ADMIN='".$id."'";
     $sql = mysqli_query($connect, $query1);
 	while($data = mysqli_fetch_array($sql)){
-     ?>
+    ?>
 
 
     <div class="login-form-bg h-100">
@@ -82,7 +82,6 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control"  placeholder="Email" name="email"  value="<?php echo $data['EMAIL_ADMIN'];?>" required>
                                     </div>
-                                   
                                     <input type="checkbox" name="ubahfoto" >Ubah Foto?
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
@@ -91,7 +90,6 @@
                                             
                                         </div>
                                     </div>
-
                                     <button class="btn login-form__btn submit w-100" name="simpan">Simpan</button>
                                 </form>
                                 
