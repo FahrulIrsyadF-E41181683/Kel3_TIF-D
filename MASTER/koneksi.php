@@ -2,7 +2,7 @@
 $host       = "localhost";
 $user       = "root";
 $password   = "";
-$database   = "sibolang(manbasdat)";
+$database   = "db_boolang";
 $connect    = mysqli_connect($host, $user, $password, $database);
 
 
