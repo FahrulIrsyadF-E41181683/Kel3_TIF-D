@@ -16,63 +16,27 @@ header{
     font-family: 'Roboto', sans-serif;
     background-image: url(../../Web.jpg);
     background-position: top;
-    width: auto;
-    height: 700px;
+    width: 1349px;
+    height: 600px;
     color: white;
     background-size: cover; 
 }
 /* Stop */
-header img {
-    margin: 20px;
-    margin-left: 40px;
-    float: left;
-}
-header ul {
-    float: left;
-}
-header ul a {
-    list-style: none;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    text-shadow: 3px 2px 2px black;
-    border-radius: 2px;
-    
-    padding: 13px;
-    padding-top: 35px;
-}
-header ul a:hover{
-    background-color: rgb(19, 19, 19);
-}
-header ul li {
-    display: inline-block;
-     margin-top: 18px; 
-}
-header .masuk{
-    color: white;
-    margin: 20px;
-    padding: 8px;
-    font-size: 20px;
-    border: 1px solid white;
-    float: right;
-}
-header .masuk:hover {
-    color: black;
-    background-color: #fff;
-}
 
 header .headline{
     text-align: center;
-    padding-top: 250px;
+    padding-top: 10%;
     text-shadow: 3px 2px 2px black;
 }
 
 header .headline h2{
     background-color: rgb(75, 195, 250) ;
+    text-align: center;
+    font-size: 20px;
     width: 18%;
-    margin-left: 41%;
-    padding-top: 10px ;
-    padding-bottom: 10px;
+    margin-left: 40%;
+    padding-top: 1% ;
+    padding-bottom: 1%;
     text-shadow: none;
 }
 
