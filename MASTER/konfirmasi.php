@@ -32,10 +32,10 @@
     <?php
     include 'koneksi.php';
     
-    $id = $_GET['id'];
-    $query1 = "Select * from detail_transaksi WHERE ID_TRANSAKSI='".$id."'";
-    $sql = mysqli_query($connect, $query1);
-	while($data = mysqli_fetch_array($sql)){
+    //$id = $_GET['id'];
+    // $query1 = "Select * from detail_transaksi WHERE ID_TRANSAKSI='".$id."'";
+    // $sql = mysqli_query($connect, $query1);
+	// while($data = mysqli_fetch_array($sql)){
     ?>
 
 
@@ -101,7 +101,7 @@
             </div>
         </div>
     </div>
-                                        <?php }?>
+                                        <!-- <?php ?> -->
 
     
 
