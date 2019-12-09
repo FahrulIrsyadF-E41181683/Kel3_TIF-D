@@ -17,9 +17,9 @@ $sql2 = mysqli_query($connect, $query2); // Eksekusi/Jalankan query dari variabe
 if($sql2){ // Cek jika proses simpan ke database sukses atau tidak
   // Jika Sukses, Lakukan :
   echo "<script>alert('Data Berhasil Dihapus');</script>\n"; // Redirect ke halaman admin.php
-  header("location:index.php?page=paket");
+  header("location:home.php?page=admin");
 }else{
   // Jika Gagal, Lakukan :
-  echo "<script>alert('Data Gagal Dihapus');document.location.href='index.php?page=paket'</script>\n";
+  echo "<script>alert('Data Gagal Dihapus');document.location.href='home.php?page=admin'</script>\n";
 }
 ?>

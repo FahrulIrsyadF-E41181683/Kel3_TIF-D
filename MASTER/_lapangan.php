@@ -31,17 +31,13 @@
                                                                     <input type="text" name="nm_lapangan" class="form-control input-default" placeholder="Nama Lapangan">
                                                                     <label class="col-form-label">Harga</label>
                                                                     <textarea type="text" name="harga" class="form-control input-default" placeholder="Harga" style="height:125px;"></textarea>
-                                                                </div>
-                                                                <!-- <div class="form-group col col-md-6 ml-auto">
-                                                                    <label class="col-form-label">No Hp</label>
-                                                                    <input type="text" name="no_hp" class="form-control input-default" maxlength="13" 
-                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="No Hp">             
-                                                                </div> -->
+                                                                    <label class="col-form-label">Foto Lapangan</label>
+                                                                    <input type="file" name="foto" class="form-control input-default"> 
                                                                 </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                            <input type="reset" class="btn btn-secondary" value="Reset" style="color:white;">
-                                                            <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                                                            <input type="reset" class="btn btn-danger" value="Reset" style="color:white;">
+                                                            <button type="submit" name="simpan" class="btn btn-info">Simpan</button>
                                                     </div>
                                                     </form>
                                                     </div>
@@ -66,7 +62,7 @@
                                                                 <div class="form-group col col-md-6 ml-auto">
                                                                     <label class="col-form-label">Nama Lapangan</label>
                                                                     <input type="text" name="nm_suplier" class="form-control input-default" placeholder="Nama Admin">
-                                                                    <label class="col-form-label">Harga</label>
+                                                                    <label class="col-form-label">Harga Sewa</label>
                                                                     <textarea type="text" name="alamat" class="form-control input-default" placeholder="Alamat" style="height:184px;"></textarea>
                                                                     <!-- <label class="col-form-label">No Hp</label>
                                                                     <input type="text" name="no_hp" class="form-control input-default" maxlength="13" 
@@ -91,6 +87,7 @@
                                                 <th>ID Lapangan</th>
                                                 <th>Nama Lapangan</th>
                                                 <th>Harga Sewa</th>
+                                                <th>Foto Lapangan</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -105,10 +102,11 @@
                                                 <td><?php echo $data['ID_LAPANGAN']; ?></td>
                                                 <td><?php echo $data['NAMA_LAPANGAN']; ?></td>
                                                 <td><?php echo $data['HARGA_SEWA']; ?></td>
+                                                <td><img alt="" class="" width="100" src="images/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>"></td>
                                                 <td>
                                                     <span>
                                                         <div class="btn-group mr-2 mb-2">
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                        <a href="_ubah_lapangan_form.php?id=<?php echo $data['ID_LAPANGAN']; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
                                                         <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#editmodal" data-whatever="@getbootstrap">
                                                             <i class="fa fa-pencil color-muted m-r-5"></i>
                                                         </button> 
@@ -130,6 +128,7 @@
                                                 <th>ID Lapangan</th>
                                                 <th>Nama Lapangan</th>
                                                 <th>Harga Sewa</th>
+                                                <th>Foto Lapangan</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

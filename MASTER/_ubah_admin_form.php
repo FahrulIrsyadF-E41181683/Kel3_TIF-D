@@ -37,7 +37,7 @@
     $query1 = "Select * from admin WHERE ID_ADMIN='".$id."'";
     $sql = mysqli_query($connect, $query1);
 	while($data = mysqli_fetch_array($sql)){
-     ?>
+    ?>
 
 
     <div class="login-form-bg h-100">
@@ -48,7 +48,7 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 
-                                    <a class="text-center" href="index.php"> <h4>Ubah Data Admin</h4></a>
+                                    <a class="text-center" href="home.php"> <h4>Ubah Data Admin</h4></a>
         
                                 <form action="_ubah_admin.php" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
                                     <div class="form-group">
@@ -82,7 +82,6 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control"  placeholder="Email" name="email"  value="<?php echo $data['EMAIL_ADMIN'];?>" required>
                                     </div>
-                                   
                                     <input type="checkbox" name="ubahfoto" >Ubah Foto?
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
@@ -91,7 +90,6 @@
                                             
                                         </div>
                                     </div>
-
                                     <button class="btn login-form__btn submit w-100" name="simpan">Simpan</button>
                                 </form>
                                 
