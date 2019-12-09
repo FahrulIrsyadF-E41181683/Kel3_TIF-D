@@ -33,9 +33,7 @@
     include 'koneksi.php';
     
     //$id = $_GET['id'];
-    // $query1 = "Select * from detail_transaksi WHERE ID_TRANSAKSI='".$id."'";
-    // $sql = mysqli_query($connect, $query1);
-	// while($data = mysqli_fetch_array($sql)){
+    $query = mysqli_query($connect,"SELECT * FROM detail_transaksi ORDER BY id DESC");
     ?>
 
 
@@ -76,18 +74,14 @@
                                         <tbody>
 
                                         <?php
-                                        $id = $_GET['id'];
-                                        $query = "Select * from konfirmasi_pembayaran";
-                                        $query1 = "Select * from konfirmasi_pembayaran where ID_TRANSAKSI='".$id."'";
-                                        $sql = mysqli_query($connect, $query);
-                                        while($data = mysqli_fetch_array($sql)){
-                                        ?>
+                                       $query = mysqli_query($connect,"SELECT * FROM konfirmasi_pembayaran ORDER BY id DESC");
+                                       ?>
                                             <tr>
                                                 <td><?php echo $data['NAMA_LAPANGAN']; ?></td>
                                                 <td><?php echo $data['JAM']; ?></td>
                                                 <td><?php echo $data['HARGA_SEWA']; ?></td>
                                             </tr>
-                                            <?php }?>
+                                            <?php ?>
                                         </tbody>
                                 </form>
                                 
@@ -101,7 +95,7 @@
             </div>
         </div>
     </div>
-                                        <!-- <?php ?> -->
+                                        <?php  ?>
 
     
 
