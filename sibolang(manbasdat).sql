@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2019 pada 08.41
+-- Waktu pembuatan: 09 Des 2019 pada 17.26
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.4
 
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
   `EMAIL_ADMIN` varchar(50) DEFAULT NULL,
   `ALAMAT_ADMIN` text,
   `PASSWORD_ADMIN` varchar(50) DEFAULT NULL,
-  `FOTO_ADMIN` longblob
+  `FOTO_ADMIN` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -44,11 +44,11 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID_ADMIN`, `NAMA_ADMIN`, `JENIS_KELAMIN`, `NOTLP_ADMIN`, `EMAIL_ADMIN`, `ALAMAT_ADMIN`, `PASSWORD_ADMIN`, `FOTO_ADMIN`) VALUES
-('AD0001', 'Lucy 123 GG', 'perempuan', '4555', 'L@gmail.com', 'Jember', 'ggg', 0x3032313232303139313135363534322e6a7067),
-('AD0002', 'Lucas123 ADE', '', '17', 'AA', 'dd', '', 0x3032313232303139313130373331372e6a7067),
-('AD0004', 'fevy', '', '', 'AS@GMAIL.COM', 'Jember', 'lucas', 0x32373131323031393032313332326b2e706e67),
-('AD0006', 'lucas', '', '', 'as@gmail.com', 'as', 'lucas', 0x323931313230313930343331303934333637656266623035623962636465633237666463336461306230653264362e6a7067),
-('AD0007', 'Fahrlur', '', '099', 'l7@gmil.com', 'Jember', 'admin', 0x3032313232303139313731313533352e6a7067);
+('AD0001', 'Lucy 123 GG', 'perempuan', '4555', 'L@gmail.com', 'Jember', 'ggg', '021220191156542.jpg'),
+('AD0002', 'Lucas123 ADE', '', '17', 'AA', 'dd', '', '0912201903510022.PNG'),
+('AD0004', 'fevy', '', '', 'AS@GMAIL.COM', 'Jember', 'lucas', '27112019021322k.png'),
+('AD0006', 'lucas', '', '', 'as@gmail.com', 'as', 'lucas', '291120190431094367ebfb05b9bcdec27fdc3da0b0e2d6.jpg'),
+('AD0007', 'Fahrlur', '', '099', 'l7@gmil.com', 'Jember', 'admin', '021220191711535.jpg');
 
 -- --------------------------------------------------------
 
@@ -81,8 +81,75 @@ CREATE TABLE `detail_jadwal` (
   `ID_DETAIL_JADWAL` varchar(6) NOT NULL,
   `ID_LAPANGAN` varchar(6) NOT NULL,
   `ID_JADWAL` varchar(6) NOT NULL,
-  `STATUS` tinyint(1) NOT NULL
+  `STATUS` tinyint(1) NOT NULL,
+  `TANGGAL_PESANAN` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `detail_jadwal`
+--
+
+INSERT INTO `detail_jadwal` (`ID_DETAIL_JADWAL`, `ID_LAPANGAN`, `ID_JADWAL`, `STATUS`, `TANGGAL_PESANAN`) VALUES
+('DJ0001', 'LP0001', 'JD0001', 0, '0000-00-00'),
+('DJ0002', 'LP0001', 'JD0002', 1, '2019-12-07'),
+('DJ0003', 'LP0001', 'JD0003', 0, '0000-00-00'),
+('DJ0004', 'LP0001', 'JD0004', 0, '0000-00-00'),
+('DJ0005', 'LP0001', 'JD0005', 0, '0000-00-00'),
+('DJ0006', 'LP0001', 'JD0006', 0, '0000-00-00'),
+('DJ0007', 'LP0001', 'JD0007', 0, '0000-00-00'),
+('DJ0008', 'LP0001', 'JD0008', 0, '0000-00-00'),
+('DJ0009', 'LP0001', 'JD0009', 0, '0000-00-00'),
+('DJ0010', 'LP0001', 'JD0010', 0, '0000-00-00'),
+('DJ0011', 'LP0001', 'JD0011', 0, '0000-00-00'),
+('DJ0012', 'LP0001', 'JD0012', 0, '0000-00-00'),
+('DJ0013', 'LP0001', 'JD0013', 0, '0000-00-00'),
+('DJ0014', 'LP0001', 'JD0014', 0, '0000-00-00'),
+('DJ0015', 'LP0001', 'JD0015', 0, '0000-00-00'),
+('DJ0016', 'LP0002', 'JD0001', 0, '0000-00-00'),
+('DJ0017', 'LP0002', 'JD0002', 0, '0000-00-00'),
+('DJ0018', 'LP0002', 'JD0003', 0, '0000-00-00'),
+('DJ0019', 'LP0002', 'JD0004', 0, '0000-00-00'),
+('DJ0020', 'LP0002', 'JD0005', 0, '0000-00-00'),
+('DJ0021', 'LP0002', 'JD0006', 0, '0000-00-00'),
+('DJ0022', 'LP0002', 'JD0007', 0, '0000-00-00'),
+('DJ0023', 'LP0002', 'JD0008', 0, '0000-00-00'),
+('DJ0024', 'LP0002', 'JD0009', 0, '0000-00-00'),
+('DJ0025', 'LP0002', 'JD0010', 0, '0000-00-00'),
+('DJ0026', 'LP0002', 'JD0011', 0, '0000-00-00'),
+('DJ0027', 'LP0002', 'JD0012', 0, '0000-00-00'),
+('DJ0028', 'LP0002', 'JD0013', 0, '0000-00-00'),
+('DJ0029', 'LP0002', 'JD0014', 0, '0000-00-00'),
+('DJ0030', 'LP0002', 'JD0015', 0, '0000-00-00'),
+('DJ0031', 'LP0003', 'JD0001', 0, '0000-00-00'),
+('DJ0032', 'LP0003', 'JD0002', 0, '0000-00-00'),
+('DJ0033', 'LP0003', 'JD0003', 0, '0000-00-00'),
+('DJ0034', 'LP0003', 'JD0004', 0, '0000-00-00'),
+('DJ0035', 'LP0003', 'JD0005', 0, '0000-00-00'),
+('DJ0036', 'LP0003', 'JD0006', 0, '0000-00-00'),
+('DJ0037', 'LP0003', 'JD0007', 0, '0000-00-00'),
+('DJ0038', 'LP0003', 'JD0008', 0, '0000-00-00'),
+('DJ0039', 'LP0003', 'JD0009', 0, '0000-00-00'),
+('DJ0040', 'LP0003', 'JD0010', 0, '0000-00-00'),
+('DJ0041', 'LP0003', 'JD0011', 0, '0000-00-00'),
+('DJ0042', 'LP0003', 'JD0012', 0, '0000-00-00'),
+('DJ0043', 'LP0003', 'JD0013', 0, '0000-00-00'),
+('DJ0044', 'LP0003', 'JD0014', 0, '0000-00-00'),
+('DJ0045', 'LP0003', 'JD0015', 0, '0000-00-00'),
+('DJ0046', 'LP0004', 'JD0001', 0, '0000-00-00'),
+('DJ0047', 'LP0004', 'JD0002', 0, '0000-00-00'),
+('DJ0048', 'LP0004', 'JD0003', 0, '0000-00-00'),
+('DJ0049', 'LP0004', 'JD0004', 0, '0000-00-00'),
+('DJ0050', 'LP0004', 'JD0005', 0, '0000-00-00'),
+('DJ0051', 'LP0004', 'JD0006', 0, '0000-00-00'),
+('DJ0052', 'LP0004', 'JD0007', 0, '0000-00-00'),
+('DJ0053', 'LP0004', 'JD0008', 0, '0000-00-00'),
+('DJ0054', 'LP0004', 'JD0009', 0, '0000-00-00'),
+('DJ0055', 'LP0004', 'JD0010', 0, '0000-00-00'),
+('DJ0056', 'LP0004', 'JD0011', 0, '0000-00-00'),
+('DJ0057', 'LP0004', 'JD0012', 0, '0000-00-00'),
+('DJ0058', 'LP0004', 'JD0013', 0, '0000-00-00'),
+('DJ0059', 'LP0004', 'JD0014', 0, '0000-00-00'),
+('DJ0060', 'LP0004', 'JD0015', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -96,6 +163,15 @@ CREATE TABLE `detail_transaksi` (
   `ID_DETAIL_JADWAL` varchar(6) NOT NULL,
   `TANGGAL_PESANAN` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `detail_transaksi`
+--
+
+INSERT INTO `detail_transaksi` (`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`, `ID_DETAIL_JADWAL`, `TANGGAL_PESANAN`) VALUES
+('DT0001', 'TR0001', 'DJ0001', '2019-12-07'),
+('DT0002', 'TR0002', 'DJ0003', '2019-12-03'),
+('DT0003', 'TR003', 'DJ0008', '2019-12-09');
 
 -- --------------------------------------------------------
 
@@ -152,8 +228,8 @@ CREATE TABLE `konfirmasi_pembayaran` (
 CREATE TABLE `lapangan` (
   `ID_LAPANGAN` varchar(6) NOT NULL,
   `NAMA_LAPANGAN` varchar(15) DEFAULT NULL,
-  `HARGA_SEWA` float(7,0) DEFAULT NULL,
-  `FOTO_LAPANGAN` longblob
+  `HARGA_SEWA` varchar(5) DEFAULT NULL,
+  `FOTO_LAPANGAN` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -161,11 +237,10 @@ CREATE TABLE `lapangan` (
 --
 
 INSERT INTO `lapangan` (`ID_LAPANGAN`, `NAMA_LAPANGAN`, `HARGA_SEWA`, `FOTO_LAPANGAN`) VALUES
-('LP0001', 'Lapangan1', 25000, 0x30323132323031393232323534366c6170312e6a7067),
-('LP0002', 'Lapangan2', 25000, 0x30323132323031393232323535396c6170322e6a7067),
-('LP0003', 'Lapangan3', 25000, 0x30323132323031393232323630386c6170332e6a7067),
-('LP0004', 'Lapangan4', 25000, 0x30323132323031393232323631366c6170342e6a7067),
-('LP0005', 'Lap6', 23000, 0x303231323230313932323237323663656e7465722e6a7067);
+('LP0001', 'Lapangan1', '25000', '02122019222546lap1.jpg'),
+('LP0002', 'Lapangan2', '25000', '02122019222559lap2.jpg'),
+('LP0003', 'Lapangan3', '25000', '02122019222608lap3.jpg'),
+('LP0004', 'Lapangan4', '25000', '02122019222616lap4.jpg');
 
 -- --------------------------------------------------------
 
@@ -177,22 +252,22 @@ CREATE TABLE `pelanggan` (
   `ID_PELANGGAN` varchar(6) NOT NULL,
   `NAMA_PELANGGAN` varchar(30) DEFAULT NULL,
   `JENIS_KELAMIN` char(10) NOT NULL,
+  `ALAMAT_PELANGGAN` text NOT NULL,
   `EMAIL_PELANGGAN` varchar(50) DEFAULT NULL,
-  `NOTLP_PELANGGAN` decimal(13,0) DEFAULT NULL,
+  `NOTLP_PELANGGAN` varchar(13) DEFAULT NULL,
   `PASSWORD_PELANGGAN` varchar(50) DEFAULT NULL,
-  `FOTO_PELANGGAN` longblob,
-  `STATUS_PELANGGAN` tinyint(1) DEFAULT NULL
+  `FOTO_PELANGGAN` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `pelanggan`
 --
 
-INSERT INTO `pelanggan` (`ID_PELANGGAN`, `NAMA_PELANGGAN`, `JENIS_KELAMIN`, `EMAIL_PELANGGAN`, `NOTLP_PELANGGAN`, `PASSWORD_PELANGGAN`, `FOTO_PELANGGAN`, `STATUS_PELANGGAN`) VALUES
-('PL0001', 'Lucas', 'Laki-Laki', 'L@gmail.com', '0', '0777', 0x32393131323031393136333631396b2e706e67, 1),
-('PL0002', 'asa', 'Laki-Laki', 'A', '0', '', 0x3032313232303139323234323430372e6a7067, 0),
-('PL0004', 'klk', 'Laki-Laki', '', '0', '', 0x3239313132303139313633383134382e6a7067, 0),
-('PL0005', 'lk', 'Laki-Laki', '', '0', '', 0x3239313132303139313634303431342e6a7067, 0);
+INSERT INTO `pelanggan` (`ID_PELANGGAN`, `NAMA_PELANGGAN`, `JENIS_KELAMIN`, `ALAMAT_PELANGGAN`, `EMAIL_PELANGGAN`, `NOTLP_PELANGGAN`, `PASSWORD_PELANGGAN`, `FOTO_PELANGGAN`) VALUES
+('PL0001', 'lucas', 'Laki-Laki', '', 'L@gmail.com', '0', 'lucas', '29112019163619k.png'),
+('PL0002', 'asa', 'Laki-Laki', '', 'A', '0', '', '021220192242407.jpg'),
+('PL0004', 'klk', 'Laki-Laki', '', '', '0', '', '291120191638148.jpg'),
+('PL0005', 'lk', 'Laki-Laki', '', '', '0', '', '291120191640414.jpg');
 
 -- --------------------------------------------------------
 
@@ -213,7 +288,9 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`ID_TRANSAKSI`, `ID_ADMIN`, `ID_PELANGGAN`, `ID_BANK`, `TGL_TRANSAKSI`) VALUES
-('TR0001', 'AD0001', 'PL0001', 'BK0001', '2019-12-03');
+('TR0001', 'AD0001', 'PL0001', 'BK0001', '2019-12-03'),
+('TR0002', 'AD0001', 'PL0002', 'BK0002', '2019-12-03'),
+('TR003', 'AD0001', 'PL0004', 'BK0001', '2019-12-09');
 
 --
 -- Indexes for dumped tables
