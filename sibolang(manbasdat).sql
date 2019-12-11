@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2019 at 12:22 PM
+-- Generation Time: Dec 11, 2019 at 05:32 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -174,19 +174,19 @@ INSERT INTO `detail_transaksi` (`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`, `ID_DETAI
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jadwal`
+-- Table structure for table `jam`
 --
 
-CREATE TABLE `jadwal` (
+CREATE TABLE `jam` (
   `ID_JADWAL` varchar(6) NOT NULL,
   `JAM` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jadwal`
+-- Dumping data for table `jam`
 --
 
-INSERT INTO `jadwal` (`ID_JADWAL`, `JAM`) VALUES
+INSERT INTO `jam` (`ID_JADWAL`, `JAM`) VALUES
 ('JD0001', '08:00:00'),
 ('JD0002', '09:00:00'),
 ('JD0003', '10:00:00'),
@@ -271,7 +271,8 @@ CREATE TABLE `tanggal_pesanan` (
 --
 
 INSERT INTO `tanggal_pesanan` (`ID_TANGGAL_PESANAN`, `ID_DETAIL_JADWAL`, `STATUS`, `TANGGAL_PESANAN`) VALUES
-('TP0001', 'DJ0001', 1, '2019-12-11');
+('TP0001', 'DJ0001', 1, '2019-12-11'),
+('TP0002', 'DJ0002', 1, '2019-12-11');
 
 -- --------------------------------------------------------
 
@@ -332,9 +333,9 @@ ALTER TABLE `detail_transaksi`
   ADD KEY `ID_DETAIL_JADWAL` (`ID_DETAIL_JADWAL`);
 
 --
--- Indexes for table `jadwal`
+-- Indexes for table `jam`
 --
-ALTER TABLE `jadwal`
+ALTER TABLE `jam`
   ADD PRIMARY KEY (`ID_JADWAL`);
 
 --
@@ -373,7 +374,7 @@ ALTER TABLE `transaksi`
 -- Constraints for table `detail_jadwal`
 --
 ALTER TABLE `detail_jadwal`
-  ADD CONSTRAINT `detail_jadwal_ibfk_1` FOREIGN KEY (`ID_JADWAL`) REFERENCES `jadwal` (`ID_JADWAL`),
+  ADD CONSTRAINT `detail_jadwal_ibfk_1` FOREIGN KEY (`ID_JADWAL`) REFERENCES `jam` (`ID_JADWAL`),
   ADD CONSTRAINT `detail_jadwal_ibfk_2` FOREIGN KEY (`ID_LAPANGAN`) REFERENCES `lapangan` (`ID_LAPANGAN`);
 
 --

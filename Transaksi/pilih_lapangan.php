@@ -59,202 +59,145 @@
         </ul>
     </div>
   </header><!-- #header -->
-
-          <div class="modal-body">
-        <form  method="post" enctype="multipart/form-data" action="" name="inputtanggal"> 
+  
+  <div class="modal-body">
+        <form  method="post" enctype="multipart/form-data"> 
             <div class="row">
-            <div class="form-group col">
+            <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Tanggal</label>
                 &nbsp;
-                <input type="date" id="datepicker" class="form-control">
+                  <input type="date" id="datepicker" class="form-control">
             </div>
-            <div class="form-group col">
+            <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Lapangan</label>
-                  <select name="nim" id="nim" class="form-control input-default" onchange="changeValue(this.value)">
-                  <option value=0>-Pilih Lapangan-</option>
-                  <!-- <?php
-                    $query = "Select * from lapangan ORDER BY NAMA_LAPANGAN esc";
-                    //$query = "Select * from lapangan";
-                    $sql = mysqli_query($connect, $query);
-                    $jsArray = "var prdName = new Array();\n";
-                    while($row =  mysqli_fetch_assoc($sql)){
-                      // echo "<option>$row[NAMA_LAPANGAN]</option>";	
-                      echo '<option value="' . $row['NAMA_LAPANGAN'] . '">' . $row['NAMA_LAPANGAN'] . '</option>';
-                      $jsArray .= "prdName['" . $row['NAMA_LAPANGAN'] . "'] = {id_lap:'" . addslashes($row['ID_LAPANGAN']) . "',
-                        nm_lap:'".addslashes($row['NAMA_LAPANGAN'])."'};\n";		
-                    }
-                    ?> -->
+                <select name="nim" id="nim" class="form-control input-defaut" onchange="changeValue(this.value)">
+              <option value=0>-Pilih Lapangan-</option>
 
               <?php
                   $result = mysqli_query($connect, "select * from lapangan");   
                   $jsArray = "var dtMhs = new Array();\n";       
                   while ($row = mysqli_fetch_array($result)) {   
-                      echo '<option value="' . $row['NAMA_LAPANGAN'] . '">' . $row['NAMA_LAPANGAN'] . '</option>';   
-                      $jsArray .= "dtMhs['" . $row['NAMA_LAPANGAN'] . "'] = {nama:'" . addslashes($row['NAMA_LAPANGAN']) . "',jrsn2:'".addslashes($row['HARGA_LAPANGAN'])."'};\n";   
-                  }     
-              ?>    
-
+                      echo '<option value="' . $row['NAMA_LAPANGAN'] . '">' . $row['NAMA_LAPANGAN'] . '</option>';
+                  }?> 
                   </select>
             </div>
             </div>
-        <div class="modal-footer">
-                <button type="submit" name="cari" class="btn btn-primary" >Cari</button>
-        </div>
-        </div>
+</div>
 
-        <div class="modal-body">
-            <div class="row">
-            <div class="form-group col">
-                <input type="text" name="nm" id="nm" class="form-control">
-            </div>
-            <div class="form-group col">
-                <input type="text" name="jrsn" id="jrsn" class="form-control">
-            </div>
-            </div>
+<div class="modal-footer ">
+        <button name="cari" class="btn btn-info">Cari</button>
+</div>
 
-            <script type="text/javascript">   
-                // <?php echo $jsArray; ?> 
-                // function changeValue(pilih_lp){ 
-                // document.getElementById('id_lap').value = prdName[pilih_lp].ID_LAPANGAN; 
-                // document.getElementById('nm_lap').value = prdName[pilih_lp].NAMA_LAPANGAN; 
-                // }; 
-                <?php echo $jsArray; ?> 
-                    function changeValue(nim){ 
-                    document.getElementById('nm').value = dtMhs[nim].nama; 
-                    document.getElementById('jrsn').value = dtMhs[nim].jrsn2; 
-                    };  
-            </script> 
-
-
-       <!-- <?php
+        
+        <?php
         if (isset($_POST['cari'])){
-          $lapangan = $_POST['nm_lp']?>
-      <div class="row">
-          <div class="col">
-            1 of 2
-          </div>
-          <div class="col">
-                  <?php
-              //$query = "Select * from lapangan ";
-              $query = "SELECT * FROM `lapangan` WHERE `NAMA_LAPANGAN` = $lapangan";
+          $id = $_POST['nim']; ?>
+  <div class="modal-body">
+  <div class="row">
+  <div class="col">
+              <?php
+              $query = "Select * from lapangan where NAMA_LAPANGAN='".$id."'";
               $sql = mysqli_query($connect, $query);
-              while($data = mysqli_fetch_assoc($sql)){
+              while($data = mysqli_fetch_array($sql)){
               ?>
-                  <tr>
-                      <td><img alt="" class="" width="200" src="img/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>"></td>
-                  </tr>
+              <img alt="" class="" width="600" src="img/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
               <?php } ?>
-          </div>
-      </div>      
-    </div> } 
-    <?php } ?> -->
-      
+  </div>
+  <div class="col"> 
+            <label class="col-form-label">Pilih Jam :</label><br>
 
+            <form method='post' name="letter" >
+            <div class="container">
+            <ul class="ks-cboxtags">
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0001'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam1" value="<?php echo $data['JAM']; ?>"><label for="jam1"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0002'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam2" value="<?php echo $data['JAM']; ?>"><label for="jam2"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0003'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam3" value="<?php echo $data['JAM']; ?>"><label for="jam3"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0004'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam4" value="<?php echo $data['JAM']; ?>"><label for="jam4"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0005'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                  <li><input type="checkbox" id="jam5" value="<?php echo $data['JAM']; ?>"><label for="jam5"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0006'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam6" value="<?php echo $data['JAM']; ?>"><label for="jam6"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0007'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam7" value="<?php echo $data['JAM']; ?>"><label for="jam7"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0008'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam8" value="<?php echo $data['JAM']; ?>"><label for="jam8"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0009'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam9" value="<?php echo $data['JAM']; ?>"><label for="jam9"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0010'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam10" value="<?php echo $data['JAM']; ?>"><label for="jam10"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0011'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam11" value="<?php echo $data['JAM']; ?>"><label for="jam11"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0012'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam12" value="<?php echo $data['JAM']; ?>"><label for="jam12"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0013'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam13" value="<?php echo $data['JAM']; ?>"><label for="jam13"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0014'");
+              while($data = mysqli_fetch_assoc($sql)){?> 
+                    <li><input type="checkbox" id="jam14" value="<?php echo $data['JAM']; ?>"><label for="jam14"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            <?php
+              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0015'");
+              while($data = mysqli_fetch_assoc($sql)){?>
+                    <li><input type="checkbox" id="jam15" value="<?php echo $data['JAM']; ?>"><label for="jam15"><?php echo $data['JAM']; ?></label></li>
+            <?php } ?>
+            </ul>
+            </div>
+            </form>
 
+   </div>
+  </div>
+</div>
+<?php } ?>
 
+<?php
+  if(isset($_POST['simpan'])){
+    $jam1 = $_POST['jam1'] ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!--==========================
-    Footer
-  ============================-->
-	<section id="footer">
-		<div class="container">
-			<div class="row text-center text-xs-center text-sm-left text-md-left">
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>SIBOLANG</h5>
-					<p>SI BOLANG (Sistem Informasi Booking Lapangan) adalah sebuah website untuk
-            melakukan proses pemesaan lapangan online yang dapat dilakukan dimana saja
-            dan kapan saja. Website ini bertujuan untuk mempermudah proses transaksi
-            antara penyedia lapangan dan penyewa lapangan agar proses pemesanan 
-            berjalan dengan efektif dan efisien </p>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Menu</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Halaman Utama</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Kelebihan</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Daftar Lapangan</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Cara Pemesanan</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Apa Itu lapangan</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Lokasi</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Tentang Rush</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Author</a></li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Informasi RUSH Badminton</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><img src="img/icon/pemilik.png" width="30px">  Rudi Rahmawan</a></li>
-						<li><a href="javascript:void();"><img src="img/icon/berdiri.png" width="30px">  November 2018</a></li>
-						<li><a href="javascript:void();"><img src="img/icon/alamat.png" width="30px">  Sebelah Neutron - Kampus, 
-                                                                                           Jln. Kalimantan, Gg. 14, Krajan Timur, 
-                                                                                           Sumbersari, Kec. Sumbersari, Kabupaten 
-                                                                                           Jember, Jawa Timur 68121</a></li>
-						<li><a href="javascript:void();"><img src="img/icon/email.png" width="30px">  RushBadminton@gmail.com</a></li>
-					</ul>
-				</div>
-      </div>
-      
-
-
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i> Rush Badminton    </a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i> rushbadminton    </a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-whatsapp"></i> 0851 0557 0333    </a></li> 
-					</ul>
-				</div>
-				</hr>
-      </div>	
-      
-    </div>
-    
-    <div class="copyright">
-      <p>&copy Copyright 2019</p>
-    </div>
-    </hr>
-	</section>
-	<!-- ./Footer -->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+ <?php } ?>
 
 </body>
 </html>
