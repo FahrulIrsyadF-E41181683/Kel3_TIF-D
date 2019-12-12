@@ -66,7 +66,7 @@
             <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Tanggal</label>
                 &nbsp;
-                  <input type="date" id="datepicker" class="form-control">
+                  <input type="date" id="datepicker" class="form-control" name='date' id='date'>
             </div>
             <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Lapangan</label>
@@ -91,12 +91,13 @@
         
         <?php
         if (isset($_POST['cari'])){
-          $id = $_POST['nim']; ?>
+          $lap = $_POST['nim']; 
+          $tgl = $_POST['date']; ?>
   <div class="modal-body">
   <div class="row">
   <div class="col">
               <?php
-              $query = "Select * from lapangan where NAMA_LAPANGAN='".$id."'";
+              $query = "Select * from lapangan where NAMA_LAPANGAN='".$lap."'";
               $sql = mysqli_query($connect, $query);
               while($data = mysqli_fetch_array($sql)){
               ?>
@@ -109,81 +110,355 @@
             <form method='post' name="letter" >
             <div class="container">
             <ul class="ks-cboxtags">
+
+            <!-- Checkbox1 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0001'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam1" value="<?php echo $data['JAM']; ?>"><label for="jam1"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+              $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN , B.STATUS 
+            FROM detail_jadwal A LEFT JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = 
+            B.ID_DETAIL_JADWAL JOIN lapangan C on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE 
+            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0001' && B.TANGGAL_PESANAN='$tgl'");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0001'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                            <li class='opacity5'><input type="checkbox" id="jam1"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                            <label for="jam1"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                            <li ><input type="checkbox" id="jam1" value="<?php echo $data['JAM']; ?>">
+                            <label for="jam1"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox2 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0002'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam2" value="<?php echo $data['JAM']; ?>"><label for="jam2"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS  
+            FROM detail_jadwal A LEFT JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = 
+            B.ID_DETAIL_JADWAL JOIN lapangan C on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE 
+            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0002' && B.TANGGAL_PESANAN='$tgl'");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0002'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                            <li class='opacity5'><input type="checkbox" id="jam2"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                            <label for="jam2"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                            <li ><input type="checkbox" id="jam2" value="<?php echo $data['JAM']; ?>">
+                            <label for="jam2"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox3 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0003'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam3" value="<?php echo $data['JAM']; ?>"><label for="jam3"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS  
+            FROM detail_jadwal A LEFT JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = 
+            B.ID_DETAIL_JADWAL JOIN lapangan C on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE 
+            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0003' && B.TANGGAL_PESANAN='$tgl'");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0003'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                <li class='opacity5'><input type="checkbox" id="jam3"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                              <label for="jam3"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam3" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam3"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+                      <!-- Checkbox4 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0004'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam4" value="<?php echo $data['JAM']; ?>"><label for="jam4"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0004' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0004'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam4"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam4"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam4" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam4"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+                      <!-- Checkbox5 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0005'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                  <li><input type="checkbox" id="jam5" value="<?php echo $data['JAM']; ?>"><label for="jam5"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0005' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0005'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam5"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam5"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam5" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam5"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+                      <!-- Checkbox6 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0006'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam6" value="<?php echo $data['JAM']; ?>"><label for="jam6"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0006' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0006'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam6"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam6"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam6" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam6"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+                      <!-- Checkbox7 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0007'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam7" value="<?php echo $data['JAM']; ?>"><label for="jam7"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0007' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0007'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam7"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam7"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam7" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam7"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox8 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0008'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam8" value="<?php echo $data['JAM']; ?>"><label for="jam8"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0008' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0008'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam8"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam8"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam8" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam8"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox9 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0009'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam9" value="<?php echo $data['JAM']; ?>"><label for="jam9"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0009' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0009'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam9"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam9"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam9" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam9"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox10 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0010'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam10" value="<?php echo $data['JAM']; ?>"><label for="jam10"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0010' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0010'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam10"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam10"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam10" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam10"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox11 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0011'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam11" value="<?php echo $data['JAM']; ?>"><label for="jam11"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0011' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0011'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam11"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam11"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam11" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam11"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox12 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0012'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam12" value="<?php echo $data['JAM']; ?>"><label for="jam12"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0012' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0012'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam12"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam12"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam12" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam12"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox13 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0013'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam13" value="<?php echo $data['JAM']; ?>"><label for="jam13"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0013' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0013'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam13"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam13"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam13" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam13"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox14 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0014'");
-              while($data = mysqli_fetch_assoc($sql)){?> 
-                    <li><input type="checkbox" id="jam14" value="<?php echo $data['JAM']; ?>"><label for="jam14"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0014' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0014'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam14"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam14"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam14" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam14"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+            <!-- Checkbox15 -->
             <?php
-              $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0015'");
-              while($data = mysqli_fetch_assoc($sql)){?>
-                    <li><input type="checkbox" id="jam15" value="<?php echo $data['JAM']; ?>"><label for="jam15"><?php echo $data['JAM']; ?></label></li>
-            <?php } ?>
+            $st= 0;
+            $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
+            FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0015' && B.TANGGAL_PESANAN='$tgl' ");
+
+            while($data = mysqli_fetch_assoc($sql1)){
+              $st= $data['STATUS'];
+            } ?>
+                      <?php 
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0015'");
+                        if($st==1){
+                          while($data = mysqli_fetch_assoc($sql)){ ?>
+                                
+                                <li class='opacity5'><input type="checkbox" id="jam15"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                                <label for="jam15"><?php echo $data['JAM']; ?></label></li>
+                        <?php }} else {
+                          while($data = mysqli_fetch_assoc($sql)){?>
+                                <li ><input type="checkbox" id="jam15" value="<?php echo $data['JAM']; ?>">
+                                <label for="jam15"><?php echo $data['JAM']; ?></label></li>
+                        <?php }}
+                      ?>
+
+
+            
             </ul>
             </div>
             </form>
@@ -195,7 +470,7 @@
 
 <?php
   if(isset($_POST['simpan'])){
-    $jam1 = $_POST['jam1'] ?>
+    $jam2 = $_POST['jam2'] ?>
 
  <?php } ?>
 
