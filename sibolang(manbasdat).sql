@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2019 at 05:32 PM
+-- Generation Time: Dec 12, 2019 at 04:32 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -80,74 +80,74 @@ INSERT INTO `bank` (`ID_BANK`, `NAMA_BANK`, `NO_REKENING`) VALUES
 CREATE TABLE `detail_jadwal` (
   `ID_DETAIL_JADWAL` varchar(6) NOT NULL,
   `ID_LAPANGAN` varchar(6) NOT NULL,
-  `ID_JADWAL` varchar(6) NOT NULL
+  `ID_JAM` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_jadwal`
 --
 
-INSERT INTO `detail_jadwal` (`ID_DETAIL_JADWAL`, `ID_LAPANGAN`, `ID_JADWAL`) VALUES
-('DJ0001', 'LP0001', 'JD0001'),
-('DJ0002', 'LP0001', 'JD0002'),
-('DJ0003', 'LP0001', 'JD0003'),
-('DJ0004', 'LP0001', 'JD0004'),
-('DJ0005', 'LP0001', 'JD0005'),
-('DJ0006', 'LP0001', 'JD0006'),
-('DJ0007', 'LP0001', 'JD0007'),
-('DJ0008', 'LP0001', 'JD0008'),
-('DJ0009', 'LP0001', 'JD0009'),
-('DJ0010', 'LP0001', 'JD0010'),
-('DJ0011', 'LP0001', 'JD0011'),
-('DJ0012', 'LP0001', 'JD0012'),
-('DJ0013', 'LP0001', 'JD0013'),
-('DJ0014', 'LP0001', 'JD0014'),
-('DJ0015', 'LP0001', 'JD0015'),
-('DJ0016', 'LP0002', 'JD0001'),
-('DJ0017', 'LP0002', 'JD0002'),
-('DJ0018', 'LP0002', 'JD0003'),
-('DJ0019', 'LP0002', 'JD0004'),
-('DJ0020', 'LP0002', 'JD0005'),
-('DJ0021', 'LP0002', 'JD0006'),
-('DJ0022', 'LP0002', 'JD0007'),
-('DJ0023', 'LP0002', 'JD0008'),
-('DJ0024', 'LP0002', 'JD0009'),
-('DJ0025', 'LP0002', 'JD0010'),
-('DJ0026', 'LP0002', 'JD0011'),
-('DJ0027', 'LP0002', 'JD0012'),
-('DJ0028', 'LP0002', 'JD0013'),
-('DJ0029', 'LP0002', 'JD0014'),
-('DJ0030', 'LP0002', 'JD0015'),
-('DJ0031', 'LP0003', 'JD0001'),
-('DJ0032', 'LP0003', 'JD0002'),
-('DJ0033', 'LP0003', 'JD0003'),
-('DJ0034', 'LP0003', 'JD0004'),
-('DJ0035', 'LP0003', 'JD0005'),
-('DJ0036', 'LP0003', 'JD0006'),
-('DJ0037', 'LP0003', 'JD0007'),
-('DJ0038', 'LP0003', 'JD0008'),
-('DJ0039', 'LP0003', 'JD0009'),
-('DJ0040', 'LP0003', 'JD0010'),
-('DJ0041', 'LP0003', 'JD0011'),
-('DJ0042', 'LP0003', 'JD0012'),
-('DJ0043', 'LP0003', 'JD0013'),
-('DJ0044', 'LP0003', 'JD0014'),
-('DJ0045', 'LP0003', 'JD0015'),
-('DJ0046', 'LP0004', 'JD0001'),
-('DJ0047', 'LP0004', 'JD0002'),
-('DJ0048', 'LP0004', 'JD0003'),
-('DJ0049', 'LP0004', 'JD0004'),
-('DJ0050', 'LP0004', 'JD0005'),
-('DJ0051', 'LP0004', 'JD0006'),
-('DJ0052', 'LP0004', 'JD0007'),
-('DJ0053', 'LP0004', 'JD0008'),
-('DJ0054', 'LP0004', 'JD0009'),
-('DJ0055', 'LP0004', 'JD0010'),
-('DJ0056', 'LP0004', 'JD0011'),
-('DJ0057', 'LP0004', 'JD0012'),
-('DJ0058', 'LP0004', 'JD0013'),
-('DJ0059', 'LP0004', 'JD0014'),
-('DJ0060', 'LP0004', 'JD0015');
+INSERT INTO `detail_jadwal` (`ID_DETAIL_JADWAL`, `ID_LAPANGAN`, `ID_JAM`) VALUES
+('DJ0001', 'LP0001', 'JM0001'),
+('DJ0002', 'LP0001', 'JM0002'),
+('DJ0003', 'LP0001', 'JM0003'),
+('DJ0004', 'LP0001', 'JM0004'),
+('DJ0005', 'LP0001', 'JM0005'),
+('DJ0006', 'LP0001', 'JM0006'),
+('DJ0007', 'LP0001', 'JM0007'),
+('DJ0008', 'LP0001', 'JM0008'),
+('DJ0009', 'LP0001', 'JM0009'),
+('DJ0010', 'LP0001', 'JM0010'),
+('DJ0011', 'LP0001', 'JM0011'),
+('DJ0012', 'LP0001', 'JM0012'),
+('DJ0013', 'LP0001', 'JM0013'),
+('DJ0014', 'LP0001', 'JM0014'),
+('DJ0015', 'LP0001', 'JM0015'),
+('DJ0016', 'LP0002', 'JM0001'),
+('DJ0017', 'LP0002', 'JM0002'),
+('DJ0018', 'LP0002', 'JM0003'),
+('DJ0019', 'LP0002', 'JM0004'),
+('DJ0020', 'LP0002', 'JM0005'),
+('DJ0021', 'LP0002', 'JM0006'),
+('DJ0022', 'LP0002', 'JM0007'),
+('DJ0023', 'LP0002', 'JM0008'),
+('DJ0024', 'LP0002', 'JM0009'),
+('DJ0025', 'LP0002', 'JM0010'),
+('DJ0026', 'LP0002', 'JM0011'),
+('DJ0027', 'LP0002', 'JM0012'),
+('DJ0028', 'LP0002', 'JM0013'),
+('DJ0029', 'LP0002', 'JM0014'),
+('DJ0030', 'LP0002', 'JM0015'),
+('DJ0031', 'LP0003', 'JM0001'),
+('DJ0032', 'LP0003', 'JM0002'),
+('DJ0033', 'LP0003', 'JM0003'),
+('DJ0034', 'LP0003', 'JM0004'),
+('DJ0035', 'LP0003', 'JM0005'),
+('DJ0036', 'LP0003', 'JM0006'),
+('DJ0037', 'LP0003', 'JM0007'),
+('DJ0038', 'LP0003', 'JM0008'),
+('DJ0039', 'LP0003', 'JM0009'),
+('DJ0040', 'LP0003', 'JM0010'),
+('DJ0041', 'LP0003', 'JM0011'),
+('DJ0042', 'LP0003', 'JM0012'),
+('DJ0043', 'LP0003', 'JM0013'),
+('DJ0044', 'LP0003', 'JM0014'),
+('DJ0045', 'LP0003', 'JM0015'),
+('DJ0046', 'LP0004', 'JM0001'),
+('DJ0047', 'LP0004', 'JM0002'),
+('DJ0048', 'LP0004', 'JM0003'),
+('DJ0049', 'LP0004', 'JM0004'),
+('DJ0050', 'LP0004', 'JM0005'),
+('DJ0051', 'LP0004', 'JM0006'),
+('DJ0052', 'LP0004', 'JM0007'),
+('DJ0053', 'LP0004', 'JM0008'),
+('DJ0054', 'LP0004', 'JM0009'),
+('DJ0055', 'LP0004', 'JM0010'),
+('DJ0056', 'LP0004', 'JM0011'),
+('DJ0057', 'LP0004', 'JM0012'),
+('DJ0058', 'LP0004', 'JM0013'),
+('DJ0059', 'LP0004', 'JM0014'),
+('DJ0060', 'LP0004', 'JM0015');
 
 -- --------------------------------------------------------
 
@@ -158,18 +158,18 @@ INSERT INTO `detail_jadwal` (`ID_DETAIL_JADWAL`, `ID_LAPANGAN`, `ID_JADWAL`) VAL
 CREATE TABLE `detail_transaksi` (
   `ID_DETAIL_TRANSAKSI` varchar(6) NOT NULL,
   `ID_TRANSAKSI` varchar(6) NOT NULL,
-  `ID_DETAIL_JADWAL` varchar(6) NOT NULL,
-  `TANGGAL_TRANSAKSI` date DEFAULT NULL
+  `JAM` time NOT NULL,
+  `NAMA_LAPANGAN` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_transaksi`
 --
 
-INSERT INTO `detail_transaksi` (`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`, `ID_DETAIL_JADWAL`, `TANGGAL_TRANSAKSI`) VALUES
-('DT0001', 'TR0001', 'DJ0001', '2019-12-07'),
-('DT0002', 'TR0002', 'DJ0003', '2019-12-03'),
-('DT0003', 'TR003', 'DJ0008', '2019-12-09');
+INSERT INTO `detail_transaksi` (`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`, `JAM`, `NAMA_LAPANGAN`) VALUES
+('DT0001', 'TR0001', '00:00:00', ''),
+('DT0002', 'TR0002', '00:00:00', ''),
+('DT0003', 'TR003', '00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -178,7 +178,7 @@ INSERT INTO `detail_transaksi` (`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`, `ID_DETAI
 --
 
 CREATE TABLE `jam` (
-  `ID_JADWAL` varchar(6) NOT NULL,
+  `ID_JAM` varchar(6) NOT NULL,
   `JAM` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -186,22 +186,22 @@ CREATE TABLE `jam` (
 -- Dumping data for table `jam`
 --
 
-INSERT INTO `jam` (`ID_JADWAL`, `JAM`) VALUES
-('JD0001', '08:00:00'),
-('JD0002', '09:00:00'),
-('JD0003', '10:00:00'),
-('JD0004', '11:00:00'),
-('JD0005', '12:00:00'),
-('JD0006', '13:00:00'),
-('JD0007', '14:00:00'),
-('JD0008', '15:00:00'),
-('JD0009', '16:00:00'),
-('JD0010', '17:00:00'),
-('JD0011', '18:00:00'),
-('JD0012', '19:00:00'),
-('JD0013', '20:00:00'),
-('JD0014', '21:00:00'),
-('JD0015', '22:00:00');
+INSERT INTO `jam` (`ID_JAM`, `JAM`) VALUES
+('JM0001', '08:00:00'),
+('JM0002', '09:00:00'),
+('JM0003', '10:00:00'),
+('JM0004', '11:00:00'),
+('JM0005', '12:00:00'),
+('JM0006', '13:00:00'),
+('JM0007', '14:00:00'),
+('JM0008', '15:00:00'),
+('JM0009', '16:00:00'),
+('JM0010', '17:00:00'),
+('JM0011', '18:00:00'),
+('JM0012', '19:00:00'),
+('JM0013', '20:00:00'),
+('JM0014', '21:00:00'),
+('JM0015', '22:00:00');
 
 -- --------------------------------------------------------
 
@@ -272,7 +272,8 @@ CREATE TABLE `tanggal_pesanan` (
 
 INSERT INTO `tanggal_pesanan` (`ID_TANGGAL_PESANAN`, `ID_DETAIL_JADWAL`, `STATUS`, `TANGGAL_PESANAN`) VALUES
 ('TP0001', 'DJ0001', 1, '2019-12-11'),
-('TP0002', 'DJ0002', 1, '2019-12-11');
+('TP0002', 'DJ0002', 1, '2019-12-11'),
+('TP0003', 'DJ0009', 1, '2019-12-11');
 
 -- --------------------------------------------------------
 
@@ -282,7 +283,6 @@ INSERT INTO `tanggal_pesanan` (`ID_TANGGAL_PESANAN`, `ID_DETAIL_JADWAL`, `STATUS
 
 CREATE TABLE `transaksi` (
   `ID_TRANSAKSI` varchar(6) NOT NULL,
-  `ID_ADMIN` varchar(6) NOT NULL,
   `ID_PELANGGAN` varchar(6) NOT NULL,
   `ID_BANK` varchar(6) NOT NULL,
   `TANGGAL_TRANSAKSI` date DEFAULT NULL,
@@ -295,10 +295,10 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`ID_TRANSAKSI`, `ID_ADMIN`, `ID_PELANGGAN`, `ID_BANK`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`) VALUES
-('TR0001', 'AD0001', 'PL0001', 'BK0001', '2019-12-03', '00:00:00', '', 0),
-('TR0002', 'AD0001', 'PL0002', 'BK0002', '2019-12-03', '00:00:00', '', 0),
-('TR003', 'AD0001', 'PL0004', 'BK0001', '2019-12-09', '00:00:00', '', 0);
+INSERT INTO `transaksi` (`ID_TRANSAKSI`, `ID_PELANGGAN`, `ID_BANK`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`) VALUES
+('TR0001', 'PL0001', 'BK0001', '2019-12-03', '00:00:00', '', 0),
+('TR0002', 'PL0002', 'BK0002', '2019-12-03', '00:00:00', '', 0),
+('TR003', 'PL0004', 'BK0001', '2019-12-09', '00:00:00', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -322,21 +322,20 @@ ALTER TABLE `bank`
 ALTER TABLE `detail_jadwal`
   ADD PRIMARY KEY (`ID_DETAIL_JADWAL`),
   ADD KEY `ID_LAPANGAN` (`ID_LAPANGAN`),
-  ADD KEY `ID_JADWAL` (`ID_JADWAL`);
+  ADD KEY `ID_JADWAL` (`ID_JAM`);
 
 --
 -- Indexes for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
   ADD PRIMARY KEY (`ID_DETAIL_TRANSAKSI`),
-  ADD KEY `FK_MASUK` (`ID_TRANSAKSI`),
-  ADD KEY `ID_DETAIL_JADWAL` (`ID_DETAIL_JADWAL`);
+  ADD KEY `FK_MASUK` (`ID_TRANSAKSI`);
 
 --
 -- Indexes for table `jam`
 --
 ALTER TABLE `jam`
-  ADD PRIMARY KEY (`ID_JADWAL`);
+  ADD PRIMARY KEY (`ID_JAM`);
 
 --
 -- Indexes for table `lapangan`
@@ -362,7 +361,6 @@ ALTER TABLE `tanggal_pesanan`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`ID_TRANSAKSI`),
-  ADD KEY `ID_ADMIN` (`ID_ADMIN`),
   ADD KEY `ID_PELANGGAN` (`ID_PELANGGAN`),
   ADD KEY `ID_BANK` (`ID_BANK`);
 
@@ -374,15 +372,14 @@ ALTER TABLE `transaksi`
 -- Constraints for table `detail_jadwal`
 --
 ALTER TABLE `detail_jadwal`
-  ADD CONSTRAINT `detail_jadwal_ibfk_1` FOREIGN KEY (`ID_JADWAL`) REFERENCES `jam` (`ID_JADWAL`),
-  ADD CONSTRAINT `detail_jadwal_ibfk_2` FOREIGN KEY (`ID_LAPANGAN`) REFERENCES `lapangan` (`ID_LAPANGAN`);
+  ADD CONSTRAINT `detail_jadwal_ibfk_2` FOREIGN KEY (`ID_LAPANGAN`) REFERENCES `lapangan` (`ID_LAPANGAN`),
+  ADD CONSTRAINT `detail_jadwal_ibfk_3` FOREIGN KEY (`ID_JAM`) REFERENCES `jam` (`ID_JAM`);
 
 --
 -- Constraints for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  ADD CONSTRAINT `detail_transaksi_ibfk_1` FOREIGN KEY (`ID_TRANSAKSI`) REFERENCES `transaksi` (`ID_TRANSAKSI`),
-  ADD CONSTRAINT `detail_transaksi_ibfk_2` FOREIGN KEY (`ID_DETAIL_JADWAL`) REFERENCES `detail_jadwal` (`ID_DETAIL_JADWAL`);
+  ADD CONSTRAINT `detail_transaksi_ibfk_1` FOREIGN KEY (`ID_TRANSAKSI`) REFERENCES `transaksi` (`ID_TRANSAKSI`);
 
 --
 -- Constraints for table `tanggal_pesanan`
@@ -395,8 +392,7 @@ ALTER TABLE `tanggal_pesanan`
 --
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`ID_PELANGGAN`) REFERENCES `pelanggan` (`ID_PELANGGAN`),
-  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`ID_BANK`) REFERENCES `bank` (`ID_BANK`),
-  ADD CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`ID_ADMIN`) REFERENCES `admin` (`ID_ADMIN`);
+  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`ID_BANK`) REFERENCES `bank` (`ID_BANK`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

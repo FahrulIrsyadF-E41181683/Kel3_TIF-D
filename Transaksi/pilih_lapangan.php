@@ -36,8 +36,13 @@
       <script src="js/bootstrap-datepicker.js"></script>
       <script>
         $(function () {
+        $('#datepicker').datepicker(setDate, new Date());
         $('#datepicker').datepicker({
         autoclose: true
+        todayHighlight: true,
+        orientation: "bottom auto"
+        locale:'id',
+        
       });
       });
       </script>
@@ -110,7 +115,7 @@
             <form method='post' name="letter" >
             <div class="container">
             <ul class="ks-cboxtags">
-
+<!-- -----Checkbox----- -->
             <!-- Checkbox1 -->
             <?php
               $st= 0;
@@ -456,6 +461,7 @@
                                 <label for="jam15"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
+<!-- -----Checkbox----- -->
 
 
             
