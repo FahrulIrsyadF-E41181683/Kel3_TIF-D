@@ -17,8 +17,6 @@
   <!-- Bootstrap File -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <script src="js/bootstrap.min.js"></script>
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <script src="js/bootstrap.js"></script>
 
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -26,26 +24,30 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
-      <!-- Date Picker -->
-      <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
-      <link rel="stylesheet" href="css/datepicker.css">
-      <link rel="stylesheet" href="css/bootstrap-datepicker3.css">
+  <!-- JQuery -->
+  <link href="jquery-ui-1.11.4/smoothness/jquery-ui.css" rel="stylesheet" />
+  <script src="jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+  <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+  <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.theme.css">
+
+  <!-- INDONESIA -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
+
       
-      <script src="js/jquery.js"></script>
-      <script src="js/jquery-3.4.1.min"></script>
-      <script src="js/bootstrap-datepicker.js"></script>
-      <script>
-        $(function () {
-        $('#datepicker').datepicker(setDate, new Date());
-        $('#datepicker').datepicker({
-        autoclose: true
-        todayHighlight: true,
-        orientation: "bottom auto"
-        locale:'id',
-        
-      });
-      });
-      </script>
+  <script>
+   $(document).ready(function(){
+    var date = new Date();
+    $('#tanggal').datepicker('setDate', date);
+	   $("#tanggal").datepicker({
+      dateFormat: "yy/mm/dd",
+      enableOnReadonly: true,
+      language: 'id',
+      locale: 'id',
+	   })
+   })
+  </script>
+
       <?php include "koneksi.php"; ?>
 </head>
 
@@ -64,26 +66,34 @@
         </ul>
     </div>
   </header><!-- #header -->
-  
+
   <div class="modal-body">
         <form  method="post" enctype="multipart/form-data"> 
             <div class="row">
             <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Tanggal</label>
-                &nbsp;
-                  <input type="date" id="datepicker" class="form-control" name='date' id='date'>
+                  <input type="text" id="tanggal" class="form-control" name='date' id='date' selected='selected'>
             </div>
             <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Lapangan</label>
                 <select name="nim" id="nim" class="form-control input-defaut" onchange="changeValue(this.value)">
-              <option value=0>-Pilih Lapangan-</option>
+              <option value="">-Pilih Lapangan-</option>
 
-              <?php
-                  $result = mysqli_query($connect, "select * from lapangan");   
-                  $jsArray = "var dtMhs = new Array();\n";       
+              <!-- <?php
+                  $result = mysqli_query($connect, "select NAMA_LAPANGAN from lapangan");   
                   while ($row = mysqli_fetch_array($result)) {   
-                      echo '<option value="' . $row['NAMA_LAPANGAN'] . '">' . $row['NAMA_LAPANGAN'] . '</option>';
-                  }?> 
+                      echo '<option value="' . $row['NAMA_LAPANGAN'] .'" >' . $row['NAMA_LAPANGAN'].'</option>';
+                  }?> -->
+
+                  <?php
+                  $result = mysqli_query($connect, "select NAMA_LAPANGAN from lapangan");   
+                  while ($options = mysqli_fetch_assoc($result)) {   
+                    foreach ($options as $area) {
+                      $selected = @$_POST['nim'] == $area ? ' selected="selected"' : '';
+                      echo '<option value="' . $area . '"' . $selected . '>' . $area . '</option>';
+                  }}?>
+
+
                   </select>
             </div>
             </div>
@@ -97,7 +107,8 @@
         <?php
         if (isset($_POST['cari'])){
           $lap = $_POST['nim']; 
-          $tgl = $_POST['date']; ?>
+          $tgl = $_POST['date']; 
+          ?>
   <div class="modal-body">
   <div class="row">
   <div class="col">
@@ -113,7 +124,7 @@
             <label class="col-form-label">Pilih Jam :</label><br>
 
             <form method='post' name="letter" >
-            <div class="container">
+            <div class="container2">
             <ul class="ks-cboxtags">
 <!-- -----Checkbox----- -->
             <!-- Checkbox1 -->
@@ -122,13 +133,13 @@
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN , B.STATUS 
             FROM detail_jadwal A LEFT JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = 
             B.ID_DETAIL_JADWAL JOIN lapangan C on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE 
-            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0001' && B.TANGGAL_PESANAN='$tgl'");
+            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0001' && B.TANGGAL_PESANAN='$tgl'");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0001'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0001'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                             <li class='opacity5'><input type="checkbox" id="jam1"  value="<?php echo $data['JAM']; ?>"  disabled = true >
@@ -145,13 +156,13 @@
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS  
             FROM detail_jadwal A LEFT JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = 
             B.ID_DETAIL_JADWAL JOIN lapangan C on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE 
-            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0002' && B.TANGGAL_PESANAN='$tgl'");
+            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0002' && B.TANGGAL_PESANAN='$tgl'");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0002'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0002'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                             <li class='opacity5'><input type="checkbox" id="jam2"  value="<?php echo $data['JAM']; ?>"  disabled = true >
@@ -168,13 +179,13 @@
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS  
             FROM detail_jadwal A LEFT JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = 
             B.ID_DETAIL_JADWAL JOIN lapangan C on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE 
-            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0003' && B.TANGGAL_PESANAN='$tgl'");
+            C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0003' && B.TANGGAL_PESANAN='$tgl'");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0003'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0003'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 <li class='opacity5'><input type="checkbox" id="jam3"  value="<?php echo $data['JAM']; ?>"  disabled = true >
@@ -190,13 +201,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0004' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0004' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0004'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0004'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -208,18 +219,18 @@
                                 <label for="jam4"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-                      <!-- Checkbox5 -->
+            <!-- Checkbox5 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0005' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0005' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0005'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0005'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -236,13 +247,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0006' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0006' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0006'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0006'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -254,18 +265,18 @@
                                 <label for="jam6"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-                      <!-- Checkbox7 -->
+            <!-- Checkbox7 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0007' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0007' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0007'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0007'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -282,13 +293,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0008' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0008' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0008'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0008'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -305,13 +316,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0009' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0009' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0009'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0009'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -328,13 +339,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0010' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0010' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0010'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0010'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -351,13 +362,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0011' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0011' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0011'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0011'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -374,13 +385,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0012' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0012' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0012'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0012'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -397,13 +408,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0013' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0013' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0013'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0013'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -420,13 +431,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0014' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0014' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0014'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0014'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -443,13 +454,13 @@
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
             FROM detail_jadwal A JOIN tanggal_pesanan B on A.ID_DETAIL_JADWAL = B.ID_DETAIL_JADWAL JOIN lapangan C 
-            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JD0015' && B.TANGGAL_PESANAN='$tgl' ");
+            on A.ID_LAPANGAN=C.ID_LAPANGAN WHERE C.NAMA_LAPANGAN='$lap'&& A.ID_JAM='JM0015' && B.TANGGAL_PESANAN='$tgl' ");
 
             while($data = mysqli_fetch_assoc($sql1)){
               $st= $data['STATUS'];
             } ?>
                       <?php 
-                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JD0015'");
+                      $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='JM0015'");
                         if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                                 
@@ -463,9 +474,11 @@
                       ?>
 <!-- -----Checkbox----- -->
 
-
-            
             </ul>
+                    <div class="modal-footer ">
+                    <a href="pilih_lapangan.php"> <button name="cari" class="btn btn-info" >Pesan</button></a>
+                      
+                    </div>
             </div>
             </form>
 
