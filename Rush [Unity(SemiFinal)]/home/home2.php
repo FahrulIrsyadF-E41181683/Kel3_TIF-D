@@ -24,13 +24,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: Regna
-    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -48,13 +41,29 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
-          <li><a href="#hero">Pesananku</a></li>
+          <li><a href="#hero" height="40px">Pesananku</a></li>
           <li><a href="#kelebihan">kelebihan</a></li>
           <li><a href="#member">Member</a></li>
           <li><a href="#lapangan">daftar lapangan</a></li>
           <li><a href="#pemesan">cara pemesanan</a></li>
           <li><a href="#lokasi">lokasi</a></li>
-          <li><a href="#footer">tentang rush</a></li>
+          <li><a href="#footer">tentang</a></li>
+          <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="img/user2.jpg"  width='40px'>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item dropdown-menu-center mt-3 md-3"><img src="img/user2.jpg"  width='100px'></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-menu-center"> Lucas17</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-menu-center"> Laki-laki</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-menu-center"> Jember</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-menu-center"> Lucas@gmail.com</a>
+        </div>
+      </li>
         </ul>
     </div>
   </header><!-- #header -->
@@ -66,7 +75,7 @@
     <div class="hero-container">
       <h1>Selamat Datang di Rush</h1>
       <h2>RUSH Badminton adalah adalah sebuah tempat bermain olahraga badminton</h2>
-      <a href="#about" class="btn-get-started">Pesan Sekarang</a>
+      <a href="../transaksi/pilih_lapangan.php" class="btn-get-started">Pesan Sekarang</a>
     </div>
   </section><!-- #hero -->
 
@@ -139,7 +148,7 @@
             <p class="cta-text"> SI BOLANG (Sistem Informasi Booking Lapangan) adalah sebuah website untuk melakukan proses pemesaan lapangan online yang dapat dilakukan dimana saja dan kapan saja. Website ini bertujuan untuk mempermudah proses transaksi antara penyedia lapangan dan penyewa lapangan agar proses pemesanan berjalan dengan efektif dan efisien. </p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#hero">Klik untuk beraksi</a>
+            <a class="cta-btn align-middle" href="#lapangan">Klik untuk beraksi</a>
           </div>
         </div>
 

@@ -1,18 +1,3 @@
-<?php
-require 'functions.php';
-if (isset($_POST["signup_submit"])){
-
- if (daftar($_POST) > 0){
-   echo "<script>
-         alert ('user berhasil ditambah');
-       </script>";
-       header("Location: homelogin.php");
- }else{
-   echo mysqli_error($conn);}
-}
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +6,6 @@ if (isset($_POST["signup_submit"])){
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
-  <link rel="stylesheet" href="signupstyle.css">
-
-
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -42,13 +24,6 @@ if (isset($_POST["signup_submit"])){
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: Regna
-    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -71,6 +46,16 @@ if (isset($_POST["signup_submit"])){
           <li><a href="#pemesan">cara pemesanan</a></li>
           <li><a href="#lokasi">lokasi</a></li>
           <li><a href="#footer">tentang rush</a></li>
+          <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="img/user.png"  width='40px'>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item dropdown-menu-center mt-3 md-3"><img src="img/user.png"  width='100px'></a>
+          <div class="dropdown-divider"></div>
+          <a href="homelogin.php" class="dropdown-item dropdown-menu-center masuk2"> Masuk/Daftar </a>
+        </div>
+      </li>
         </ul>
     </div>
   </header><!-- #header -->
@@ -80,36 +65,9 @@ if (isset($_POST["signup_submit"])){
   ============================-->
   <section id="hero">
     <div class="hero-container">
-      <form action="" method="post" enctype="multipart/form-data" >
-        <div id="login-box">
-          <div class="left">
-          <span class="ketsignup"> DAFTAR</span>
-             
-          <input type="text" name="username" placeholder="Username" required autocomplete="off" autofocus/>
-          <input type="email" name="email" placeholder="E-mail" required autocomplete="off"/> 
-          <input type="text" name="alamat" placeholder="alamat" required autocomplete="off"/> 
-          <p>
-            <span> Jenis kelamin:</span>
-                    <select name="jeniskelamin">
-                        <option value="perempuan">Perempuan</option>
-                        <option value="laki-laki">Laki-laki</option>
-                    </select>
-        </p>
-          <input type="tel" name="notelepon" placeholder="Telepon" required autocomplete="off"/> 
-          <input type="password" name="password" placeholder="Password" required autocomplete="off"/>
-          <input type="password" name="password2" placeholder="Retype password" required autocomplete="off"/>
-          <input type="file" name="foto" class="photo" required />  
-          <input type="submit" name="signup_submit" value="Sign up" />
-        
-        
-          </div>
-          
-          <div class="right">
-            <span class="loginwith">Sudah ada akun?</span>
-            <button class="social-signin facebook"  onclick="window.location.href = 'homelogin.php';">Login Now</button>
-          </div>
-        <div class="or">OR</div> 
-        </div>
+      <h1>Selamat Datang di Rush</h1>
+      <h2>RUSH Badminton adalah adalah sebuah tempat bermain olahraga badminton</h2>
+      <a href="homelogin.php" class="btn-get-started">Masuk Sekarang</a>
     </div>
   </section><!-- #hero -->
 
