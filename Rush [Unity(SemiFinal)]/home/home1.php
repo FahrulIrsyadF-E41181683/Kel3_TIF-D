@@ -66,7 +66,7 @@
   <section id="hero">
     <div class="hero-container">
       <h1>Selamat Datang di Rush</h1>
-      <h2>RUSH Badminton adalah adalah sebuah tempat bermain olahraga badminton</h2>
+      <h2>RUSH Badminton adalah sebuah tempat bermain olahraga badminton</h2>
       <a href="homelogin.php" class="btn-get-started">Masuk Sekarang</a>
     </div>
   </section><!-- #hero -->
@@ -231,13 +231,8 @@
       </div>
 
       <!-- Uncomment below if you wan to use dynamic maps -->
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1
-      m12!1m3!1d3949.3679253310543!2d113.70775291422329!3d-8.16
-      5636794122612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3
-      !1m2!1s0x2dd695aa99d14409%3A0x3c5639c7bcdde6cd!2sRUSH%20Ba
-      dminton%20Jember!5e0!3m2!1sid!2sid!4v1575571418194!5m2!1si
-      d!2sid" width="100%" height="450" frameborder="0" 
-      style="border:0;" allowfullscreen=""></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1974.6839623508288!2d113.70902124147506!3d-8.165636857757912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3c5639c7bcdde6cd!2sRUSH%20Badminton%20Jember!5e0!3m2!1sen!2sid!4v1576422044648!5m2!1sen!2sid" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
 
       <div class="container wow fadeInUp mt-5">
         <div class="row justify-content-center">

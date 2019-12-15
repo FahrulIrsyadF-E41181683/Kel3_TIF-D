@@ -30,12 +30,12 @@
 
     
     <?php
-    include 'koneksi.php';
+    // include 'koneksi.php';
     
-    //$id = $_GET['id'];
-    $query = mysqli_query($connect,"SELECT * FROM detail_transaksi ORDER BY id DESC");
+    // //$id = $_GET['id'];
+	// 	$data = mysqli_query($connect,"SELECT * FROM detail_transaksi");
+	// 	while($d = mysqli_fetch_assoc($data)){
     ?>
-
 
     <div class="login-form-bg h-100">
         <div class="container h-100">
@@ -59,29 +59,36 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control"  placeholder="bank" name="bank" value="<?php echo $data['BANK'];?>">
                                     </div>
-                                    <label class="col-form-label">Tanggal Pesan</label>
+                                    <label class="col-form-label">Waktu Transaksi</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control"  placeholder="Email" name="email"  value="<?php echo $data['TGL_TRANSAKSI'];?>" required>
                                     </div>
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>Lapangan</th>
-                                                <th>Jadwal</th>
+                                                <th>No</th>
+                                                <th>ID Lapangan</th>
+                                                <th>Nama Lapangan</th>
                                                 <th>Harga</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                        <?php
-                                       $query = mysqli_query($connect,"SELECT * FROM konfirmasi_pembayaran ORDER BY id DESC");
-                                       ?>
+                                        <?php 
+                                        include 'koneksi.php';
+                                        $no = 1;
+                                        $data = mysqli_query($connect,"select * from lapangan");
+                                        while($d = mysqli_fetch_array($data)){
+                                            ?>
                                             <tr>
-                                                <td><?php echo $data['NAMA_LAPANGAN']; ?></td>
-                                                <td><?php echo $data['JAM']; ?></td>
-                                                <td><?php echo $data['HARGA_SEWA']; ?></td>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo $d['ID_LAPANGAN']; ?></td>
+                                                <td><?php echo $d['NAMA_LAPANGAN']; ?></td>
+                                                <td><?php echo $d['HARGA_SEWA']; ?></td>
                                             </tr>
-                                            <?php ?>
+                                            <?php 
+                                        }
+                                        ?>
                                         </tbody>
                                 </form>
                                 
@@ -95,7 +102,6 @@
             </div>
         </div>
     </div>
-                                        <?php  ?>
 
     
 
@@ -107,7 +113,7 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
-    
+
 </body>
 
 </html>
