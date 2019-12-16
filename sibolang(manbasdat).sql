@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 04:32 PM
+-- Generation Time: Dec 16, 2019 at 08:48 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -159,17 +159,18 @@ CREATE TABLE `detail_transaksi` (
   `ID_DETAIL_TRANSAKSI` varchar(6) NOT NULL,
   `ID_TRANSAKSI` varchar(6) NOT NULL,
   `JAM` time NOT NULL,
-  `NAMA_LAPANGAN` varchar(15) NOT NULL
+  `NAMA_LAPANGAN` varchar(15) NOT NULL,
+  `TANGGAL_PESANAN` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_transaksi`
 --
 
-INSERT INTO `detail_transaksi` (`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`, `JAM`, `NAMA_LAPANGAN`) VALUES
-('DT0001', 'TR0001', '00:00:00', ''),
-('DT0002', 'TR0002', '00:00:00', ''),
-('DT0003', 'TR003', '00:00:00', '');
+INSERT INTO `detail_transaksi` (`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`, `JAM`, `NAMA_LAPANGAN`, `TANGGAL_PESANAN`) VALUES
+('DT0001', 'TR0001', '00:00:00', '', '0000-00-00'),
+('DT0002', 'TR0002', '00:00:00', '', '0000-00-00'),
+('DT0003', 'TR003', '00:00:00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -248,10 +249,11 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`ID_PELANGGAN`, `NAMA_PELANGGAN`, `JENIS_KELAMIN`, `ALAMAT_PELANGGAN`, `EMAIL_PELANGGAN`, `NOTLP_PELANGGAN`, `PASSWORD_PELANGGAN`, `FOTO_PELANGGAN`) VALUES
-('PL0001', 'lucas', 'Laki-Laki', '', 'L@gmail.com', '0', 'lucas', '29112019163619k.png'),
-('PL0002', 'asa', 'Laki-Laki', '', 'A', '0', '', '021220192242407.jpg'),
+('PL0001', 'lucas', 'Laki-Laki', '', 'L@gmail.com', '0', 'lucas', 'user.jpg'),
+('PL0002', 'admin', 'Laki-Laki', '', 'A', '0', 'admin', '021220192242407.jpg'),
 ('PL0004', 'klk', 'Laki-Laki', '', '', '0', '', '291120191638148.jpg'),
-('PL0005', 'lk', 'Laki-Laki', '', '', '0', '', '291120191640414.jpg');
+('PL0005', 'lk', 'Laki-Laki', '', '', '0', '', '291120191640414.jpg'),
+('PL006', 'josef', 'laki-laki', 'jember', 'AW@GMAIL.COM', '0822', 'josef', '');
 
 -- --------------------------------------------------------
 
@@ -263,17 +265,9 @@ CREATE TABLE `tanggal_pesanan` (
   `ID_TANGGAL_PESANAN` varchar(6) NOT NULL,
   `ID_DETAIL_JADWAL` varchar(6) NOT NULL,
   `STATUS` tinyint(1) NOT NULL,
+  `ID_DETAIL_TRANSAKSI` varchar(6) NOT NULL,
   `TANGGAL_PESANAN` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tanggal_pesanan`
---
-
-INSERT INTO `tanggal_pesanan` (`ID_TANGGAL_PESANAN`, `ID_DETAIL_JADWAL`, `STATUS`, `TANGGAL_PESANAN`) VALUES
-('TP0001', 'DJ0001', 1, '2019-12-11'),
-('TP0002', 'DJ0002', 1, '2019-12-11'),
-('TP0003', 'DJ0009', 1, '2019-12-11');
 
 -- --------------------------------------------------------
 
@@ -354,7 +348,8 @@ ALTER TABLE `pelanggan`
 --
 ALTER TABLE `tanggal_pesanan`
   ADD PRIMARY KEY (`ID_TANGGAL_PESANAN`),
-  ADD KEY `ID_DETAIL_JADWAL` (`ID_DETAIL_JADWAL`);
+  ADD KEY `ID_DETAIL_JADWAL` (`ID_DETAIL_JADWAL`),
+  ADD KEY `ID_DETAIL_TRANSAKSI` (`ID_DETAIL_TRANSAKSI`);
 
 --
 -- Indexes for table `transaksi`
@@ -385,7 +380,8 @@ ALTER TABLE `detail_transaksi`
 -- Constraints for table `tanggal_pesanan`
 --
 ALTER TABLE `tanggal_pesanan`
-  ADD CONSTRAINT `tanggal_pesanan_ibfk_1` FOREIGN KEY (`ID_DETAIL_JADWAL`) REFERENCES `detail_jadwal` (`ID_DETAIL_JADWAL`);
+  ADD CONSTRAINT `tanggal_pesanan_ibfk_1` FOREIGN KEY (`ID_DETAIL_JADWAL`) REFERENCES `detail_jadwal` (`ID_DETAIL_JADWAL`),
+  ADD CONSTRAINT `tanggal_pesanan_ibfk_2` FOREIGN KEY (`ID_DETAIL_TRANSAKSI`) REFERENCES `detail_transaksi` (`ID_DETAIL_TRANSAKSI`);
 
 --
 -- Constraints for table `transaksi`
