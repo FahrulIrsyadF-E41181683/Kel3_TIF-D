@@ -1,101 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Rush Badminton</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
+      <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap File -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/bootstrap.min.js"></script>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <script src="js/bootstrap.js"></script>
 
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-
 </head>
-
 <body>
-
-  <!--==========================
-  Header
-  ============================-->
-  <header id="header">
-    <div class="container">
-
-      <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
-      </div>
-
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-            <li><a href="../Rush Home/index.html"><strong>Halaman Utama</a></li>
-          <li><a href="#">Pesananku</a></li>
-        </ul>
-    </div>
-  </header><!-- #header -->
-
-
-
-     <!--==========================
-     MEMBER
-    ============================-->
-    <section id="member">
-        <div class="container">
-          <div class="row member-container">
-            <div class="col-lg-6 content order-lg-1 order-3">
-                <img src="img/icon/Ayo jadi.png"><br>
-                <p>
-                    Dengan adanya Member Profile, para pengguna aplikasi atau yang kerap kali disebut user ini dapat dengan mudah melihat jumlah poin yang dimiliki dan dapat juga memasukkan gambar profile / profile picture, maupun data keanggotaan si pengguna juga dapat terlihat pada Member Profile tersebut. Selain itu, pada Member Profile juga dapat diatur field atau data mana yang akan muncul pada halaman Member Profile Anda.
-                </p>
-                <a href="#" class="btn-get-started">Daftar Member</a>
-            </div>
-            <div class="col-lg-6 background order-lg-2 order-2 wow fadeInRight"></div>
-          </div>
-        </div>
-      </section><!-- #about -->
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
   <!--==========================
     Footer
   ============================-->
- 
 	<section id="footer">
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
@@ -114,7 +44,7 @@
 						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Kelebihan</a></li>
 						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Daftar Lapangan</a></li>
 						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Cara Pemesanan</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Apa Itu Member</a></li>
+            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Apa Itu lapangan</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Lokasi</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Tentang Rush</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Author</a></li>
@@ -153,8 +83,8 @@
       <p>&copy Copyright 2019</p>
     </div>
     </hr>
-	</section>
-	<!-- ./Footer -->
+    </section>
+    	<!-- ./Footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
@@ -175,6 +105,5 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
-
 </body>
 </html>

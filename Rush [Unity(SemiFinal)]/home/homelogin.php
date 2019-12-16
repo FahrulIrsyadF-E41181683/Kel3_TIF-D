@@ -1,25 +1,24 @@
 <?php
-
+session_start();
 require 'functions.php';
 if (isset($_POST["signin_submit"])){
 
   $username = $_POST["username"];
   $password = $_POST["password"];
 
-
   $result = mysqli_query($conn, "SELECT* FROM pelanggan
 WHERE  NAMA_PELANGGAN ='$username' AND PASSWORD_PELANGGAN = '$password' ");
 
 
   if (mysqli_num_rows($result) === 1) {
-
-  
-      header("Location: home2.php");
+    while($data = mysqli_fetch_assoc($result)){
+              $_SESSION['ID_PELANGGAN'] = $data['ID_PELANGGAN'];
+              $_SESSION['login'] = true;
+              header("Location: home2.php?status=sukses");
+    }
       exit ;
-
-    
   }
-   $error = true;
+  $error = true;
 }
 ?>
 <!DOCTYPE html>
@@ -50,12 +49,6 @@ WHERE  NAMA_PELANGGAN ='$username' AND PASSWORD_PELANGGAN = '$password' ");
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-    Theme Name: Regna
-    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>

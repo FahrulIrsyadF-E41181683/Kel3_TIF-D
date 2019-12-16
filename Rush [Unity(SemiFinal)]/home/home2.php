@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include 'koneksi.php';
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,21 +54,44 @@
           <li><a href="#lokasi">lokasi</a></li>
           <li><a href="#footer">tentang</a></li>
           <li class="nav-item dropdown">
+
+            <!-- Kodingan ambil data pelanggan -->
+          <?php
+              $st= $_SESSION['ID_PELANGGAN'];
+              $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
+              while($data = mysqli_fetch_array($sql)){
+                
+                $foto=$data['FOTO_PELANGGAN'];
+              ?>
         <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="img/user2.jpg"  width='40px'>
+                                <?php if(  empty($foto)){ ?>
+                            <img src="../master/images/pelanggan/user2.png"  width='40px' height='30px'>
+                                <?php }else{ ?>
+                            <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='40px' height='30px'>
+                                <?php } ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item dropdown-menu-center mt-3 md-3"><img src="img/user2.jpg"  width='100px'></a>
+          <a class="dropdown-item dropdown-menu-center mt-3 md-3"> 
+                          <?php if(  empty($foto)){ ?>
+                            <img src="../master/images/pelanggan/user2.png"  width='100px' height='90px'>
+                                <?php }else{ ?>
+                            <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='100px' height='90px'>
+                                <?php } ?></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> Lucas17</a>
+          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['NAMA_PELANGGAN']; ?> </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> Laki-laki</a>
+          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['JENIS_KELAMIN']; ?> </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> Jember</a>
+          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['ALAMAT_PELANGGAN']; ?></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> Lucas@gmail.com</a>
+          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['EMAIL_PELANGGAN']; ?></a>
+          <div class="dropdown-divider"></div>
+          <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
         </div>
+        <?php } ?>
+              <!-- Kodingan ambil data pelanggan end -->
       </li>
+      
         </ul>
     </div>
   </header><!-- #header -->

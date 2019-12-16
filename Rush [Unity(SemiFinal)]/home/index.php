@@ -45,7 +45,7 @@
           <li><a href="#lapangan">daftar lapangan</a></li>
           <li><a href="#pemesan">cara pemesanan</a></li>
           <li><a href="#lokasi">lokasi</a></li>
-          <li><a href="#footer">tentang rush</a></li>
+          <li><a href="#footer">tentang</a></li>
           <li class="nav-item dropdown">
         <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="img/user.png"  width='40px'>
