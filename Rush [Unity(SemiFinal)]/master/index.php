@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Login Page</title>
+    <title>Halaman Login</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
@@ -12,7 +12,17 @@
 </head>
 <body class="h-100"> 
 <!--Cek Pesan Notifikasi Login-->
-   -->
+    <?php
+        if(isset($_GET['pesan'])){
+            if($_GET['pesan'] == "gagal"){
+                echo "Login gagal ! Cek Nama / Password Anda!";
+            }else if($_GET['pesan'] == "logout"){
+                echo "Anda telah berhasil logout!";
+            }else if($_GET['pesan'] == "belum_login"){
+                echo "Anda harus login terlebih dahulu";
+            }
+        }
+    ?>   
 <!-- Preloader start -->
     <div id="preloader">
         <div class="loader">
@@ -32,12 +42,12 @@
                     <a class="text-center" href="#"><h4>Login</h4></a>
                     <form class="mt-5 mb-5 login-input" method="post" action="proseslogin.php">
                 <div class="form-group">
-                    <input type="text" name="NAMA_ADMIN" class="form-control" placeholder="Nama Admin">
+                    <input type="text" name="NAMA_ADMIN" class="form-control" autocomplete="off" placeholder="Nama Admin">
                 </div>
                 <div class="form-group">
                     <input type="password" name="PASSWORD_ADMIN" class="form-control" placeholder="Password">
                 </div>
-                    <button class="btn login-form__btn submit w-100">Login</button>
+                    <button class="btn login-form__btn submit w-100">Masuk</button>
                     </form>
                 </div>
                 </div>

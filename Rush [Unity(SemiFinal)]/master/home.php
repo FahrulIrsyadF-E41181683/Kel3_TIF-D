@@ -3,6 +3,7 @@ error_reporting(0);
 session_start();
 
 include "koneksi.php";
+// Grafik
 // $harga    = mysqli_query($connect, "select SUM(HARGA_DEAL) AS total from transaksi");
 // $jmlt     = mysqli_query($connect, "select COUNT(NMR_TRNS) AS jmlt from transaksi");
 // $jmlp     = mysqli_query($connect, "select COUNT(ID_CUST) AS jmlp from customer");
@@ -69,15 +70,6 @@ include "koneksi.php";
                 </div>
     <div class="header-left">
         <div class="input-group icons">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-            </div>
-            <input type="search" class="form-control" placeholder="Search" aria-label="Search Dashboard">
-            <div class="drop-down animated flipInX d-md-none">
-                <form action="#">
-                    <input type="text" class="form-control" placeholder="Search">
-                </form>
-            </div>
         </div>
     </div>
     <div class="header-right">
@@ -89,7 +81,7 @@ include "koneksi.php";
                 </a>
                 <div class="drop-down animated fadeIn dropdown-menu">
                     <div class="dropdown-content-heading d-flex justify-content-between">
-                        <span class="">New Messages</span>
+                        <span class="">Pesan Baru</span>
                         <a href="javascript:void()" class="d-inline-block">
                             <span class="badge badge-pill gradient-1">3</span>
                         </a>
@@ -149,16 +141,16 @@ include "koneksi.php";
                     <div class="dropdown-content-body">
                         <ul>
                             <li>
-                                <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                <a href="#"><i class="icon-user"></i> <span>Profil</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void()">
-                                    <a href="#"><i class="icon-envelope-open"></i> <span>Inbox</span></a>
+                                    <a href="#"><i class="icon-envelope-open"></i> <span>Kotak Masuk</span></a>
                                     <!-- <div class="badge gradient-3 badge-pill gradient-1">3</div> -->
                                 </a>
                             </li>
                             <hr class="my-2">
-                            <li><a href="logout.php"><i class="icon-key"></i> <span>Logout</span></a></li>
+                            <li><a href="logout.php"><i class="icon-key"></i> <span>Keluar</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -190,7 +182,7 @@ include "koneksi.php";
                     <li><a href="?page=admin">Admin</a></li>
                     <li><a href="?page=pelanggan">Pelanggan</a></li>
                     <li><a href="?page=bank">Bank</a></li>                  
-                    <li><a href="?page=lapangan">Lapangan</a></li>                  
+                    <li><a href="?page=harga">Harga</a></li>                  
                     <!-- <li><a href="?page=jadwal">Jadwal</a></li>  -->
                 </ul>
             </li>
@@ -227,6 +219,9 @@ include "koneksi.php";
                 break;
             case 'jadwal':
                 include "./_jadwal.php";
+                break;
+            case 'harga':
+                include "./_harga.php";
                 break;
             case 'lapangan1':
                 include "./_lapangan1.php";
@@ -315,8 +310,6 @@ include "koneksi.php";
     <script src="./plugins/sweetalert/js/sweetalert.init.js"></script>
 
     <script src="./js/dashboard/dashboard-1.js"></script>
-
- 
 
 </body>
 

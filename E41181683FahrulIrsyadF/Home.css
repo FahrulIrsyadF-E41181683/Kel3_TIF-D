@@ -6,11 +6,12 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
+    
 }
 
 nav li {
     display: inline-block;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #logo {
@@ -18,28 +19,42 @@ nav li {
 }
 
 nav ul{
-    margin-top: 20px;
-    margin-right: 20px;
-    padding: 20px;
+    margin-top: 20px; 
+    margin-right: 50px;
+    padding: 10px;
     list-style: none;
     float: right;
+    margin-left: 100px;
+    margin-top: 10px;
+    
 }
 
 header{
     overflow: hidden;
-    background-color: #d1230c;
+    background-color: rgba(6, 43, 255, 0.5);
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; */
 }
 
 header a{
     text-decoration: none;
     color: #fff;
-    padding: 20px;
+    padding: 10px;
+    margin-left: 20px;
 }
 
 .container{
+    /* transform: translateY(-50px); */
     text-align: center;
     padding: 20px;
-    overflow: hidden;
+    /* border: 2px solid tomato; */
+}
+
+.container h1{
+    padding: 100px;
+    /* border: 2px solid tomato; */
 }
 
 .container ul p{

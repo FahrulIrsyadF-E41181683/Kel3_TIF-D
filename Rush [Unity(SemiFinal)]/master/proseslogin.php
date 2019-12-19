@@ -7,7 +7,7 @@ include 'koneksi.php';
 
 // Menangkap data yang dikirim dari form index.php
 $nama_admin = $_POST['NAMA_ADMIN'];
-$password_admin = md5($_POST['PASSWORD_ADMIN']);
+$password_admin = $_POST['PASSWORD_ADMIN'];
 
 // Menyeleksi data dari tabel user dengan username dan password yang sesuai
 $data = mysqli_query($connect, " SELECT * FROM admin where NAMA_ADMIN='$nama_admin' and PASSWORD_ADMIN='$password_admin' ");

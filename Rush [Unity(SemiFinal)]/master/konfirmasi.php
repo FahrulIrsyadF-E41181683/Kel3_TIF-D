@@ -1,3 +1,4 @@
+<?php require 'koneksi.php' ?>
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 
@@ -17,25 +18,19 @@
     <!--*******************
         Preloader start
     ********************-->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
                 <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
             </svg>
         </div>
-    </div>
+    </div> -->
     <!--*******************
         Preloader end
     ********************-->
 
     
-    <?php
-    // include 'koneksi.php';
     
-    // //$id = $_GET['id'];
-	// 	$data = mysqli_query($connect,"SELECT * FROM detail_transaksi");
-	// 	while($d = mysqli_fetch_assoc($data)){
-    ?>
 
     <div class="login-form-bg h-100">
         <div class="container h-100">
@@ -45,6 +40,16 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 
+                            <?php
+    // include 'koneksi.php';
+    
+    // //$id = $_GET['id'];
+	 	$sql2 = mysqli_query($connect ,"SELECT * 
+        FROM transaksi A JOIN pelanggan B ON A.ID_PELANGGAN=B.ID_PELANGGAN JOIN bank C ON A.ID_BANK=C.ID_BANK");
+
+		while($data = mysqli_fetch_assoc($sql2)){
+    ?>
+
                                     <a class="text-center" href="home.php"> <h4>Ubah Data Admin</h4></a>
                                     <form action="#" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
                                     <label class="col-form-label">ID Transaksi</label>
@@ -57,11 +62,11 @@
                                     </div>                                      
                                     <label class="col-form-label">Bank</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="bank" name="bank" value="<?php echo $data['BANK'];?>">
+                                        <input type="text" class="form-control"  placeholder="bank" name="bank" value="<?php echo $data['NAMA_BANK'];?>">
                                     </div>
                                     <label class="col-form-label">Waktu Transaksi</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="Email" name="email"  value="<?php echo $data['TGL_TRANSAKSI'];?>" required>
+                                        <input type="text" class="form-control"  placeholder="Email" name="email"  value="" required>
                                     </div>
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -75,7 +80,7 @@
                                         <tbody>
 
                                         <?php 
-                                        include 'koneksi.php';
+                                        // include 'koneksi.php';
                                         $no = 1;
                                         $data = mysqli_query($connect,"select * from lapangan");
                                         while($d = mysqli_fetch_array($data)){
@@ -94,6 +99,8 @@
                                 
                                 <button class="btn login-form__btn submit w-100" name="konfirmasi">Konfirmasi</button>
 
+                                <?php } ?>
+
                                 </div>
                             </div>
                         </div>
@@ -102,7 +109,7 @@
             </div>
         </div>
     </div>
-
+                                    
     
 
     <!--**********************************
