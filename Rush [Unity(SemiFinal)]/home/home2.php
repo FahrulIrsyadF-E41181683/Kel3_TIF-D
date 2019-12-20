@@ -358,7 +358,7 @@
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Apa Itu Member</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Lokasi</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Tentang Rush</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Author</a></li>
+            <li><a href="../master/home.php"><i class="fa fa-angle-double-right"></i>Author</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">

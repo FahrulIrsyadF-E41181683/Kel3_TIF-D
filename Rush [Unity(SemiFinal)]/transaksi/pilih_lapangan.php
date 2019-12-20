@@ -28,6 +28,9 @@
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/animate/animate.css" rel="stylesheet">
 
+
+
+
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
@@ -40,39 +43,52 @@
   <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.theme.css">
   <script src="lib/jquery/jquery-3.4.1.js"></script>
 
-  <!-- INDONESIA -->
+  <!-- Datepicker -->
+  <link href="css/datepicker.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 
       
   <script>
-   $(document).ready(function(){
-    var date = new Date();
-    $('#tanggal').datepicker('setDate', date);
-	   $("#tanggal").datepicker({
-      dateFormat: "yy/mm/dd",
+  $(document).ready(function(){
+	$("#date").datepicker({
+      format: "yyyy/mm/dd",
+      useCurrent: true,
+      todayBtn: "linked",
+      startDate: "today",
+      locale:'id',
+      orientation: "bottom auto",
       enableOnReadonly: true,
-      language: 'id',
-      locale: 'id',
-	   })
-   })
-  </script>
+	})
 
-
-     <script>
-   $(document).ready(function() {
     $("#cari").click(function() {
-         $('.date2').hide();
-     });
-     });
-   </script>
+
+    });
+
+    $(document).on("click", "input[type='checkbox']", function(){
+
+      <?php
+          $lap = $_POST['lap'];
+          $result = mysqli_query($connect, "SELECT * FROM `lapangan` WHERE  NAMA_LAPANGAN = '".$lap."'");
+          while ($data = mysqli_fetch_assoc($result)) {
+          $hg = $data['HARGA_SEWA'];
+    }?>
+
+    total=0;
+    $("input[type='checkbox']:checked").each(function(){
+        // total += parseInt($(this).val())
+        total += $hg
+    })
+    $("input[name='total']").val(total)
+})
+    });
+</script>
 
 </head>
 
 <body>
 <header id="header">
-  
     <div class="container">
-
       <div id="logo" class="pull-left">
         <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
       </div>
@@ -81,9 +97,9 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
           <li><a href="#hero" height="40px">Pesananku</a></li>
-           <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
 
-            <!-- Kodingan ambil data pelanggan -->
+<!-- Kodingan ambil data pelanggan -->
           <?php
               $st= $_SESSION['ID_PELANGGAN'];
               $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
@@ -117,36 +133,33 @@
           <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
         </div>
         <?php } ?>
-              <!-- Kodingan ambil data pelanggan end -->
+<!-- Kodingan ambil data pelanggan end -->
       </li>
       
         </ul>
     </div>
-  </header><!-- #header -->
 
+<!-- #header -->
+  </header>
+
+  
   <div class="modal-body">
         <form  method="post" enctype="multipart/form-data"> 
             <div class="row">
             <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Tanggal</label>
-                  <div class="date2"> <input type="text" class="form-control date" name='date' id='date'> </div>
+                <input type="text" class="form-control date" name='date' id='date' value="<?=isset($_POST['date']) ? $_POST['date'] : ''?>">
             </div>
             <div class="form-group col col-md-6 ml-auto">
                 <label class="col-form-label">Pilih Lapangan</label>
-                <select name="nim" id="nim" class="form-control input-defaut" onchange="changeValue(this.value)">
+                <select name="lap" id="lap" class="form-control input-defaut" onchange="changeValue(this.value)">
               <option value="">-Pilih Lapangan-</option>
-
-              <!-- <?php
-                  $result = mysqli_query($connect, "select NAMA_LAPANGAN from lapangan");   
-                  while ($row = mysqli_fetch_array($result)) {   
-                      echo '<option value="' . $row['NAMA_LAPANGAN'] .'" >' . $row['NAMA_LAPANGAN'].'</option>';
-                  }?> -->
 
                   <?php
                   $result = mysqli_query($connect, "select NAMA_LAPANGAN from lapangan");   
                   while ($options = mysqli_fetch_assoc($result)) {   
                     foreach ($options as $area) {
-                      $selected = @$_POST['nim'] == $area ? ' selected="selected"' : '';
+                      $selected = @$_POST['lap'] == $area ? ' selected="selected"' : '';
                       echo '<option value="' . $area . '"' . $selected . '>' . $area . '</option>';
                   }}?>
 
@@ -155,16 +168,15 @@
             </div>
             </div>
 </div>
-
+<!-- #header -->
 <div class="modal-footer ">
         <button name="cari" class="btn btn-info" id="cari">Cari</button>
 </div>
-
         
         <?php
         if (isset($_POST['cari'])){
-          $lap = $_POST['nim']; 
-          $tgl = $_POST['date']; 
+          $lap = $_POST['lap']; 
+          $tgl = $_POST['date'];
           ?>
   <div class="modal-body">
   <div class="row">
@@ -532,10 +544,11 @@
 <!-- -----Checkbox----- -->
 
             </ul>
-                    <div class="modal-footer ">
-                    <a href="pilih_lapangan.php"> <button name="cari" class="btn btn-info" >Pesan</button></a>
+            <br><br>
+            <input name="total" class="form-control input-defaut" />
+            <br><br>
+            <button name="pesan" class="btn btn-outline-primary btn-lg btn-block" class="pesan" >Pesan</button>
                       
-                    </div>
             </div>
             </form>
 
@@ -545,12 +558,32 @@
 <?php } ?>
 
 <?php
-  if(isset($_POST['simpan'])){
-    $jam2 = $_POST['jam2'] ?>
+  if (isset($_POST["pesan"])){
 
- <?php } ?>
+    $lap = $_POST["lap"];
+    $date = $_POST["date"];
+    $id_pl = $st;
+    $tgl=date('Y/m/d');
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    // masukkan id
+    $data = mysqli_query($connect, "select ID_TRANSAKSI from transaksi ORDER BY ID_TRANSAKSI DESC LIMIT 1");
+      while($trans = mysqli_fetch_array($data))
+      {
+          $transid = $trans['ID_TRANSAKSI'];
+      }
+
+      $row = mysqli_num_rows($data);
+      if($row>0){
+        $id_tr = autonumber($transid, 3, 3);
+      }else{
+        $id_tr = 'TR0001';
+      }  
+      // end
+          
+        echo "<script>('Pilih Pembayaran');</script>\n"; // alert
+        header("location:pilih_metode.php");
+ } ?>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
  
