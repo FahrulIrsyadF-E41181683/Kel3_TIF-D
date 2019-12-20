@@ -12,12 +12,8 @@
     <link href="css/style.css" rel="stylesheet">
     
 </head>
-
-<body class="h-100">
-    
-    <!--*******************
-        Preloader start
-    ********************-->
+<body class="h-100">    
+<!-- Preloader start -->
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -25,11 +21,7 @@
             </svg>
         </div>
     </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
-    
+<!-- Preloader end -->    
     <?php
     include 'koneksi.php';
     
@@ -40,34 +32,30 @@
      ?>
 
 
-    <div class="login-form-bg h-100">
-        <div class="container h-100">
-            <div class="row justify-content-center h-100">
-                <div class="col-xl-6">
-                    <div class="form-input-content">
-                        <div class="card login-form mb-0">
-                            <div class="card-body pt-5">
-                                
-                                    <a class="text-center" href="home.php"> <h4>Ubah Data Bank</h4></a>
-        
-                                <form action="_ubah_bank.php" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
-                                    <label class="col-form-label">ID Bank</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"  name="id" value="<?php echo $id; ?>">
-                                    </div>
-                                    <label class="col-form-label">Nama Bank</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"  name="nm_bank" value="<?php echo $data['NAMA_BANK'];?>">
-                                    </div>
-                                    <label class="col-form-label">No Rekening</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-default" name="no_rek" value="<?php echo $data['NO_REKENING'];?>">
-                                    </div>
-
-                                    <button class="btn login-form__btn submit w-100" name="simpan">Simpan</button>
-                                </form>
-                                
-                                </div>
+<div class="login-form-bg h-100">
+    <div class="container h-100">
+    <div class="row justify-content-center h-100">
+    <div class="col-xl-6">
+        <div class="form-input-content">
+        <div class="card login-form mb-0">
+        <div class="card-body pt-5">
+            <a class="text-center" href="home.php"> <h4>Edit Data Bank</h4></a>
+<form action="_ubah_bank.php" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
+        <label class="col-form-label">ID Bank</label>
+    <div class="form-group">
+        <input type="text" class="form-control" readonly="readonly" name="id" value="<?php echo $id; ?>">
+</div>
+        <label class="col-form-label">Nama Bank</label>
+    <div class="form-group">
+        <input type="text" class="form-control"  name="nm_bank" value="<?php echo $data['NAMA_BANK'];?>">
+</div>
+        <label class="col-form-label">No Rekening</label>
+    <div class="form-group">
+        <input type="text" class="form-control input-default" name="no_rek" maxlength="15" value="<?php echo $data['NO_REKENING'];?>"
+        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="No Rekening">
+</div>
+            <button class="btn login-form__btn submit w-100" name="simpan">Simpan</button>
+</form>                               
                             </div>
                         </div>
                     </div>
@@ -75,14 +63,10 @@
             </div>
         </div>
     </div>
-    <?php }?>
-    
+</div>
+<?php }?>
 
-    
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
+<!-- Scripts -->    
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
