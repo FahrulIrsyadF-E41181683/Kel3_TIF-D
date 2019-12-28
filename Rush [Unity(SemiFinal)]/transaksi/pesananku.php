@@ -40,36 +40,35 @@
     
 </body>
 <form>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Lapangan</th>
-      <th scope="col">Jam</th>
-      <th scope="col">Tanggal pesan</th>      
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><a href="#">Mark</a></td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Lapangan</th>
+                    <th scope="col">Jam</th>
+                    <th scope="col">Tanggal pesan</th> 
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php 
+                  include 'koneksi.php';
+                  $no = 1;
+                  $data = mysqli_query($connect,"select * from transaksi");
+                  while($d = mysqli_fetch_array($data)){
+                ?>
+                  <tr>
+                    <th scope="row"><?php echo $no++; ?></th>
+                    <td><a href="#">Mark</a></td>
+                    <td>Otto</td>
+                    <td><?php echo $d['TANGGAL_TRANSAKSI']; ?></td>
+                    <td><?php echo $d['STATUS_PEMBAYARAN']; ?></td>
+                  </tr>
+                  <?php 
+                  }
+                  ?>
+                </tbody>
+              </table>
 
 </form>
 </html>
