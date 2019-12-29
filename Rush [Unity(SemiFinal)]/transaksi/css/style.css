@@ -459,3 +459,20 @@ opacity: 0;
 .container2 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 border: 2px solid #ffa1a1;
 }
+
+
+/* Untuk Semua */
+.bg-orange{
+  background-color: #FD5721;
+}
+.bg-krem{
+  background-color: #FFF5BC;
+}
+.size-total{
+  font-size: 20px;
+  text-align: right;
+}
+
+.red-outline{
+  border: 1px solid red;
+}

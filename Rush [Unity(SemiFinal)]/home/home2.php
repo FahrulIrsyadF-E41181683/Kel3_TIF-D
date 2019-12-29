@@ -60,7 +60,6 @@
               $st= $_SESSION['ID_PELANGGAN'];
               $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
               while($data = mysqli_fetch_array($sql)){
-                
                 $foto=$data['FOTO_PELANGGAN'];
               ?>
         <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
