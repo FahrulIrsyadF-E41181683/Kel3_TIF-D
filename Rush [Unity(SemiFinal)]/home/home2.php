@@ -46,7 +46,7 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
-          <li><a href="../transaksi/pesananku.php" height="40px">Pesananku</a></li>
+          <li><a href="../transaksi/pesananku.php?id=<?= $_SESSION['ID_PELANGGAN'];?>" height="40px">Pesananku</a></li>
           <li><a href="#kelebihan">kelebihan</a></li>
           <li><a href="#member">Member</a></li>
           <li><a href="#lapangan">daftar lapangan</a></li>

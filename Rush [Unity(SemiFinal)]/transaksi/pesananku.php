@@ -56,8 +56,7 @@
                   $no = 1;
                   $st = $_GET['id'];
                   $data = mysqli_query($connect,"SELECT NAMA_LAPANGAN, HARGA_TOTAL, TANGGAL_TRANSAKSI, STATUS_PEMBAYARAN FROM transaksi, detail_transaksi
-                  WHERE transaksi.ID_TRANSAKSI=detail_transaksi.ID_TRANSAKSI");
-                  $sql = "SELECT * FROM pelanggan WHERE ID_PELANGGAN='".$st."'";
+                  WHERE transaksi.ID_TRANSAKSI = detail_transaksi.ID_TRANSAKSI and ID_PELANGGAN='".$st."'");
                   while($d = mysqli_fetch_array($data)){
                 ?>
                   <tr>

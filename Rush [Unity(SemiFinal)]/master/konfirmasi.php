@@ -28,10 +28,6 @@
     <!--*******************
         Preloader end
     ********************-->
-
-    
-    
-
     <div class="login-form-bg h-100">
         <div class="container h-100">
             <div class="row justify-content-center h-100">
@@ -52,6 +48,18 @@
 
                                     <a class="text-center" href="home.php"> <h4>Ubah Data Admin</h4></a>
                                     <form action="#" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 mt-auto col-form-label col-form-label-sm">Email</label>
+                                        <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="id" name="id"  value="<?php echo $data['ID_TRANSAKSI'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 mt-auto col-form-label col-form-label-sm">Email</label>
+                                        <div class="col-sm-10">
+                                        <input type="text" class="form-control"  placeholder="Nama Pelanggan" name="nm_plggn" value="<?php echo $data['NAMA_PELANGGAN'];?>">
+                                        </div>
+                                    </div>
                                     <label class="col-form-label">ID Transaksi</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control"  placeholder="ID Transaksi" name="id" value="<?php echo $data['ID_TRANSAKSI'];?>">
