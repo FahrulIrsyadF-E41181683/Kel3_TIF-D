@@ -4,7 +4,7 @@
  ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <title>Rush Badminton</title>
@@ -61,23 +61,18 @@
       enableOnReadonly: true,
 	})
 
-    $("#cari").click(function() {
 
+    $("#pesan").click(function() {
+      
     });
 
+
     $(document).on("click", "input[type='checkbox']", function(){
-
-      <?php
-          $lap = $_POST['lap'];
-          $result = mysqli_query($connect, "SELECT * FROM `lapangan` WHERE  NAMA_LAPANGAN = '".$lap."'");
-          while ($data = mysqli_fetch_assoc($result)) {
-          $hg = $data['HARGA_SEWA'];
-    }?>
-
+    
     total=0;
     $("input[type='checkbox']:checked").each(function(){
         // total += parseInt($(this).val())
-        total += $hg
+        total += parseInt($("#input").val())
     })
     $("input[name='total']").val(total)
 })
@@ -101,7 +96,8 @@
 
 <!-- Kodingan ambil data pelanggan -->
           <?php
-              $st= $_SESSION['ID_PELANGGAN'];
+              // $st= $_SESSION['ID_PELANGGAN']; //diaktifkan kalo sudah selesai ngoding
+              $st='PL0001'; //digosok kalo udah selesai ngoding
               $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
               while($data = mysqli_fetch_array($sql)){
                 
@@ -140,63 +136,80 @@
     </div>
 
 <!-- #header -->
+<!-- input tanggal dan lapangan -->
   </header>
-
-  
-  <div class="modal-body">
+  <div class="modal-body bg-krem">
         <form  method="post" enctype="multipart/form-data"> 
             <div class="row">
             <div class="form-group col col-md-6 ml-auto">
-                <label class="col-form-label">Pilih Tanggal</label>
-                <input type="text" class="form-control date" name='date' id='date' value="<?=isset($_POST['date']) ? $_POST['date'] : ''?>">
+                <!-- <label class="col-form-label">Pilih Tanggal</label> -->
+                <input type="text" class="form-control date" name='date' id='date' placeholder="Pilih Tanggal" value="<?=isset($_POST['date']) ? $_POST['date'] : ''?>">
             </div>
             <div class="form-group col col-md-6 ml-auto">
-                <label class="col-form-label">Pilih Lapangan</label>
+                <!-- <label class="col-form-label">Pilih Lapangan</label> -->
                 <select name="lap" id="lap" class="form-control input-defaut" onchange="changeValue(this.value)">
               <option value="">-Pilih Lapangan-</option>
 
                   <?php
                   $result = mysqli_query($connect, "select NAMA_LAPANGAN from lapangan");   
-                  while ($options = mysqli_fetch_assoc($result)) {   
+                  while ($options = mysqli_fetch_assoc($result)) {
                     foreach ($options as $area) {
                       $selected = @$_POST['lap'] == $area ? ' selected="selected"' : '';
                       echo '<option value="' . $area . '"' . $selected . '>' . $area . '</option>';
                   }}?>
-
-
+                  
                   </select>
             </div>
             </div>
-</div>
-<!-- #header -->
-<div class="modal-footer ">
-        <button name="cari" class="btn btn-info" id="cari">Cari</button>
-</div>
-        
-        <?php
-        if (isset($_POST['cari'])){
-          $lap = $_POST['lap']; 
-          $tgl = $_POST['date'];
-          ?>
-  <div class="modal-body">
-  <div class="row">
-  <div class="col">
-              <?php
-              $query = "Select * from lapangan where NAMA_LAPANGAN='".$lap."'";
-              $sql = mysqli_query($connect, $query);
-              while($data = mysqli_fetch_array($sql)){
-              ?>
-              <img alt="" class="" width="600" src="img/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
-              <?php } ?>
   </div>
-  <div class="col"> 
-            <label class="col-form-label">Pilih Jam :</label><br>
 
-            <form method='post' name="letter" >
-            <div class="container2">
-            <ul class="ks-cboxtags">
+  
+<!--tombol cari --> 
+    <div class="modal-footer ">
+            <button name="cari" id="cari" class="btn btn-info" id="cari">Cari</button>
+    </div>
+
+<!-- jika tombol cari ditekan -->
+  <?php
+  if (isset($_POST['cari'])){
+    $tgl = $_POST['date'];
+    $lap = $_POST['lap']; 
+
+    if($tgl ==""){ //jika tangggal kosong
+      echo "<script>alert('pilih tanggal main dulu');</script>\n";
+    }else{
+            if($lap ==""){ //jika lapangan kosong
+              echo "<script>alert('pilih Lapangan dulu');</script>\n";
+            }else{
+
+              ?>
+<!-- jika tombol cari ditekan -->
+
+      <div class="modal-body">
+      <div class="row">
+      <div class="col">
+                  <?php
+                  $query = "Select * from lapangan where NAMA_LAPANGAN='".$lap."'";
+                  $sql = mysqli_query($connect, $query);
+                  while($data = mysqli_fetch_array($sql)){
+                    $hg=$data['HARGA_SEWA'];
+                  ?>
+                  <img alt="" class="" width="600" src="img/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
+                  <?php } ?>
+
+                  <!-- harga lapangan dari database -->
+                  <h5> Harga lapangan : Rp <input value="<?php echo $hg ?>" name="input" id="input" hidden/> <?php echo $hg ?> /jam </h5>
+      </div>
+      <div class="col bg-krem"> 
+                <label class="col-form-label">Pilih Jam Bermain :</label><br>
+
+                <form method='post' name="letter" >
+                <div class="container2">
+                <ul class="ks-cboxtags">
+<!--header -->
+
 <!-- -----Checkbox----- -->
-            <!-- Checkbox1 -->
+<!-- Checkbox1 -->
             <?php
               $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN , B.STATUS 
@@ -215,11 +228,11 @@
                             <label for="jam1"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                            <li ><input type="checkbox" id="jam1" value="<?php echo $data['JAM']; ?>">
+                            <li ><input name="jam_pesan[]" type="checkbox" id="jam1" value="<?php echo $data['JAM']; ?>">
                             <label for="jam1"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox2 -->
+<!-- Checkbox2 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS  
@@ -238,11 +251,11 @@
                             <label for="jam2"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                            <li ><input type="checkbox" id="jam2" value="<?php echo $data['JAM']; ?>">
+                            <li ><input name="jam_pesan[]" type="checkbox" id="jam2" value="<?php echo $data['JAM']; ?>">
                             <label for="jam2"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox3 -->
+<!-- Checkbox3 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS  
@@ -261,11 +274,11 @@
                               <label for="jam3"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam3" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam3" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam3"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-                      <!-- Checkbox4 -->
+<!-- Checkbox4 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -284,11 +297,11 @@
                                 <label for="jam4"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam4" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam4" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam4"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox5 -->
+<!-- Checkbox5 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -307,11 +320,11 @@
                                 <label for="jam5"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam5" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam5" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam5"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-                      <!-- Checkbox6 -->
+<!-- Checkbox6 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -330,11 +343,11 @@
                                 <label for="jam6"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam6" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam6" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam6"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox7 -->
+<!-- Checkbox7 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -353,11 +366,11 @@
                                 <label for="jam7"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam7" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam7" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam7"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox8 -->
+<!-- Checkbox8 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -376,11 +389,11 @@
                                 <label for="jam8"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam8" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam8" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam8"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox9 -->
+<!-- Checkbox9 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -399,11 +412,11 @@
                                 <label for="jam9"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam9" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam9" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam9"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox10 -->
+<!-- Checkbox10 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -422,11 +435,11 @@
                                 <label for="jam10"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam10" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam10" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam10"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox11 -->
+<!-- Checkbox11 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -445,11 +458,11 @@
                                 <label for="jam11"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam11" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam11" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam11"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox12 -->
+<!-- Checkbox12 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -468,11 +481,11 @@
                                 <label for="jam12"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam12" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam12" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam12"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox13 -->
+<!-- Checkbox13 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -491,11 +504,11 @@
                                 <label for="jam13"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam13" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam13" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam13"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox14 -->
+<!-- Checkbox14 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -514,11 +527,11 @@
                                 <label for="jam14"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam14" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam14" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam14"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
-            <!-- Checkbox15 -->
+<!-- Checkbox15 -->
             <?php
             $st= 0;
             $sql1= mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, A.ID_JAM, B.TANGGAL_PESANAN, C.NAMA_LAPANGAN, B.STATUS 
@@ -537,56 +550,65 @@
                                 <label for="jam15"><?php echo $data['JAM']; ?></label></li>
                         <?php }} else {
                           while($data = mysqli_fetch_assoc($sql)){?>
-                                <li ><input type="checkbox" id="jam15" value="<?php echo $data['JAM']; ?>">
+                                <li ><input name="jam_pesan[]" type="checkbox" id="jam15" value="<?php echo $data['JAM']; ?>">
                                 <label for="jam15"><?php echo $data['JAM']; ?></label></li>
                         <?php }}
                       ?>
+            </ul>
 <!-- -----Checkbox----- -->
 
-            </ul>
-            <br><br>
-            <input name="total" class="form-control input-defaut" />
-            <br><br>
-            <button name="pesan" class="btn btn-outline-primary btn-lg btn-block" class="pesan" >Pesan</button>
+<!-- tombol pesan dan harga total -->
+            <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <!-- 1 of 2 -->
+                    </div>
+                    <div class="col">
+                      <!-- 2 of 2 -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <!-- 1 of 3 -->
+                    </div>
+                    <div class="col">
+                      <!-- 2 of 3 -->
+                    </div>
+                    <div class="col">
+                    <h5>Harga Total :  <input Readonly type="text" name="total" class="form-control input-defaut size-total"/> </h5>
+                    </div>
+                  </div>
+                </div>
+            
+            <br>
+            <button name="pesan" id="pesan" class="btn bg-orange btn-lg btn-block text-white pesan" >Pesan</button>
                       
             </div>
-            </form>
+<!-- tombol pesan dan harga total -->
 
-   </div>
+</form>
+  </div>
   </div>
 </div>
-<?php } ?>
+<?php }}} ?>
 
-<?php
-  if (isset($_POST["pesan"])){
+<!-- jika tombol pesan ditekan -->
+    <?php
+      if (isset($_POST["pesan"])){
 
-    $lap = $_POST["lap"];
-    $date = $_POST["date"];
-    $id_pl = $st;
-    $tgl=date('Y/m/d');
+          $_SESSION['lap'] = $_POST['lap'];
+          $_SESSION['tgl_main'] = $_POST['date'];
+          $_SESSION['id_pl'] = $st;
+          $_SESSION['id_tr'] = $id_tr;
+          $_SESSION['total'] = $_POST['total'];
+          $_SESSION['id_pl'] = $st;
+          $_SESSION['jam_pesan'] = $_POST["jam_pesan"];
+            
+            echo "<script> document.location='pilih_metode.php'; </script>";
+      } ?>
 
-    // masukkan id
-    $data = mysqli_query($connect, "select ID_TRANSAKSI from transaksi ORDER BY ID_TRANSAKSI DESC LIMIT 1");
-      while($trans = mysqli_fetch_array($data))
-      {
-          $transid = $trans['ID_TRANSAKSI'];
-      }
-
-      $row = mysqli_num_rows($data);
-      if($row>0){
-        $id_tr = autonumber($transid, 3, 3);
-      }else{
-        $id_tr = 'TR0001';
-      }  
-      // end
-          
-        echo "<script>('Pilih Pembayaran');</script>\n"; // alert
-        header("location:pilih_metode.php");
- } ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
- 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
 </body>
 </html>
