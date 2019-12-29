@@ -45,8 +45,8 @@
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Lapangan</th>
-                    <th scope="col">Jam</th>
                     <th scope="col">Tanggal pesan</th> 
+                    <th scope="col">Harga Total</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -54,15 +54,25 @@
                 <?php 
                   include 'koneksi.php';
                   $no = 1;
-                  $data = mysqli_query($connect,"select * from transaksi");
+                  $st = $_GET['id'];
+                  $data = mysqli_query($connect,"SELECT NAMA_LAPANGAN, HARGA_TOTAL, TANGGAL_TRANSAKSI, STATUS_PEMBAYARAN FROM transaksi, detail_transaksi
+                  WHERE transaksi.ID_TRANSAKSI=detail_transaksi.ID_TRANSAKSI");
+                  $sql = "SELECT * FROM pelanggan WHERE ID_PELANGGAN='".$st."'";
                   while($d = mysqli_fetch_array($data)){
                 ?>
                   <tr>
                     <th scope="row"><?php echo $no++; ?></th>
-                    <td><a href="#">Mark</a></td>
-                    <td>Otto</td>
-                    <td><?php echo $d['TANGGAL_TRANSAKSI']; ?></td>
-                    <td><?php echo $d['STATUS_PEMBAYARAN']; ?></td>
+                    <td><a href="#"></a><?php echo $d['NAMA_LAPANGAN']; ?></td>
+                    <td><?= $d['TANGGAL_TRANSAKSI']; ?></td>
+                    <td><?php echo $d['HARGA_TOTAL']; ?></td>
+                    <td><?php 
+                    
+                    if($d['STATUS_PEMBAYARAN']==0){
+                    echo ' <button type="button" class="btn btn-warning">Belum Lunas</button>';
+                    }else {
+                      echo ' <button type="button" class="btn btn-success">Lunas</button>';
+                    }
+                    ?></td>
                   </tr>
                   <?php 
                   }
