@@ -37,46 +37,46 @@
                             <div class="card-body pt-5">
                                 
                             <?php
-    // include 'koneksi.php';
-    
-    // //$id = $_GET['id'];
-	 	$sql2 = mysqli_query($connect ,"SELECT * 
-        FROM transaksi A JOIN pelanggan B ON A.ID_PELANGGAN=B.ID_PELANGGAN JOIN bank C ON A.ID_BANK=C.ID_BANK");
+                                // include 'koneksi.php';
+                                $st = $_GET['id'];
+                                $tr= $_GET['ID_TRANSAKSI'];
+                                $sql2 = mysqli_query($connect ,"SELECT NAMA_PELANGGAN, NAMA_BANK, TANGGAL_TRANSAKSI 
+                                FROM transaksi A JOIN pelanggan B ON A.ID_PELANGGAN=B.ID_PELANGGAN JOIN bank C ON A.ID_BANK=C.ID_BANK WHERE B.ID_PELANGGAN='$st' and A.ID_TRANSAKSI='$tr'");
+                                
+                                while($data = mysqli_fetch_array($sql2)){
+                            ?>
 
-		while($data = mysqli_fetch_assoc($sql2)){
-    ?>
-
-                                    <a class="text-center" href="home.php"> <h4>Ubah Data Admin</h4></a>
+                                    <a class="text-center"> <h4>Konfirmasi Pembayaran</h4></a>
                                     <form action="#" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
                                     <div class="form-group row">
-                                        <label for="colFormLabelSm" class="col-sm-2 mt-auto col-form-label col-form-label-sm">Email</label>
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">ID Transaksi</label>
                                         <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="id" name="id"  value="<?php echo $data['ID_TRANSAKSI'];?>">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $tr;?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="colFormLabelSm" class="col-sm-2 mt-auto col-form-label col-form-label-sm">Email</label>
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Nama Pelanggan</label>
                                         <div class="col-sm-10">
-                                        <input type="text" class="form-control"  placeholder="Nama Pelanggan" name="nm_plggn" value="<?php echo $data['NAMA_PELANGGAN'];?>">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $data['NAMA_PELANGGAN'];?>">
                                         </div>
                                     </div>
-                                    <label class="col-form-label">ID Transaksi</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="ID Transaksi" name="id" value="<?php echo $data['ID_TRANSAKSI'];?>">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Bank</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $data['NAMA_BANK'];?>">
+                                        </div>
                                     </div>
-                                    <label class="col-form-label">Nama Pelanggan</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="Nama Pelanggan" name="nm_plggn" value="<?php echo $data['NAMA_PELANGGAN'];?>">
-                                    </div>                                      
-                                    <label class="col-form-label">Bank</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="bank" name="bank" value="<?php echo $data['NAMA_BANK'];?>">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Waktu Transaksi</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="">
+                                        </div>
                                     </div>
-                                    <label class="col-form-label">Waktu Transaksi</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="Email" name="email"  value="" required>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="foto">
+                                        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Upload Bukti Pembayaran</label>                                            
                                     </div>
-                                    <table class="table table-striped table-bordered zero-configuration">
+                                    <!-- <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -89,20 +89,20 @@
 
                                         <?php 
                                         // include 'koneksi.php';
-                                        $no = 1;
-                                        $data = mysqli_query($connect,"select * from lapangan");
-                                        while($d = mysqli_fetch_array($data)){
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $no++; ?></td>
-                                                <td><?php echo $d['ID_LAPANGAN']; ?></td>
-                                                <td><?php echo $d['NAMA_LAPANGAN']; ?></td>
-                                                <td><?php echo $d['HARGA_SEWA']; ?></td>
+                                        // $no = 1;
+                                        // $data = mysqli_query($connect,"select * from lapangan");
+                                        // while($d = mysqli_fetch_array($data)){
+                                        //     ?>
+                                        //     <tr>
+                                        //         <td><?php echo $no++; ?></td>
+                                        //         <td><?php echo $d['ID_LAPANGAN']; ?></td>
+                                        //         <td><?php echo $d['NAMA_LAPANGAN']; ?></td>
+                                        //         <td><?php echo $d['HARGA_SEWA']; ?></td>
                                             </tr>
                                             <?php 
-                                        }
+                                        //}
                                         ?>
-                                        </tbody>
+                                        </tbody> -->
                                 </form>
                                 
                                 <button class="btn login-form__btn submit w-100" name="konfirmasi">Konfirmasi</button>

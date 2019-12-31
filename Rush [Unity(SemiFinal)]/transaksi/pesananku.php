@@ -55,21 +55,23 @@
                   include 'koneksi.php';
                   $no = 1;
                   $st = $_GET['id'];
-                  $data = mysqli_query($connect,"SELECT NAMA_LAPANGAN, HARGA_TOTAL, TANGGAL_TRANSAKSI, STATUS_PEMBAYARAN FROM transaksi, detail_transaksi
+                  //$tr = $_GET['ID_TRANSAKSI'];
+                  $data = mysqli_query($connect,"SELECT transaksi.ID_TRANSAKSI, NAMA_LAPANGAN, HARGA_TOTAL, TANGGAL_TRANSAKSI, STATUS_PEMBAYARAN FROM transaksi, detail_transaksi
                   WHERE transaksi.ID_TRANSAKSI = detail_transaksi.ID_TRANSAKSI and ID_PELANGGAN='".$st."'");
                   while($d = mysqli_fetch_array($data)){
                 ?>
                   <tr>
                     <th scope="row"><?php echo $no++; ?></th>
-                    <td><a href="#"></a><?php echo $d['NAMA_LAPANGAN']; ?></td>
+                    <td><?php echo $d['NAMA_LAPANGAN']; ?></td>
                     <td><?= $d['TANGGAL_TRANSAKSI']; ?></td>
                     <td><?php echo $d['HARGA_TOTAL']; ?></td>
-                    <td><?php 
-                    
+                    <td>
+                    <?php 
+                    $tr=$d['ID_TRANSAKSI'];
                     if($d['STATUS_PEMBAYARAN']==0){
-                    echo ' <button type="button" class="btn btn-warning">Belum Lunas</button>';
+                    echo " <a href='../master/konfirmasi.php?id=$st&ID_TRANSAKSI=$tr' class='btn btn-warning'>Belum Lunas</a>";
                     }else {
-                      echo ' <button type="button" class="btn btn-success">Lunas</button>';
+                    echo ' <a href="#" class="btn btn-success">Lunas</a>';
                     }
                     ?></td>
                   </tr>
