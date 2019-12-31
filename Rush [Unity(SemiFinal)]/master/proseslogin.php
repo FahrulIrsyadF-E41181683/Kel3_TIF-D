@@ -18,7 +18,7 @@ $cek = mysqli_num_rows($data);
 if($cek > 0){
     $_SESSION['NAMA_ADMIN'] = $nama_admin;
     $_SESSION['status'] = "login";
-    header("location:home.php");
+    header("location:home.php?page=home");
 }else{
     header("location:index.php?pesan=gagal");
 }

@@ -20,7 +20,7 @@ if(isset($_POST['ubahfoto'])){ // Jika user menceklis checkbox yang ada di form 
   $fotobaru = date('dmYHis').$foto;
   
   // Set path folder tempat menyimpan fotonya
-  $path = "images/avatar/".$fotobaru;
+  $path = "images/pelanggan/".$fotobaru;
 
   // Proses upload
   if(move_uploaded_file($tmp, $path)){ // Cek apakah gambar berhasil diupload atau tidak
@@ -30,8 +30,8 @@ if(isset($_POST['ubahfoto'])){ // Jika user menceklis checkbox yang ada di form 
     $data = mysqli_fetch_array($sql); // Ambil data dari hasil eksekusi $sql
 
     // Cek apakah file foto sebelumnya ada di folder images
-    if(is_file("images/avatar/".$data['FOTO_PELANGGAN'])) // Jika foto ada
-      unlink("images/avatar/".$data['FOTO_PELANGGAN']); // Hapus file foto sebelumnya yang ada di folder images
+    if(is_file("images/pelanggan/".$data['FOTO_PELANGGAN'])) // Jika foto ada
+      unlink("images/pelanggan/".$data['FOTO_PELANGGAN']); // Hapus file foto sebelumnya yang ada di folder images
     
     // Proses ubah data ke Database
     $query = "UPDATE `pelanggan` SET `NAMA_PELANGGAN`='$nm_pl',`ALAMAT_PELANGGAN`='$alamat_pl',`JENIS_KELAMIN`='$jenis_kelamin',`NOTLP_PELANGGAN`='$no_hp',`EMAIL_PELANGGAN`='$email',`PASSWORD_PELANGGAN`='$password', `FOTO_PELANGGAN`='".$fotobaru."' WHERE ID_PELANGGAN='".$id."'";

@@ -45,7 +45,6 @@
         </div>
     </div>  
 </div>
-                                       
 <table class="table table-striped table-bordered zero-configuration">
     <thead>
     <tr>

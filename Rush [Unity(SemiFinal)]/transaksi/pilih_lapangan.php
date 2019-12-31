@@ -166,7 +166,7 @@
   
 <!--tombol cari --> 
     <div class="modal-footer ">
-            <button name="cari" id="cari" class="btn btn-info" id="cari">Cari</button>
+            <button name="cari" id="cari" class="btn btn-info">Cari</button>
     </div>
 
 <!-- jika tombol cari ditekan -->
@@ -185,21 +185,57 @@
               ?>
 <!-- jika tombol cari ditekan -->
 
+  <?php
+    $query = "Select * from lapangan where NAMA_LAPANGAN='".$lap."'";
+    $sql = mysqli_query($connect, $query);
+    while($data = mysqli_fetch_array($sql)){
+      $hg=$data['HARGA_SEWA'];
+  ?>
+    <img alt="" class="rounded mx-auto d-block img-thumbnail" width="600" height="400" src="img/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
+    <?php } ?>
+
+    <!-- harga lapangan dari database -->
+    <h5 class="text-center"> Harga lapangan : Rp <input value="<?php echo $hg ?>" name="input" id="input" hidden/> <?php echo $hg ?> /jam </h5>
+
       <div class="modal-body">
       <div class="row">
       <div class="col">
-                  <?php
-                  $query = "Select * from lapangan where NAMA_LAPANGAN='".$lap."'";
-                  $sql = mysqli_query($connect, $query);
-                  while($data = mysqli_fetch_array($sql)){
-                    $hg=$data['HARGA_SEWA'];
-                  ?>
-                  <img alt="" class="" width="600" src="img/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
-                  <?php } ?>
 
-                  <!-- harga lapangan dari database -->
-                  <h5> Harga lapangan : Rp <input value="<?php echo $hg ?>" name="input" id="input" hidden/> <?php echo $hg ?> /jam </h5>
+<!-- tabel tampilan jangan pesan jam ini -->
+    <div class="modal-body">
+    <table class="table table-striped table-bordered zero-configuration">
+              <h6> <strong>*Perhatian,</strong> bagi pemesan agar tidak memilih jam yang tertampil dibawah ini karena sudah dipesan pemesan lain dan akan dilakukan pembayaran </h6>
+              <br>
+          <thead>
+          <tr>
+              <th>Nama Lapangan</th>
+              <th>Jam</th>
+              <th>Tanggal Pesanan</th>
+          </tr>
+          </thead>
+          <tbody>
+              <?php
+              $query = "SELECT A.ID_TRANSAKSI,A.STATUS_PEMBAYARAN,B.JAM,B.NAMA_LAPANGAN,B.TANGGAL_PESANAN FROM transaksi A 
+                        JOIN detail_transaksi B ON A.ID_TRANSAKSI=B.ID_TRANSAKSI WHERE A.STATUS_PEMBAYARAN = 0 && B.TANGGAL_PESANAN='$tgl' && B.NAMA_LAPANGAN='$lap'";
+              $sql = mysqli_query($connect, $query);
+              while($data = mysqli_fetch_array($sql)){
+              ?>
+          <tr>
+              <td><?php echo $data['NAMA_LAPANGAN']; ?></td>
+              <td><?php echo $data['JAM']; ?></td>
+              <td><?php echo $data['TANGGAL_PESANAN']; ?></td>
+          </tr> 
+      
+      <?php } ?>
+      </tbody>
+    </table>
+    </div>
+
+<!-- tabel tampilan jangan pesan jam ini -->
       </div>
+
+
+
       <div class="col bg-krem"> 
                 <label class="col-form-label">Pilih Jam Bermain :</label><br>
 
@@ -208,7 +244,6 @@
                 <ul class="ks-cboxtags">
 <!--header -->
 
-<!-- -----Checkbox----- -->
 <!-- Checkbox1 -->
             <?php
               $st= 0;
@@ -555,7 +590,7 @@
                         <?php }}
                       ?>
             </ul>
-<!-- -----Checkbox----- -->
+
 
 <!-- tombol pesan dan harga total -->
             <div class="container">
@@ -599,9 +634,7 @@
           $_SESSION['lap'] = $_POST['lap'];
           $_SESSION['tgl_main'] = $_POST['date'];
           $_SESSION['id_pl'] = $st;
-          $_SESSION['id_tr'] = $id_tr;
           $_SESSION['total'] = $_POST['total'];
-          $_SESSION['id_pl'] = $st;
           $_SESSION['jam_pesan'] = $_POST["jam_pesan"];
             
             echo "<script> document.location='pilih_metode.php'; </script>";

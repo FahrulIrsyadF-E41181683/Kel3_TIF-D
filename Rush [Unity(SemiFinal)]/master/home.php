@@ -33,23 +33,34 @@ include "koneksi.php";
     <!-- Custom Stylesheet -->
     <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- JQuery -->
+    <link href="jquery-ui-1.11.4/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+    <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+    <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.theme.css">
+
+
 </head>
 <body>
 <!-- Preloader start -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
                 <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
             </svg>
         </div>
-    </div>
+    </div> -->
 <!-- Preloader end -->
+
+
 <!-- Main wrapper start -->
 <div id="main-wrapper">
 <!-- Nav header start -->        
 <div class="nav-header">
     <div class="brand-logo">
-        <a href="home.php">
+        <a href="home.php?page=home">
             <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
             <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
             <span class="brand-title">
@@ -60,7 +71,7 @@ include "koneksi.php";
 </div>
 <!-- Nav header end -->
 <!-- Header start -->        
-<div class="header">
+<div class="header ">
     <div class="header-content clearfix">
     <!-- Menu Collapse -->
                 <div class="nav-control">
@@ -72,6 +83,7 @@ include "koneksi.php";
         <div class="input-group icons">
         </div>
     </div>
+
     <div class="header-right">
         <ul class="clearfix">
             <li class="icons dropdown">
@@ -170,10 +182,9 @@ include "koneksi.php";
                     <i class="icon-home menu-icon"></i><span class="nav-text">Halaman Utama</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="home.php">Home</a></li>
+                    <li><a href="?page=home">Home</a></li>
                 </ul>
             </li>
-            <li class="nav-label">Edit</li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-pencil menu-icon"></i><span class="nav-text">Edit</span>
@@ -191,82 +202,90 @@ include "koneksi.php";
                     <i class="icon-clock menu-icon"></i><span class="nav-text">Jadwal</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="?page=lapangan1">Lapangan 1</a></li>
+                <div class="lap">
+                    <li><a class="klik_lap" id="lapangan1">Lapangan 1</a></li>
                     <li><a href="?page=lapangan2">Lapangan 2</a></li>
                     <li><a href="?page=lapangan3">Lapangan 3</a></li>
                     <li><a href="?page=lapangan4">Lapangan 4</a></li>
+                </div>
                 </ul>
             </li>
         </ul>
     </div>
+
 </div>                
 <!-- Sidebar end -->    
 <!-- Content body start -->
-<div class="content-body">
-    <?php 
-	    if(isset($_GET['page'])){
-		$page = $_GET['page'];
+        <div class="content-body">
+            <?php 
+            if(isset($_GET['page'])){
+                $page = $_GET['page'];
 
-		switch ($page) {
-			case 'home':
-				include "_home.php";
-				break;
-			case 'admin':
-				include "./_admin.php";
-                break;
-            case 'bank':
-                include "./_bank.php";
-                break;
-            case 'jadwal':
-                include "./_jadwal.php";
-                break;
-            case 'harga':
-                include "./_harga.php";
-                break;
-            case 'lapangan1':
-                include "./_lapangan1.php";
-                break;
-            case 'lapangan2':
-                include "./_lapangan2.php";
-                break;
-            case 'lapangan3':
-                include "./_lapangan3.php";
-                break;
-            case 'lapangan4':
-                include "./_lapangan4.php";
-                break;
-            case 'pelanggan':
-                include "./_pelanggan.php";
-                break;
-			case 'contact':
-				include "contact.php";
-				break;	
-            case 'logout':
-                include "logout.php";
-                break;
-			default:
-				include "./_admin.php";
-				break;
-		}}
-	?>
-            <!-- #/ container -->
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
+                switch ($page) {
+                    case 'home':
+                        include "_home.php";
+                        break;
+                    case 'admin':
+                        include "./_admin.php";
+                        break;
+                    case 'bank':
+                        include "./_bank.php";
+                        break;
+                    case 'jadwal':
+                        include "./_jadwal.php";
+                        break;
+                    case 'harga':
+                        include "./_harga.php";
+                        break;
+                        
+        // jadwal lapangan
+                    case 'lapangan1':
+                        include "./_lapangan1.php";
+                        break;
+                    case 'lapangan2':
+                        include "./_lapangan2.php";
+                        break;
+                    case 'lapangan3':
+                        include "./_lapangan3.php";
+                        break;
+                    case 'lapangan4':
+                        include "./_lapangan4.php";
+                        break;
+        // jadwal lapangan
+
+                    case 'pelanggan':
+                        include "./_pelanggan.php";
+                        break;
+                    case 'contact':
+                        include "contact.php";
+                        break;	
+                    case 'logout':
+                        include "logout.php";
+                        break;
+                    default:
+                        include "./_admin.php";
+                        break;
+                }}
+            ?>
+                    <!-- #/ container -->
+                </div>
+<!--**********************************
+    Content body end
+***********************************-->
 
 
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <!-- <div class="footer">
+
+<!--**********************************
+    Footer start
+***********************************-->
+        <div class="footer">
             <div class="copyright">
                 <p>Copyright &copy; 2019</p>
             </div>
-        </div> -->
-        <!--**********************************
-            Footer end
-        ***********************************-->
+        </div>
+<!--**********************************
+Footer end
+***********************************-->
     </div>
     <!--**********************************
         Main wrapper end
@@ -285,34 +304,22 @@ include "koneksi.php";
     <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
     <!-- Circle progress -->
     <script src="./plugins/circle-progress/circle-progress.min.js"></script>
-    <!-- Datamap -->
-    <script src="./plugins/d3v3/index.js"></script>
-    <script src="./plugins/topojson/topojson.min.js"></script>
-    <script src="./plugins/datamaps/datamaps.world.min.js"></script>
-    <!-- Morrisjs -->
-    <script src="./plugins/raphael/raphael.min.js"></script>
-    <script src="./plugins/morris/morris.min.js"></script>
-    <!-- Pignose Calender -->
-    <script src="./plugins/moment/moment.min.js"></script>
-    <script src="./plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-    <!-- ChartistJS -->
-    <script src="./plugins/chartist/js/chartist.min.js"></script>
-    <script src="./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
     
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
-
-    <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
-    <script src="./js/plugins-init/chartjs-init.js"></script>
     
     <script src="./plugins/sweetalert/js/sweetalert.min.js"></script>
     <script src="./plugins/sweetalert/js/sweetalert.init.js"></script>
 
     <script src="./js/dashboard/dashboard-1.js"></script>
 
+
+    <!-- Datepicker -->
+<link href="css/datepicker.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+
+
 </body>
-
 </html>
-
-<?php ?>

@@ -1,12 +1,3 @@
-/*
-  Theme Name: Regna
-  Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-  Author: BootstrapMade.com
-  License: https://bootstrapmade.com/license/
-*/
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 body {
   background: #fff;
   color: #666666;
@@ -954,6 +945,11 @@ margin-right: 5px;
 }
 
 #footer .copyright p{
- text-align: center;
+text-align: center;
+}
+
+/* untuk semua */
+.bg-blue {
+  background-color: #007bff !important;
 }
 
