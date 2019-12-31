@@ -36,6 +36,7 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 
+                                
                             <?php
                                 // include 'koneksi.php';
                                 $st = $_GET['id'];
@@ -47,7 +48,7 @@
                             ?>
 
                                     <a class="text-center"> <h4>Konfirmasi Pembayaran</h4></a>
-                                    <form action="#" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
+                                    <form action="" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-2 col-form-label">ID Transaksi</label>
                                         <div class="col-sm-10">
@@ -73,8 +74,8 @@
                                         </div>
                                     </div>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="foto">
-                                        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Upload Bukti Pembayaran</label>                                            
+                                        <label class="col-form-label">Upload Bukti Bayar</label>
+                                        <input type="file" name="foto" class="form-control input-default">                                            
                                     </div>
                                     <!-- <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -103,9 +104,10 @@
                                         //}
                                         ?>
                                         </tbody> -->
+                                        <button type="submit" name="ubahfoto" class="btn btn-info">Konfirmasi</button>
                                 </form>
                                 
-                                <button class="btn login-form__btn submit w-100" name="konfirmasi">Konfirmasi</button>
+                                
 
                                 <?php } ?>
 
@@ -117,7 +119,48 @@
             </div>
         </div>
     </div>
-                                    
+    <?php 
+                                //include "koneksi.php" ;
+
+  if(isset($_POST['ubahfoto'])){ // Jika user menceklis checkbox yang ada di form ubah, lakukan :
+    // Ambil data foto yang dipilih dari form
+    $foto = $_FILES['foto']['name'];
+    $tmp  = $_FILES['foto']['tmp_name'];
+    
+    // Rename nama fotonya dengan menambahkan tanggal dan jam upload
+    $fotobaru = date('dmYHis').$foto;
+    
+    // Set path folder tempat menyimpan fotonya
+    $path = "images/bukti/".$fotobaru;
+
+    // Proses upload
+    if(move_uploaded_file($tmp, $path)){ // Cek apakah gambar berhasil diupload atau tidak
+      // Query untuk menampilkan data 
+      $query = "SELECT * FROM 'transaksi' WHERE ID_PELANGGAN='".$st."'";
+      $sql = mysqli_query($connect, $query); // Eksekusi/Jalankan query dari variabel $query
+      $data = mysqli_fetch_array($sql); // Ambil data dari hasil eksekusi $sql
+
+      // Cek apakah file foto sebelumnya ada di folder images
+      if(is_file("images/bukti/".$data['BUKTI_PEMBAYARAN'])) // Jika foto ada
+        unlink("images/bukti/".$data['BUKTI_PEMBAYARAN']); // Hapus file foto sebelumnya yang ada di folder images
+      
+      // Proses ubah data ke Database
+      $query = "UPDATE `transaksi` SET BUKTI_PEMBAYARAN='".$fotobaru."' WHERE ID_PELANGGAN='".$st."'";
+      $sql = mysqli_query($connect, $query); // Eksekusi/ Jalankan query dari variabel $query
+
+      if($sql){ // Cek jika proses simpan ke database sukses atau tidak
+        // Jika Sukses, Lakukan :
+        header("location: home.php?page=admin"); // Redirect ke halaman home.php
+      }else{
+        // Jika Gagal, Lakukan :
+        echo "<script>alert('Data gagal disimpan');document.location.href='home.php?page=admin'</script>\n";
+      }
+    }else{
+      // Jika gambar gagal diupload, Lakukan :
+        echo "<script>alert('Gagal menyimpan foto');document.location.href='home.php?page=admin'</script>\n";
+        }
+    }
+                                ?>                        
     
 
     <!--**********************************
