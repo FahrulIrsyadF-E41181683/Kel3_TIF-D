@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Konfirmasi Pembayaran</title>
+    <title>Detail Pesanan</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -48,7 +48,7 @@
                                 while($data = mysqli_fetch_array($sql2)){
                             ?>
 
-                                    <a class="text-center"> <h4>Konfirmasi Pembayaran</h4></a>
+                                    <a class="text-center"> <h4>Detail Pesanan</h4></a>
                                     <form action="" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-2 col-form-label">ID Transaksi</label>
@@ -69,15 +69,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="staticEmail" class="col-sm-2 col-form-label">Waktu Transaksi</label>
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Tanggal Transaksi</label>
                                         <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $data['TANGGAL_TRANSAKSI'];?>">
                                         </div>
                                     </div>
-                                    <div class="custom-file">
-                                        <label class="col-form-label">Upload Bukti Bayar</label>
-                                        <input type="file" name="foto" class="form-control input-default">                                            
-                                    </div>
+
                                     <!-- <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
@@ -105,7 +102,7 @@
                                         //}
                                         ?>
                                         </tbody> -->
-                                        <button type="submit" name="ubahfoto" class="float-right mt-4 btn btn-info">Konfirmasi</button>
+                                        <a href="../transaksi/nota_pesanan.php?ID_TRANSAKSI=<?=$tr?>" class="float-right btn btn-success">Cetak Nota</a>
 
                                 </form>
                                 

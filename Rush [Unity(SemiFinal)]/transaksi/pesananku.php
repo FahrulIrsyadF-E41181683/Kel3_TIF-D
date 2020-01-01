@@ -23,31 +23,33 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-        <header id="header">
-                <div class="container">
-            
-                  <div id="logo" class="pull-left">
-                    <a href="../home/home2.php"><img src="img/logo.png" alt="" title="" /></img></a>
-                  </div>
-            
-                  <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li><a href="../home/home2.php"><strong>Halaman Utama</a></li>
-                      <li><a href="#">Pesananku</a></li>
-                    </ul>
-                </div>
-              </header><!-- #header -->
+          <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="../home/index.php">Halaman Utama</a></li>
+        </ul>
+    </div>
+  </header>
     
 </body>
 <form>
+<br>
+<h3 class="text-center">PESANANKU</h3>
               <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Lapangan</th>
                     <th scope="col">Tanggal pesan</th> 
-                    <th scope="col">Harga Total</th>
+                    <th scope="col">Jam</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -56,7 +58,7 @@
                   $no = 1;
                   $st = $_GET['id'];
                   //$tr = $_GET['ID_TRANSAKSI'];
-                  $data = mysqli_query($connect,"SELECT transaksi.ID_TRANSAKSI, NAMA_LAPANGAN, HARGA_TOTAL, TANGGAL_TRANSAKSI, STATUS_PEMBAYARAN FROM transaksi, detail_transaksi
+                  $data = mysqli_query($connect,"SELECT transaksi.ID_TRANSAKSI, NAMA_LAPANGAN, JAM, TANGGAL_TRANSAKSI, STATUS_PEMBAYARAN FROM transaksi, detail_transaksi
                   WHERE transaksi.ID_TRANSAKSI = detail_transaksi.ID_TRANSAKSI and ID_PELANGGAN='".$st."'");
                   while($d = mysqli_fetch_array($data)){
                 ?>
@@ -64,7 +66,7 @@
                     <th scope="row"><?php echo $no++; ?></th>
                     <td><?php echo $d['NAMA_LAPANGAN']; ?></td>
                     <td><?= $d['TANGGAL_TRANSAKSI']; ?></td>
-                    <td><?php echo $d['HARGA_TOTAL']; ?></td>
+                    <td><?php echo $d['JAM']; ?></td>
                     <td>
                     <?php 
                     $tr=$d['ID_TRANSAKSI'];
@@ -74,12 +76,15 @@
                     echo ' <a href="#" class="btn btn-success">Lunas</a>';
                     }
                     ?></td>
+                    <td><a href="../master/detail_pesan.php?id=<?=$st?>&ID_TRANSAKSI=<?=$tr?>" class="btn btn-success">Detail Booking</a></td>
                   </tr>
                   <?php 
                   }
                   ?>
+
                 </tbody>
               </table>
+              
 
 </form>
 </html>
