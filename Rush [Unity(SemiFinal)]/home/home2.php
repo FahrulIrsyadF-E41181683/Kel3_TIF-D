@@ -157,7 +157,7 @@
                 <p>
                     Dengan adanya Member Profile, para pengguna aplikasi atau yang kerap kali disebut user ini dapat dengan mudah melihat jumlah poin yang dimiliki dan dapat juga memasukkan gambar profile / profile picture, maupun data keanggotaan si pengguna juga dapat terlihat pada Member Profile tersebut. Selain itu, pada Member Profile juga dapat diatur field atau data mana yang akan muncul pada halaman Member Profile Anda.
                 </p>
-                <a href="#" class="btn-get-started">Daftar Member</a>
+                <!-- <a href="#" class="btn-get-started">Daftar Member</a> -->
             </div>
           </div>
         </div>
@@ -357,7 +357,7 @@
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Apa Itu Member</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Lokasi</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Tentang Rush</a></li>
-            <li><a href="../master/home.php"><i class="fa fa-angle-double-right"></i>Author</a></li>
+            <li><a href="../master/index.php"><i class="fa fa-angle-double-right"></i>Author</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
@@ -366,9 +366,9 @@
 						<li><a href="javascript:void();"><img src="img/icon/pemilik.png" width="30px">  Rudi Rahmawan</a></li>
 						<li><a href="javascript:void();"><img src="img/icon/berdiri.png" width="30px">  November 2018</a></li>
 						<li><a href="javascript:void();"><img src="img/icon/alamat.png" width="30px">  Sebelah Neutron - Kampus, 
-                                                                                           Jln. Kalimantan, Gg. 14, Krajan Timur, 
-                                                                                           Sumbersari, Kec. Sumbersari, Kabupaten 
-                                                                                           Jember, Jawa Timur 68121</a></li>
+                                                                                          Jln. Kalimantan, Gg. 14, Krajan Timur, 
+                                                                                          Sumbersari, Kec. Sumbersari, Kabupaten 
+                                                                                          Jember, Jawa Timur 68121</a></li>
 						<li><a href="javascript:void();"><img src="img/icon/email.png" width="30px">  RushBadminton@gmail.com</a></li>
 					</ul>
 				</div>

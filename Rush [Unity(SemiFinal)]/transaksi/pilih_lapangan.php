@@ -52,7 +52,7 @@
   <script>
   $(document).ready(function(){
 	$("#date").datepicker({
-      format: "yyyy/mm/dd",
+      format: "dd/mm/yyyy",
       useCurrent: true,
       todayBtn: "linked",
       startDate: "today",
@@ -96,8 +96,8 @@
 
 <!-- Kodingan ambil data pelanggan -->
           <?php
-              // $st= $_SESSION['ID_PELANGGAN']; //diaktifkan kalo sudah selesai ngoding
-              $st='PL0001'; //digosok kalo udah selesai ngoding
+              $st= $_SESSION['ID_PELANGGAN']; //diaktifkan kalo sudah selesai ngoding
+              // $st='PL0001'; //digosok kalo udah selesai ngoding
               $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
               while($data = mysqli_fetch_array($sql)){
                 

@@ -1,8 +1,7 @@
 <?php 
-session_start();
-session_destroy();
+    session_start();
+    session_unset();
+    session_destroy();
 
-echo "<script>alert('Anda berhasil logout');</script>";
-echo "<meta http-equiv='refresh' content='0; url=index.php'>";
-
+    header("location: index.php?keluar=sukses");
 ?>

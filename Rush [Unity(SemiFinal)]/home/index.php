@@ -207,13 +207,13 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="box">
                         <img src="img/icon/cara2.png">
-                        <h4>Memilih lapangan yang mau dipesan, jam bermain dan tanggal bermain</h4>
+                        <h4>pilih lapangan yang mau dipesan, jam bermain dan tanggal bermain</h4>
                       </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                   <div class="box">
                     <img src="img/icon/cara3.png">
-                    <h4>Masuk ke menu Pesananku untuk melihat daftar pesanan dan melakukan konfirmasi pembayaran</h4>
+                    <h4>lakukan pembayaran di bank terdekat dan lakukan konfirmasi pembayaran</h4>
                   </div>
                 </div>
               </div>

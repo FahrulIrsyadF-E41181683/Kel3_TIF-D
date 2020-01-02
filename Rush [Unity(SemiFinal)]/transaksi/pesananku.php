@@ -32,7 +32,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="../home/index.php">Halaman Utama</a></li>
+          <li class="menu-active"><a href="../home/home2.php">Halaman Utama</a></li>
         </ul>
     </div>
   </header>

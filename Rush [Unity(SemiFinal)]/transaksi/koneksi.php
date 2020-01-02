@@ -17,7 +17,7 @@ function autonumber($id_terakhir, $panjang_kode, $panjang_angka) {
     
     // menambahkan nilai angka dengan 1
     // kemudian memberikan string 0 agar panjang string angka menjadi 4
-    // ex: angka baru = 6 maka ditambahkan strig 0 tiga kali
+    // ex: angka baru = 6 maka ditambahkan string 0 tiga kali
     // sehingga menjadi 0006
     $angka_baru = str_repeat("0", $panjang_angka - strlen($angka+1)).($angka+1);
     

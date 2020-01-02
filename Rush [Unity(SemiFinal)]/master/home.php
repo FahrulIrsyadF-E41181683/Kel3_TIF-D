@@ -144,29 +144,38 @@ include "koneksi.php";
                     </div>
                 </div>
             </li>
+            
+<!-- data admin -->
             <li class="icons dropdown">
-                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                    <span class="activity active"></span>
-                    <img src="images/user/1.png" height="40" width="40" alt="">
-                </div>
-                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                    <div class="dropdown-content-body">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="icon-user"></i> <span>Profil</span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void()">
-                                    <a href="#"><i class="icon-envelope-open"></i> <span>Kotak Masuk</span></a>
-                                    <!-- <div class="badge gradient-3 badge-pill gradient-1">3</div> -->
-                                </a>
-                            </li>
-                            <hr class="my-2">
-                            <li><a href="logout.php"><i class="icon-key"></i> <span>Keluar</span></a></li>
-                        </ul>
-                    </div>
-                </div>
+            <?php
+              $sql = mysqli_query($connect, "Select * from admin where ID_ADMIN='".$_SESSION['id_admin']."'");
+              while($data = mysqli_fetch_array($sql)){
+                $foto=$data['FOTO_ADMIN'];
+              ?>
+        <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php if(  empty($foto)){ ?>
+                            <img src="../master/images/avatar/1.jpg"  width='40px' height='30px'>
+                                <?php }else{ ?>
+                            <img src="../master/images/avatar/<?php echo $foto;?>"  width='40px' height='30px'>
+                                <?php } ?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item dropdown-menu-center mt-3 md-3"> 
+                          <?php if(  empty($foto)){ ?>
+                            <img src="../master/images/avatar/1.jpg"  width='100px' height='90px'>
+                                <?php }else{ ?>
+                            <img src="../master/images/avatar/<?php echo $foto;?>"  width='100px' height='90px'>
+                                <?php } ?></a>
+
+          <a class="dropdown-item dropdown-menu-center"> Nama: <?php echo $data['NAMA_ADMIN']; ?> </a>
+          <a class="dropdown-item dropdown-menu-center"> Jenis Kelamin: <?php echo $data['JENIS_KELAMIN']; ?> </a>
+          <a class="dropdown-item dropdown-menu-center"> Alamat: <?php echo $data['ALAMAT_ADMIN']; ?></a>
+          <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
+        </div>
+        <?php } ?>
             </li>
+<!-- data admin -->
+
         </ul>
     </div>
 </div>
@@ -176,13 +185,15 @@ include "koneksi.php";
 <div class="nk-sidebar">
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
-            <li class="nav-label">MASTER</li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-home menu-icon"></i><span class="nav-text">Halaman Utama</span>
+                    <i class="icon-home menu-icon"></i><span class="nav-text">Master</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="?page=home">Home</a></li>
+                    <li><a href="?page=jadwal">Pesanan</a></li>
+                    <li><a href="_atur_jadwal.php">Jadwal</a></li>
+                    <li><a href="report/report.php">Laporan</a></li>
                 </ul>
             </li>
             <li>
@@ -191,23 +202,11 @@ include "koneksi.php";
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="?page=admin">Admin</a></li>
-                    <li><a href="?page=pelanggan">Pelanggan</a></li>
-                    <li><a href="?page=bank">Bank</a></li>                  
-                    <li><a href="?page=harga">Harga</a></li>                  
+                    <li><a href="?page=lapangan">Lapangan</a></li>
+                    <li><a href="?page=jam">Jam</a></li>
+                    <li><a href="?page=bank">Bank</a></li>    
+                    <li><a href="?page=pelanggan">Pelanggan</a></li> 
                     <!-- <li><a href="?page=jadwal">Jadwal</a></li>  -->
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-clock menu-icon"></i><span class="nav-text">Jadwal</span>
-                </a>
-                <ul aria-expanded="false">
-                <div class="lap">
-                    <li><a class="klik_lap" id="lapangan1">Lapangan 1</a></li>
-                    <li><a href="?page=lapangan2">Lapangan 2</a></li>
-                    <li><a href="?page=lapangan3">Lapangan 3</a></li>
-                    <li><a href="?page=lapangan4">Lapangan 4</a></li>
-                </div>
                 </ul>
             </li>
         </ul>
@@ -225,45 +224,31 @@ include "koneksi.php";
                     case 'home':
                         include "_home.php";
                         break;
+                    case 'jadwal':
+                        include "./_jadwal.php";
+                        break;
+                    
+
+
                     case 'admin':
                         include "./_admin.php";
+                        break;
+                    case 'lapangan':
+                        include "./_lapangan.php";
+                        break;
+                    case 'jam':
+                        include "./_jam.php";
                         break;
                     case 'bank':
                         include "./_bank.php";
                         break;
-                    case 'jadwal':
-                        include "./_jadwal.php";
-                        break;
-                    case 'harga':
-                        include "./_harga.php";
-                        break;
-                        
-        // jadwal lapangan
-                    case 'lapangan1':
-                        include "./_lapangan1.php";
-                        break;
-                    case 'lapangan2':
-                        include "./_lapangan2.php";
-                        break;
-                    case 'lapangan3':
-                        include "./_lapangan3.php";
-                        break;
-                    case 'lapangan4':
-                        include "./_lapangan4.php";
-                        break;
-        // jadwal lapangan
-
                     case 'pelanggan':
                         include "./_pelanggan.php";
                         break;
-                    case 'contact':
-                        include "contact.php";
-                        break;	
-                    case 'logout':
-                        include "logout.php";
-                        break;
+
+
                     default:
-                        include "./_admin.php";
+                        include "./_home.php";
                         break;
                 }}
             ?>

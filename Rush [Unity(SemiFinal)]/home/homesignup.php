@@ -91,7 +91,8 @@ if (isset($_POST["signup_submit"])){
                         <option value="laki-laki">Laki-laki</option>
                     </select>
         </p>
-          <input type="tel" name="notelepon" placeholder="No Telepon" required autocomplete="off"/> 
+          <input type="text" name="notelepon" maxlength="13" 
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="No Telepon" required autocomplete="off">
           <input type="password" name="password" placeholder="Kata Sandi" required autocomplete="off"/>
           <input type="password" name="password2" placeholder="Tulis Ulang Kata Sandi" required autocomplete="off"/>
           <input type="file" name="foto" class="photo" required />  
