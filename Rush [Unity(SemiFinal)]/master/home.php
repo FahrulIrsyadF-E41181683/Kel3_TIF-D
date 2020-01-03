@@ -34,13 +34,6 @@ include "koneksi.php";
     <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- JQuery -->
-    <link href="jquery-ui-1.11.4/smoothness/jquery-ui.css" rel="stylesheet" />
-    <script src="jquery-ui-1.11.4/external/jquery/jquery.js"></script>
-    <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
-    <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.theme.css">
-
 
 </head>
 <body>
@@ -182,7 +175,7 @@ include "koneksi.php";
 </div>
 <!-- Header end ti-comment-alt -->
 <!-- Sidebar start -->
-<div class="nk-sidebar">
+    <div class="nk-sidebar">
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
             <li>
@@ -191,8 +184,9 @@ include "koneksi.php";
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="?page=home">Home</a></li>
-                    <li><a href="?page=jadwal">Pesanan</a></li>
+                    <li><a href="?page=pesanan">Pesanan</a></li>
                     <li><a href="_atur_jadwal.php">Jadwal</a></li>
+                    <li><a href="?page=jadwal">Jadwal2</a></li>
                     <li><a href="report/report.php">Laporan</a></li>
                 </ul>
             </li>
@@ -216,6 +210,7 @@ include "koneksi.php";
 <!-- Sidebar end -->    
 <!-- Content body start -->
         <div class="content-body">
+        
             <?php 
             if(isset($_GET['page'])){
                 $page = $_GET['page'];
@@ -224,11 +219,14 @@ include "koneksi.php";
                     case 'home':
                         include "_home.php";
                         break;
+                    case 'pesanan':
+                        include "./_pesanan.php";
+                        break;
                     case 'jadwal':
-                        include "./_jadwal.php";
+                        require "atur_jadwal2.php";
                         break;
                     
-
+                        
 
                     case 'admin':
                         include "./_admin.php";
@@ -300,11 +298,30 @@ Footer end
     <script src="./js/dashboard/dashboard-1.js"></script>
 
 
-    <!-- Datepicker -->
-<link href="css/datepicker.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-
-
 </body>
+
+<!-- datepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
+    <link rel="stylesheet" href="=css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap.datepicker3.css"/>
+
+        <script src="js/jquery-3.4.1.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#date').datepicker({
+                    format: "dd/mm/yyyy",
+        useCurrent: true,
+        todayBtn: "linked",
+        locale:'id',
+        orientation: "bottom auto",
+        enableOnReadonly: true,
+                });
+            });
+        </script>
+<!-- datepicker -->
+
+
 </html>

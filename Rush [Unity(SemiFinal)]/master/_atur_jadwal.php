@@ -53,20 +53,13 @@
 $(document).ready(function(){
 $("#date").datepicker({
         format: "dd/mm/yyyy",
-        useCurrent: true,
+        startDate: "today"
         todayBtn: "linked",
         locale:'id',
         orientation: "bottom auto",
         enableOnReadonly: true,
     })
-
-
-    $("#pesan").click(function() {
-
-    });
-
-
-    });
+});
 </script>
 
 </head>
@@ -115,7 +108,7 @@ $("#date").datepicker({
     if($lap=='Lapangan1'){
     ?>
 <!-- tabel jam lapangan1 -->
-  <div class="jam-content modal-body">
+<div class="jam-content modal-body">
 
     <br>
         <table class="table table-bordered table-striped">
