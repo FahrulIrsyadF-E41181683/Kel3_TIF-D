@@ -14701,3 +14701,24 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+
+/* css untuk semuanya */
+.bulat {
+  border-radius: 100%;
+}
+
+.gambar-ganti {
+  position: relative;
+  top: 0;
+}
+.gambar-ganti img {
+  left: 10%;
+  position: absolute;
+  transition: opacity 0.5s ease-in-out;
+}
+.gambar-ganti .gambar2 {
+  opacity: 0%;
+}
+.gambar-ganti .gambar2:hover {
+  opacity: 100%;
+}

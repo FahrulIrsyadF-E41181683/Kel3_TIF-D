@@ -3,17 +3,10 @@ error_reporting(0);
 session_start();
 
 include "koneksi.php";
-// Grafik
-// $harga    = mysqli_query($connect, "select SUM(HARGA_DEAL) AS total from transaksi");
-// $jmlt     = mysqli_query($connect, "select COUNT(NMR_TRNS) AS jmlt from transaksi");
-// $jmlp     = mysqli_query($connect, "select COUNT(ID_CUST) AS jmlp from customer");
-// $row      = mysqli_fetch_array($harga);
-// $row2     = mysqli_fetch_array($jmlt);
-// $row3     = mysqli_fetch_array($jmlp);
-// $sum      = $row['total'];
-// $jmltr    = $row2['jmlt'];
-// $jmlcs    = $row3['jmlp'];
-// $now = date_create('now')->format('Y-m-d');
+
+if(empty($_SESSION['id_admin'])){
+    echo "<script>document.location.href='index.php'</script>\n";
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,95 +71,30 @@ include "koneksi.php";
     </div>
 
     <div class="header-right">
+    
         <ul class="clearfix">
-            <li class="icons dropdown">
-                <a href="javascript:void(0)" data-toggle="dropdown">
-                    <i class="mdi mdi-email-outline"></i>
-                    <span class="badge badge-pill gradient-1">3</span>
-                </a>
-                <div class="drop-down animated fadeIn dropdown-menu">
-                    <div class="dropdown-content-heading d-flex justify-content-between">
-                        <span class="">Pesan Baru</span>
-                        <a href="javascript:void()" class="d-inline-block">
-                            <span class="badge badge-pill gradient-1">3</span>
-                        </a>
-                    </div>
-                    <div class="dropdown-content-body">
-                        <ul>
-                            <li class="notification-unread">
-                                <a href="javascript:void()">
-                                    <img class="float-left mr-3 avatar-img" src="images/avatar/1.jpg" alt="">
-                                    <div class="notification-content">
-                                        <div class="notification-heading">Pelanggan 1</div>
-                                        <div class="notification-timestamp">8 jam yang lalu</div>
-                                        <div class="notification-text">Gimana cara ordernya ya?</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-unread">
-                                <a href="javascript:void()">
-                                    <img class="float-left mr-3 avatar-img" src="images/avatar/2.jpg" alt="">
-                                    <div class="notification-content">
-                                        <div class="notification-heading">Pelanggan 2</div>
-                                        <div class="notification-timestamp">8 jam yang lalu</div>
-                                        <div class="notification-text">Lapangan 1 kosong ga?</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void()">
-                                    <img class="float-left mr-3 avatar-img" src="images/avatar/3.jpg" alt="">
-                                    <div class="notification-content">
-                                        <div class="notification-heading">Pelanggan 3</div>
-                                        <div class="notification-timestamp">8 jam yang lalu</div>
-                                        <div class="notification-text">Mau pesan lapangan kak..</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void()">
-                                    <img class="float-left mr-3 avatar-img" src="images/avatar/4.jpg" alt="">
-                                    <div class="notification-content">
-                                        <div class="notification-heading">Pelanggan 4</div>
-                                        <div class="notification-timestamp">8 jam yang lalu</div>
-                                        <div class="notification-text">Bisa transfer?</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            
 <!-- data admin -->
-            <li class="icons dropdown">
-            <?php
-              $sql = mysqli_query($connect, "Select * from admin where ID_ADMIN='".$_SESSION['id_admin']."'");
-              while($data = mysqli_fetch_array($sql)){
+            <?php //ambil data admin di database
+                    $sql = mysqli_query($connect, "Select * from admin where ID_ADMIN='".$_SESSION['id_admin']."'");
+                    while($data = mysqli_fetch_array($sql)){
                 $foto=$data['FOTO_ADMIN'];
-              ?>
-        <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php if(  empty($foto)){ ?>
-                            <img src="../master/images/avatar/1.jpg"  width='40px' height='30px'>
-                                <?php }else{ ?>
-                            <img src="../master/images/avatar/<?php echo $foto;?>"  width='40px' height='30px'>
-                                <?php } ?>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item dropdown-menu-center mt-3 md-3"> 
-                          <?php if(  empty($foto)){ ?>
-                            <img src="../master/images/avatar/1.jpg"  width='100px' height='90px'>
-                                <?php }else{ ?>
-                            <img src="../master/images/avatar/<?php echo $foto;?>"  width='100px' height='90px'>
-                                <?php } ?></a>
+            ?>
 
-          <a class="dropdown-item dropdown-menu-center"> Nama: <?php echo $data['NAMA_ADMIN']; ?> </a>
-          <a class="dropdown-item dropdown-menu-center"> Jenis Kelamin: <?php echo $data['JENIS_KELAMIN']; ?> </a>
-          <a class="dropdown-item dropdown-menu-center"> Alamat: <?php echo $data['ALAMAT_ADMIN']; ?></a>
-          <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
-        </div>
-        <?php } ?>
+
+        <li class="icons">  <!--nama -->
+            Admin : @<?php echo $data['NAMA_ADMIN']; ?>
             </li>
+
+        <li class="icons"> <!--foto Admin -->
+            <a href="?page=profil">
+                    <?php if(empty($foto)){ ?>
+                <img class="bulat" src="images/avatar/admin.png"  width='40px' height='40px'>
+                    <?php }else{ ?>
+                <img class="bulat" src="images/avatar/<?php echo $foto;?>"  width='40px' height='40px'>
+                    <?php } ?>
+            </a>
+            <?php } ?>
+        </li>
 <!-- data admin -->
 
         </ul>
@@ -185,9 +113,8 @@ include "koneksi.php";
                 <ul aria-expanded="false">
                     <li><a href="?page=home">Home</a></li>
                     <li><a href="?page=pesanan">Pesanan</a></li>
-                    <li><a href="_atur_jadwal.php">Jadwal</a></li>
-                    <li><a href="?page=jadwal">Jadwal2</a></li>
-                    <li><a href="report/report.php">Laporan</a></li>
+                    <li><a href="?page=jadwal">Jadwal</a></li>
+                    <li><a href="?page=laporan">Laporan</a></li>
                 </ul>
             </li>
             <li>
@@ -195,18 +122,35 @@ include "koneksi.php";
                     <i class="icon-pencil menu-icon"></i><span class="nav-text">Edit</span>
                 </a>
                 <ul aria-expanded="false">
+
+        <?php if($_SESSION['id_admin']=='AD0001'){//hanya SuperAdmin yang bisa mengakses CRUD ADMIN?>  
                     <li><a href="?page=admin">Admin</a></li>
+        <?php }?>
+
                     <li><a href="?page=lapangan">Lapangan</a></li>
                     <li><a href="?page=jam">Jam</a></li>
                     <li><a href="?page=bank">Bank</a></li>    
-                    <li><a href="?page=pelanggan">Pelanggan</a></li> 
-                    <!-- <li><a href="?page=jadwal">Jadwal</a></li>  -->
+                    <li><a href="?page=pelanggan">Pelanggan</a></li>
+                    <li><a href="?page=profil">Profil</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="logout_admin.php" aria-expanded="false">
+                <i class="fa fa-registered"></i><span class="nav-text">Halaman Rush</span>
+                </a>
+            </li>
+            <li>
+                <a href="logout.php" aria-expanded="false">
+                <i class="fa fa-sign-out"></i><span class="nav-text">Keluar?</span>
+                </a>
+            </li>
+
+
         </ul>
     </div>
 
 </div>                
+
 <!-- Sidebar end -->    
 <!-- Content body start -->
         <div class="content-body">
@@ -223,9 +167,11 @@ include "koneksi.php";
                         include "./_pesanan.php";
                         break;
                     case 'jadwal':
-                        require "atur_jadwal2.php";
+                        require "_atur_jadwal.php";
                         break;
-                    
+                    case 'laporan':
+                        require "_laporan.php";
+                        break;
                         
 
                     case 'admin':
@@ -242,6 +188,9 @@ include "koneksi.php";
                         break;
                     case 'pelanggan':
                         include "./_pelanggan.php";
+                        break;
+                    case 'profil':
+                        include "./_profil.php";
                         break;
 
 
@@ -261,11 +210,9 @@ include "koneksi.php";
 <!--**********************************
     Footer start
 ***********************************-->
-        <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; 2019</p>
+                <p class="text-center">Copyright &copy; Yosef,Rendy,Fahrul,Mila,Widya 2019</p>
             </div>
-        </div>
 <!--**********************************
 Footer end
 ***********************************-->
@@ -274,9 +221,9 @@ Footer end
         Main wrapper end
     ***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
+<!--**********************************
+    Scripts
+***********************************-->
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
@@ -297,6 +244,9 @@ Footer end
 
     <script src="./js/dashboard/dashboard-1.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 
 </body>
 
@@ -306,22 +256,98 @@ Footer end
     <link rel="stylesheet" href="css/bootstrap.datepicker3.css"/>
 
         <script src="js/jquery-3.4.1.js"></script>
-        <script src="js/bootstrap.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#date').datepicker({
                     format: "dd/mm/yyyy",
-        useCurrent: true,
-        todayBtn: "linked",
-        locale:'id',
-        orientation: "bottom auto",
-        enableOnReadonly: true,
+                    useCurrent: true,
+                    todayBtn: "linked",
+                    locale:'id',
+                    orientation: "bottom auto",
+                    enableOnReadonly: true,
                 });
             });
         </script>
 <!-- datepicker -->
 
+<!-- ajax ubah lapangan -->
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.lapangan').click(function(){
+                var rowid = $(this).attr('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '_ubah_lapangan_form.php',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.lap-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
+    </script>
+<!-- ajax ubah lapangan -->
+
+
+<!-- ajax ubah jam -->
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.jam').click(function(){
+                var rowid = $(this).attr('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '_ubah_jam_form.php',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.jam-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
+    </script>
+<!-- ajax ubah jam -->
+
+
+<!-- ajax ubah Bank -->
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.bank').click(function(){
+                var rowid = $(this).attr('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '_ubah_bank_form.php',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.bank-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
+    </script>
+<!-- ajax ubah Bank -->
+
+<!-- ajax ubah Pelanggan -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.pelanggan').click(function(){
+                var rowid = $(this).attr('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '_ubah_pelanggan_form.php',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.pel-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
+    </script>
+<!-- ajax ubah Pelanggan -->
 
 </html>

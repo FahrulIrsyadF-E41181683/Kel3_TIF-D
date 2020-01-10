@@ -32,6 +32,7 @@
         </div>
     </div>
 <!-- Preloader end -->
+
 <div class="login-form-bg h-100">
     <div class="container h-100">
         <div class="row justify-content-center h-100">
@@ -39,13 +40,17 @@
                 <div class="form-input-content">
                 <div class="card login-form mb-0">
                 <div class="card-body pt-5">
-                    <a class="text-center" href="#"><h4>Login</h4></a>
+                <a href="../home/home1.php"><button type="button" class="close" >&times;</button></a>
+
+                <div class="modal-header d-flex justify-content-center">
+                    <h4 class="text-default">Login Admin</h4>
+                </div>
                     <form class="mt-5 mb-5 login-input" method="post" action="proseslogin.php">
                 <div class="form-group">
-                    <input type="text" name="NAMA_ADMIN" class="form-control" autocomplete="off" placeholder="Nama Admin">
+                    <input type="text" name="NAMA_ADMIN" class="form-control" autocomplete="off" placeholder="Nama Admin" require>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="PASSWORD_ADMIN" class="form-control" placeholder="Password">
+                    <input type="password" name="PASSWORD_ADMIN" class="form-control" placeholder="Password" require>
                 </div>
                     <button class="btn login-form__btn submit w-100">Masuk</button>
                     </form>

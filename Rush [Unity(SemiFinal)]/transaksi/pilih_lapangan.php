@@ -1,7 +1,11 @@
 <?php
     session_start();
     include 'koneksi.php';
- ?>
+
+    if(empty($_SESSION['login'])){
+      echo "<script>document.location.href='../home/homelogin.php'</script>\n";
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -13,8 +17,8 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../home/img/favicon.png" rel="icon">
+  <link href="../home/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
@@ -85,13 +89,13 @@
 <header id="header">
     <div class="container">
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
+        <a href="#hero"><img src="../home/img/logo.png" alt="" title="" /></img></a>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
-          <li><a href="#hero" height="40px">Pesananku</a></li>
+          <li class="menu-active"><a href="../home/home2.php">Halaman Utama</a></li>
+          <li><a href="../transaksi/pesananku.php?id=<?= $_SESSION['ID_PELANGGAN'];?>" height="40px">Pesananku</a></li>
           <li class="nav-item dropdown">
 
 <!-- Kodingan ambil data pelanggan -->
@@ -104,16 +108,16 @@
                 $foto=$data['FOTO_PELANGGAN'];
               ?>
         <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php if(  empty($foto)){ ?>
-                            <img src="../master/images/pelanggan/user2.png"  width='40px' height='30px'>
+                                <?php if(empty($foto)){ ?>
+                            <img src="../master/images/pelanggan/user.png"  width='40px' height='30px'>
                                 <?php }else{ ?>
                             <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='40px' height='30px'>
                                 <?php } ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item dropdown-menu-center mt-3 md-3"> 
-                          <?php if(  empty($foto)){ ?>
-                            <img src="../master/images/pelanggan/user2.png"  width='100px' height='90px'>
+                          <?php if(empty($foto)){ ?>
+                            <img src="../master/images/pelanggan/user.png"  width='100px' height='90px'>
                                 <?php }else{ ?>
                             <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='100px' height='90px'>
                                 <?php } ?></a>
@@ -126,7 +130,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item dropdown-menu-center"> <?php echo $data['EMAIL_PELANGGAN']; ?></a>
           <div class="dropdown-divider"></div>
-          <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
+          <a href="../home/logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
         </div>
         <?php } ?>
 <!-- Kodingan ambil data pelanggan end -->
@@ -191,7 +195,7 @@
     while($data = mysqli_fetch_array($sql)){
       $hg=$data['HARGA_SEWA'];
   ?>
-    <img alt="" class="rounded mx-auto d-block img-thumbnail" width="600" height="400" src="img/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
+    <img alt="" class="rounded mx-auto d-block img-thumbnail" width="600" height="400" src="../master/images/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
     <?php } ?>
 
     <!-- harga lapangan dari database -->
