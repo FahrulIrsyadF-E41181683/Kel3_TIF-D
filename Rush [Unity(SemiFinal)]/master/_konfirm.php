@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Konfirm</title>
-    <?php include 'koneksi.php' ?>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
-<br><br>
+
 
 <form method="POST">
 <div class="container-fluid">
@@ -26,7 +15,8 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                                        $id = $_GET['id'];
+                                        include 'koneksi.php';
+                                        $id = $_POST['rowid'];
                                         $query = "SELECT * FROM `detail_transaksi` WHERE ID_TRANSAKSI='".$id."'";
                                         $sql = mysqli_query($connect, $query);
                                         while($data = mysqli_fetch_array($sql)){
@@ -39,8 +29,12 @@
                                         <?php } ?>
                                         </tbody>
                                     </table>
-                                    
-                                                    
+                                        <?php if(empty( $data['JAM'])){?>
+                                    <button name="konfirm" class="btn btn-primary mb-2 mt-3" disabled> Konfirmasi </button> 
+                                        <br>*detail pesanan kosong
+                                        <?php }else{ ?>
+                                    <button name="konfirm" class="btn btn-primary mb-2 mt-3"> Konfirmasi </button> 
+                                        <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -48,17 +42,17 @@
                 </div>
             </div>
 <!-- tombol konfirmasi -->
-                                        <div class="row">
-                                            <div class="col col-lg-6">
-                                            <!-- 1 of 3 -->
+                                        <!-- <div class="row">
+                                            <div class="col">
+                                            1 of 3
                                             </div>
-                                            <div class="col col-lg-4">
-                                            <!-- 2 of 3 -->
+                                            <div class="col">
+                                            2 of 3
                                             </div>
                                             <div class="col">
                                             <button name="konfirm" class="btn btn-primary mb-2 mt-3"> Konfirmasi </button>
                                             </div>
-                                        </div>
+                                        </div> -->
 <!-- tombol konfirmasi -->
 </form>
 
@@ -102,8 +96,5 @@
                         }else{
                             // Jika Gagal, Lakukan :
                             echo "<script>alert('konfirmasi gagal');document.location.href='home.php?page=jadwal';</script>\n";}
-    
-            }}
-    }?>
-</body>
-</html>
+                        }}}
+    ?>

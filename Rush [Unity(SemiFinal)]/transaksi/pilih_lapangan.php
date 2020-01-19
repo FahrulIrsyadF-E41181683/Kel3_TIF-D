@@ -2,9 +2,9 @@
     session_start();
     include 'koneksi.php';
 
-    if(empty($_SESSION['login'])){
-      echo "<script>document.location.href='../home/homelogin.php'</script>\n";
-    }
+    // if(empty($_SESSION['login'])){
+    //   echo "<script>document.location.href='../home/homelogin.php'</script>\n";
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -86,58 +86,68 @@
 </head>
 
 <body>
+
+            <?php
+              $st= $_SESSION['ID_PELANGGAN'];
+              $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
+              while($data = mysqli_fetch_array($sql)){
+                $foto=$data['FOTO_PELANGGAN']; }
+            ?>
+
 <header id="header">
     <div class="container">
+
       <div id="logo" class="pull-left">
         <a href="#hero"><img src="../home/img/logo.png" alt="" title="" /></img></a>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="../home/home2.php">Halaman Utama</a></li>
+          <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
           <li><a href="../transaksi/pesananku.php?id=<?= $_SESSION['ID_PELANGGAN'];?>" height="40px">Pesananku</a></li>
-          <li class="nav-item dropdown">
+          <li><a href="">cara pemesanan</a></li>
 
-<!-- Kodingan ambil data pelanggan -->
-          <?php
-              $st= $_SESSION['ID_PELANGGAN']; //diaktifkan kalo sudah selesai ngoding
-              // $st='PL0001'; //digosok kalo udah selesai ngoding
-              $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
-              while($data = mysqli_fetch_array($sql)){
-                
-                $foto=$data['FOTO_PELANGGAN'];
-              ?>
-        <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php if(empty($foto)){ ?>
-                            <img src="../master/images/pelanggan/user.png"  width='40px' height='30px'>
-                                <?php }else{ ?>
-                            <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='40px' height='30px'>
-                                <?php } ?>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item dropdown-menu-center mt-3 md-3"> 
-                          <?php if(empty($foto)){ ?>
-                            <img src="../master/images/pelanggan/user.png"  width='100px' height='90px'>
-                                <?php }else{ ?>
-                            <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='100px' height='90px'>
-                                <?php } ?></a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['NAMA_PELANGGAN']; ?> </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['JENIS_KELAMIN']; ?> </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['ALAMAT_PELANGGAN']; ?></a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['EMAIL_PELANGGAN']; ?></a>
-          <div class="dropdown-divider"></div>
-          <a href="../home/logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
-        </div>
-        <?php } ?>
-<!-- Kodingan ambil data pelanggan end -->
-      </li>
-      
+          <?php if(empty($st)){ ?>
+              <li class="nav-item dropdown">
+                <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" src="../home/img/user.png"  width='50px' height="40px">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item dropdown-menu-center mt-3 md-3"><img src="../home/img/user.png"  width='100px'></a>
+                  <div class="dropdown-divider"></div>
+                  <a href="../home/homelogin.php" class="dropdown-item dropdown-menu-center masuk2"> Masuk/Daftar </a>
+                </div>
+            </li>
+          <?php }else{ ?>
+            <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php if(empty($foto)){ ?>
+                                <img class="rounded-circle" src="../master/images/pelanggan/user.png"  width='40px' height='40px' class="rounded-circle">
+                                    <?php }else{ ?>
+                                <img class="rounded-circle" src="../master/images/pelanggan/<?php echo $foto;?>"  width='40px' height='40px' class="rounded-circle">
+                                    <?php } ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item dropdown-menu-center mt-3 md-3"> 
+                              <?php if(empty($foto)){ ?>
+                                <img class="rounded-circle" src="../master/images/pelanggan/user.png"  width='100px' height='90px'>
+                                    <?php }else{ ?>
+                                <img class="rounded-circle" src="../master/images/pelanggan/<?php echo $foto;?>"  width='100px' height='90px'>
+                                    <?php } ?></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item dropdown-menu-center"> <?php echo $data['NAMA_PELANGGAN']; ?> </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item dropdown-menu-center"> <?php echo $data['JENIS_KELAMIN']; ?> </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item dropdown-menu-center"> <?php echo $data['ALAMAT_PELANGGAN']; ?></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item dropdown-menu-center"> <?php echo $data['EMAIL_PELANGGAN']; ?></a>
+              <div class="dropdown-divider"></div>
+              <a href="../home/logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
+            </div>
+          <?php } ?>
         </ul>
     </div>
+  </header><!-- #header -->
 
 <!-- #header -->
 <!-- input tanggal dan lapangan -->
@@ -189,53 +199,28 @@
               ?>
 <!-- jika tombol cari ditekan -->
 
-  <?php
-    $query = "Select * from lapangan where NAMA_LAPANGAN='".$lap."'";
-    $sql = mysqli_query($connect, $query);
-    while($data = mysqli_fetch_array($sql)){
-      $hg=$data['HARGA_SEWA'];
-  ?>
-    <img alt="" class="rounded mx-auto d-block img-thumbnail" width="600" height="400" src="../master/images/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
-    <?php } ?>
-
-    <!-- harga lapangan dari database -->
-    <h5 class="text-center"> Harga lapangan : Rp <input value="<?php echo $hg ?>" name="input" id="input" hidden/> <?php echo $hg ?> /jam </h5>
-
       <div class="modal-body">
       <div class="row">
       <div class="col">
 
-<!-- tabel tampilan jangan pesan jam ini -->
+<!-- Foto Lapanngan -->
     <div class="modal-body">
-    <table class="table table-striped table-bordered zero-configuration">
-              <h6> <strong>*Perhatian,</strong> bagi pemesan agar tidak memilih jam yang tertampil dibawah ini karena sudah dipesan pemesan lain dan akan dilakukan pembayaran </h6>
-              <br>
-          <thead>
-          <tr>
-              <th>Nama Lapangan</th>
-              <th>Jam</th>
-              <th>Tanggal Pesanan</th>
-          </tr>
-          </thead>
-          <tbody>
-              <?php
-              $query = "SELECT A.ID_TRANSAKSI,A.STATUS_PEMBAYARAN,B.JAM,B.NAMA_LAPANGAN,B.TANGGAL_PESANAN FROM transaksi A 
-                        JOIN detail_transaksi B ON A.ID_TRANSAKSI=B.ID_TRANSAKSI WHERE A.STATUS_PEMBAYARAN = 0 && B.TANGGAL_PESANAN='$tgl' && B.NAMA_LAPANGAN='$lap'";
-              $sql = mysqli_query($connect, $query);
-              while($data = mysqli_fetch_array($sql)){
-              ?>
-          <tr>
-              <td><?php echo $data['NAMA_LAPANGAN']; ?></td>
-              <td><?php echo $data['JAM']; ?></td>
-              <td><?php echo $data['TANGGAL_PESANAN']; ?></td>
-          </tr> 
-      
-      <?php } ?>
-      </tbody>
-    </table>
-    </div>
+    
+        <?php
+          $query = "Select * from lapangan where NAMA_LAPANGAN='".$lap."'";
+          $sql = mysqli_query($connect, $query);
+          while($data = mysqli_fetch_array($sql)){
+            $hg=$data['HARGA_SEWA'];
+        ?>
+          <img alt="" class="rounded mx-auto d-block img-thumbnail" width="600" height="400" src="../master/images/lapangan/<?php echo $data['FOTO_LAPANGAN']; ?>">
+          <?php } ?>
 
-<!-- tabel tampilan jangan pesan jam ini -->
+          <!-- harga lapangan dari database -->
+          <h5 class="text-center"> Harga lapangan : Rp <input value="<?php echo $hg ?>" name="input" id="input" hidden/> <?php echo $hg ?> /jam </h5>
+
+          </div>
+
+<!-- Foto Lapanngan -->
       </div>
 
 
@@ -634,6 +619,10 @@
 <!-- jika tombol pesan ditekan -->
     <?php
       if (isset($_POST["pesan"])){
+
+            if(empty($st)){
+              echo "<script>document.location.href='../home/homelogin.php'</script>\n";
+          }
 
           $_SESSION['lap'] = $_POST['lap'];
           $_SESSION['tgl_main'] = $_POST['date'];

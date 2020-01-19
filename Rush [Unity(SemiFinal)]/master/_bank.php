@@ -66,6 +66,7 @@
 <table class="table table-striped table-bordered zero-configuration">
     <thead>
     <tr>
+        <th>No</th>
         <th>ID Bank</th>
         <th>Nama Bank</th>
         <th>No Rekening</th>
@@ -74,6 +75,7 @@
     </thead>
     <tbody>
         <?php
+        $no=1;
         $id = $_GET['id'];
         $query = "SELECT * FROM bank";
         $query1 = "SELECT * FROM bank WHERE ID_BANK='".$id."'";
@@ -81,6 +83,7 @@
         while($data = mysqli_fetch_array($sql)){
         ?>
     <tr>
+        <td><?php echo $no++; ?></td>
         <td><?php echo $data['ID_BANK']; ?></td>
         <td><?php echo $data['NAMA_BANK']; ?></td>
         <td><?php echo $data['NO_REKENING']; ?></td>

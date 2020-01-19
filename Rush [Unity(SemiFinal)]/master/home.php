@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(0); //dinyalakan kalo sudah selesai semuanya
 session_start();
 
 include "koneksi.php";
@@ -349,5 +349,42 @@ Footer end
         });
     </script>
 <!-- ajax ubah Pelanggan -->
+
+<!-- ajax ubah Pesanan -->
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.pesan').click(function(){
+                var rowid = $(this).attr('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '_konfirm.php',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.pesan-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
+    </script>
+<!-- ajax ubah Pesanan -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.klik_menu').click(function(){
+			var menu = $(this).attr('id');
+			if(menu == "lap1"){
+
+			}else if(menu == "lap2"){
+				$('.badan').load('_atur_jadwal_lap1.php');						
+			}else if(menu == "lap3"){
+				$('.badan').load('tutorial.php');						
+			}else if(menu == "lap4"){
+				$('.badan').load('sosmed.php');						
+			}
+		});					
+
+	});
+</script>
 
 </html>
