@@ -1,44 +1,102 @@
-<center>
- 
- <h2>CETAK LAPORAN PENYEWAAN <br/><a href="#">RUSH BADMINTON JEMBER</a></h2>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-12">
+        <div class="card">
+        <div class="card-body">    
+        <div class="table-responsive">
+        <div class="col-sm-12">
+        <div class="col-sm-12 col-md-6">
+            <label>
+            
+            <?php echo date ('l, d-M-Y');
+            ?>
+            <p></p>
+            <h4>Laporan Penyewaan</h4>
+            </label>
+    </div>
+<div class="col-sm-12 col-md-6">
+    <button type="button" class="btn mb-1 btn-primary btn-lg" data-toggle="modal" data-target="#tambahmodal" data-whatever="@getbootstrap"> <a href="cetak_coba.php">Cetak</a></button>
+    <button type="button" class="btn mb-1 btn-primary btn-lg" data-toggle="modal" data-target="#tambahmodal" data-whatever="@getbootstrap">Laporan periode</button>
+<!-- tambahpelanggan -->                                          
+<div class="modal fade" id="tambahmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">CETAK DATA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span>
+        </button>
+</div>
+<div class="modal-body">
+    <form  method="post" action="_tambah_pelanggan.php" target="blank"> 
+<div class="row">
+    <div class="form-group col col-md-6 ml-auto">
+        <label class="col-form-label">Nama Pelanggan</label>
+            <input type="date" name="nm_pl" class="form-control input-default" placeholder="Nama Pelanggan">
+        <label class="col-form-label">Password</label>
+            <input type="date" name="password" class="form-control input-default" placeholder="Password">
+        
+</div>
 
- 
- <?php 
- include '../koneksi.php';
- ?>
-
-<input type="text" class="form-control" id="date" name='date' placeholder="<?php echo $tgl ?>" value="<?=isset($_POST['date']) ? $_POST['date'] : ''?>">
- <table border="1">
-     <tr>
-         <th>NO</th>
-         <th>ID TRANSAKSI</th>
-         <th>ID PELANGGAN</th>
-         <th>JAM PESANAN</th>
-         <th>TANGGAL PESANAN</th>
-         <th>HARGA SEWA</th>
-         
-     </tr>
-     <?php 
-     $no = 1;
-     $sql = mysqli_query($connect,"SELECT D.ID_TRANSAKSI,D.ID_PELANGGAN, A.JAM, A.TANGGAL_PESANAN, D.HARGA_TOTAL 
-     FROM detail_transaksi A JOIN transaksi D ON D.ID_TRANSAKSI = A.ID_TRANSAKSI  ");
-     while($data = mysqli_fetch_array($sql)){
-     ?>
-     <tr>
-         <td><?php echo $no++; ?></td>
-         <td><?php echo $data['ID_TRANSAKSI'];?></td>
-         <td><?php echo $data['ID_PELANGGAN'];?></td>
-          <td><?php echo $data['JAM'];?></td>
-          <td><?php echo $data['TANGGAL_PESANAN'];?></td>
-          <td><?php echo $data['HARGA_TOTAL'];?></td>
-     </tr>
-     <?php 
-     }
-     ?>
- </table>
-
- <br/>
- <span class="badge"><a href="report/cetak.php"><i class="fa fa-print fa-5x"><h5>cetak</h5></i></a></span>
+    </div>
+</div>
+<div class="modal-footer">
+    <input type="reset" class="btn btn-danger" value="Reset" style="color:white;">
+    <button type="submit" name="simpan" class="btn btn-info">Simpan</button>
+</div>
+                </form>
+            </div>
+        </div>
+    </div>  
+</div>
 
 
-</center>
+<!-- Table -->
+<table class="table table-striped table-bordered zero-configuration">
+    <thead>
+        <tr>
+            <th>ID TRANSAKSI</th>
+            <th>ID Pelanggan</th>
+            <th>JAM PESANAN</th>
+            <th>TANGGAL PESANAN</th>
+            <th>HARGA TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php                                         
+            $id = $_GET['id'];
+            $query = "SELECT D.ID_TRANSAKSI,D.ID_PELANGGAN, A.JAM, A.TANGGAL_PESANAN, D.HARGA_TOTAL 
+            FROM detail_transaksi A JOIN transaksi D ON D.ID_TRANSAKSI = A.ID_TRANSAKSI ";
+            $query1 = "SELECT D.ID_TRANSAKSI,D.ID_PELANGGAN, A.JAM, A.TANGGAL_PESANAN, D.HARGA_TOTAL 
+            FROM detail_transaksi A JOIN transaksi D ON D.ID_TRANSAKSI = A.ID_TRANSAKSI WHERE TANGGAL_PESANAN='".$id."'  ";
+            $sql = mysqli_query($connect, $query);
+            while($data = mysqli_fetch_array($sql)){
+            ?>
+        <tr>
+            <td><?php echo $data['ID_TRANSAKSI']; ?></td>
+            <td><?php echo $data['ID_PELANGGAN']; ?></td>
+            <td><?php echo $data['JAM']; ?></td>
+            <td><?php echo $data['TANGGAL_PESANAN']; ?></td>
+            <td><?php echo $data['HARGA_TOTAL']; ?></td>
+
+
+    </td>
+</tr>
+<?php } ?>
+</tbody>
+    <tfoot>
+        <tr>
+        <th>ID TRANSAKSI</th>
+            <th>ID Pelanggan</th>
+            <th>JAM PESANAN</th>
+            <th>TANGGAL PESANAN</th>
+            <th>HARGA TOTAL</th>
+        </tr>
+    </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
