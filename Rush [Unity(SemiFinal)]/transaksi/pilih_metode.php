@@ -1,6 +1,10 @@
 <?php
     session_start();
     include 'koneksi.php';
+
+    if(empty($_SESSION['total'])){
+        echo "<script>document.location.href='pilih_lapangan.php'</script>\n";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -168,63 +172,70 @@
         <?php
                     if (isset($_POST["bayar2"])){
                     
-                                        // ambil data dari sesion
-                                $id_pl= $_SESSION['id_pl'];
-                                $nama_lap = $_SESSION["lap"];
-                                $tgl_main = $_SESSION["tgl_main"];
-                                $tgl_transaksi=date('Y/m/d');
-                                $total=$_SESSION['total'];
-                                $jam_pesan=$_SESSION['jam_pesan'];
-                                
-                //tentukan id transaksi
-                        $data = mysqli_query($connect, "select ID_TRANSAKSI from transaksi ORDER BY ID_TRANSAKSI DESC LIMIT 1");
-                        while($trans = mysqli_fetch_array($data))
-                        {
-                            $transid = $trans['ID_TRANSAKSI'];
-                        }
-
-                        $row = mysqli_num_rows($data);
-                        if($row>0){
-                            $id_tr = autonumber($transid, 3, 3);
-                        }else{
-                            $id_tr = 'TR0001';
-                        }
-                        
-                //Proses simpan ke Database Transaksi
-                                $sql = mysqli_query($connect, "INSERT INTO `transaksi`(`ID_TRANSAKSI`, `ID_PELANGGAN`, `ID_BANK`, `HARGA_TOTAL`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`) 
-                                                                            VALUES ('$id_tr','$id_pl',1,'$total','$tgl_transaksi','00:00:00',0,0)"); // Eksekusi/ Jalankan query dari variabel $query
+                            // ambil data dari sesion
+                            $id_pl= $_SESSION['id_pl'];
+                            $nama_lap = $_SESSION["lap"];
+                            $tgl_main = $_SESSION["tgl_main"];
+                            $tgl_transaksi=date('Y/m/d');
+                            $total=$_SESSION['total'];
+                            $jam_pesan=$_SESSION['jam_pesan'];
+                            
+            //tentukan id transaksi
+                    $data = mysqli_query($connect, "select ID_TRANSAKSI from transaksi ORDER BY ID_TRANSAKSI DESC LIMIT 1");
+                    while($trans = mysqli_fetch_array($data))
+                    {
+                        $transid = $trans['ID_TRANSAKSI'];
+                    }
+        
+                    $row = mysqli_num_rows($data);
+                    if($row>0){
+                        $id_tr = autonumber($transid, 3, 3);
+                    }else{
+                        $id_tr = 'TR0001';
+                    }
+                    
+            //Proses simpan ke Database Transaksi
+                    
+                            $sql = mysqli_query($connect, "INSERT INTO `transaksi`(`ID_TRANSAKSI`, `ID_PELANGGAN`, `ID_BANK`, `HARGA_TOTAL`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`) 
+                                                                            VALUES ('$id_tr','$id_pl','1','$total','$tgl_transaksi','00:00:00','BELUM MEMBAYAR',0)"); // Eksekusi/ Jalankan query dari variabel $query
                             if($sql){ // Cek jika proses simpan ke database sukses atau tidak
                                 // Jika Sukses, Lakukan :
                                                     //Proses Simpan ke database detail Transaksi
                                                 $jumlah_dipilih = count($jam_pesan);
                                                 
                                                 for($x=0;$x<$jumlah_dipilih;$x++){ //perulangan untuk simpan detail transaksi
-
+        
                     //tentukan id detail transaksi
                     $data2 = mysqli_query($connect, "select ID_DETAIL_TRANSAKSI from detail_transaksi ORDER BY ID_DETAIL_TRANSAKSI DESC LIMIT 1");
                     while($trans2 = mysqli_fetch_array($data2))
                     {
                         $transid2 = $trans2['ID_DETAIL_TRANSAKSI'];
                     }
-
+        
                     $row2 = mysqli_num_rows($data2);
                     if($row2>0){
                         $id_dt = autonumber($transid2, 3, 3);
                     }else{
                         $id_dt = 'DT0001';
                     }
+        
                     $dj = mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL FROM detail_jadwal A JOIN lapangan B on A.ID_LAPANGAN=B.ID_LAPANGAN JOIN jam C on A.ID_JAM=C.ID_JAM  
-                    WHERE B.NAMA_LAPANGAN= '".$nama_lap."' && C.JAM= '".$jam_pesan[$x]."'");
-
-                        while($dj2 = mysqli_fetch_array($dj))
-                        {
+                                                    WHERE B.NAMA_LAPANGAN= '".$nama_lap."' && C.JAM= '".$jam_pesan[$x]."'");
+                    while($dj2 = mysqli_fetch_array($dj))
+                    {
                         $id_dj = $dj2['ID_DETAIL_JADWAL'];
-                        }
-                        //proses simpannya detail transaksi
-                        mysqli_query($connect, "INSERT INTO `detail_transaksi`(`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`,`ID_DETAIL_JADWAL`,`JAM`, `NAMA_LAPANGAN`, `TANGGAL_PESANAN`) 
-                                                                VALUES ('$id_dt','$id_tr','$id_dj','$jam_pesan[$x]','$nama_lap','$tgl_main')");
                     }
-                    
+                            //proses simpannya detail transaksi
+                        mysqli_query($connect, "INSERT INTO `detail_transaksi`(`ID_DETAIL_TRANSAKSI`, `ID_TRANSAKSI`,`ID_DETAIL_JADWAL`,`JAM`, `NAMA_LAPANGAN`, `TANGGAL_PESANAN`) 
+                                                                        VALUES ('$id_dt','$id_tr','$id_dj','$jam_pesan[$x]','$nama_lap','$tgl_main')");
+                    }
+        
+                    // unset session biar datanya hilang
+                            unset ($_SESSION["lap"]);
+                            unset ($_SESSION["tgl_main"]);
+                            unset ($_SESSION['total']);
+                            unset ($_SESSION['jam_pesan']);
+
                                 echo "<script>alert('Pemesanan berhasil, Silahkan lakukan pembayaran');document.location.href='pesananku.php?id=$id_pl'</script>\n"; // Redirect ke halaman admin.php
                             }else{
                                 // Jika Gagal, Lakukan :
