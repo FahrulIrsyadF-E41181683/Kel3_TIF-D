@@ -67,7 +67,7 @@
     <div class="hero-container">
       <h1>Selamat Datang di Rush</h1>
       <h2>RUSH Badminton adalah adalah sebuah tempat bermain olahraga badminton</h2>
-      <a href="../transaksi/pilih_lapangan.php" class="btn-get-started">Pesan Sekarang</a>
+      <a href="homelogin.php" class="btn-get-started">Masuk Sekarang</a>
     </div>
   </section><!-- #hero -->
 
@@ -309,7 +309,7 @@
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Apa Itu Member</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Lokasi</a></li>
             <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Tentang Rush</a></li>
-            <li><a href="../master/index.php"><i class="fa fa-angle-double-right"></i>Author</a></li>
+            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Author</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">

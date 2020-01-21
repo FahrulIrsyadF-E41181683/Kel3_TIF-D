@@ -61,18 +61,18 @@
               $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
               while($data = mysqli_fetch_array($sql)){
                 $foto=$data['FOTO_PELANGGAN'];
-          ?>
+              ?>
         <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php if(empty($foto)){ ?>
-                            <img src="../master/images/pelanggan/user.png"  width='40px' height='30px'>
+                                <?php if(  empty($foto)){ ?>
+                            <img src="../master/images/pelanggan/user2.png"  width='40px' height='30px'>
                                 <?php }else{ ?>
                             <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='40px' height='30px'>
                                 <?php } ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item dropdown-menu-center mt-3 md-3"> 
-                          <?php if(empty($foto)){ ?>
-                            <img src="../master/images/pelanggan/user.png"  width='100px' height='90px'>
+                          <?php if(  empty($foto)){ ?>
+                            <img src="../master/images/pelanggan/user2.png"  width='100px' height='90px'>
                                 <?php }else{ ?>
                             <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='100px' height='90px'>
                                 <?php } ?></a>
@@ -84,6 +84,8 @@
           <a class="dropdown-item dropdown-menu-center"> <?php echo $data['ALAMAT_PELANGGAN']; ?></a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item dropdown-menu-center"> <?php echo $data['EMAIL_PELANGGAN']; ?></a>
+          <div class="dropdown-divider"></div>
+          <a href="reset2.php" class="dropdown-item dropdown-menu-center masuk2"> Change Password</a>
           <div class="dropdown-divider"></div>
           <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
         </div>
@@ -305,6 +307,8 @@
 
           <div class="col-lg-5 col-md-8">
             <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
                   <input type="text" name="nama" class="form-control" id="name" placeholder="Nama" data-rule="minlen:4" data-msg="Masukkan minimal 4 huruf" />
@@ -320,7 +324,6 @@
                 </div>
                 <div class="text-center"><button type="submit">Kirim Pesan</button></div>
               </form>
-
             </div>
           </div>
 

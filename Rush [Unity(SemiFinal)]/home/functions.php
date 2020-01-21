@@ -46,6 +46,17 @@ if (mysqli_fetch_assoc($result)) {
         </script>";
         return false;
 }
+ //cek email sudah ada atau belum
+$hasil = mysqli_query($conn, "SELECT EMAIL_PELANGGAN FROM pelanggan
+WHERE  EMAIL_PELANGGAN ='$email'");
+
+if (mysqli_fetch_assoc($hasil)) {
+    echo "<script>
+            alert ('email sudah terdaftar')
+        </script>";
+        return false;
+}
+
     //cek konfirmasi password
 if ( $password !== $password2) {
     echo "<script>
@@ -98,7 +109,7 @@ function upload() {
      }
 
      //gambar siap di upload
-        move_uploaded_file($tmpname,'images/'.$namafile);
+        move_uploaded_file($tmpname,'img/'.$namafile);
         return $namafile;
             
 }

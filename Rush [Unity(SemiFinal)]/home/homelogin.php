@@ -65,7 +65,7 @@ WHERE  NAMA_PELANGGAN ='$username' AND PASSWORD_PELANGGAN = '$password' ");
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#">Halaman Utama</a></li>
+          <li class=""><a href="home1.php">Halaman Utama</a></li>
           <li><a href="#">kelebihan</a></li>
           <li><a href="#">daftar lapangan</a></li>
           <li><a href="#">cara pemesanan</a></li>
@@ -101,7 +101,11 @@ WHERE  NAMA_PELANGGAN ='$username' AND PASSWORD_PELANGGAN = '$password' ");
             <br>
             
             <input type="submit" name="signin_submit" value="Masuk" />
+            <br> <br> <br> <br>
+            <hr>
+            <span class="lupa"><a href="forget.php"> Lupa Kata Sandi?</a></span>
           </div>
+  
           
         
           <div class="left">
