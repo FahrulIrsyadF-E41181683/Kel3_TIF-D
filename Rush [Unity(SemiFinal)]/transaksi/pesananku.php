@@ -1,4 +1,5 @@
 <!-- HEADER -->
+<?php require 'koneksi.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,10 @@
 
       <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
   <!-- Bootstrap File -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -58,49 +63,7 @@
     </script> -->
 <!-- ajax ubah jam -->
 
-<!-- ubah modal -->
-    <div class="modal fade" id="modaldetail" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Detail Pesanan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                
-              <?php
-              // include 'koneksi.php';
 
-              // $id = $_GET['id'];
-              // $query1 = "Select * from transaksi WHERE ID_TRANSAKSI='".$id."'";
-              // $sql = mysqli_query($connect, $query1);
-              // while($data = mysqli_fetch_array($sql)){
-              ?>
-
-              <div class="modal-body">
-                  <!-- <a class="text-center"> <h4>Ubah Data Jam</h4></a> -->
-              <form action="" method="POST" class="mb-5 login-input" enctype="multipart/form-data">
-                  <h4 class="text-center text-dark">Jam</h4>
-                  <label class="col-form-label">ID Jam</label>
-                  <div class="form-group">
-                      <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <input type="text" class="form-control" value="<?php echo $id; ?>" disabled>
-                  </div>
-                  <label class="col-form-label">Jam</label>
-                  <div class="input-group form-group border-bottom border-dark ">
-                          <input type="text" class="form-control input-default"  placeholder="Jam" name="jam" value="<?php echo $data['JAM'];?>">
-                          <div class="input-group-prepend"><i class="fa fa-pencil mt-4"></i></div>
-                  </div><br>
-
-                </form>
-                </div>
-
-              <?php  ?>
-                </div>
-            </div>
-        </div>
-<!-- ubah modal -->
 
 <form>
 <br>
@@ -118,7 +81,7 @@
                 </thead>
                 <tbody>
                 <?php 
-                  include 'koneksi.php';
+                  // include 'koneksi.php';
                   $no = 1;
                   $st = $_GET['id'];
                   //$tr = $_GET['ID_TRANSAKSI'];
@@ -147,11 +110,64 @@
                     }
                     ?></td>
                     <td>
-                            <button href="#" data-target="#modaldetail" data-toggle='modal' type="button" class="btn btn-primary">
+                            <button href="#" data-target="#Mydetail<?php echo $d['ID_TRANSAKSI']; ?>" data-toggle='modal' type="button" class="btn btn-primary">
                                 Detail Pesanan
                             </button>
                     </td>
                   </tr>
+                  </form>
+<!-- ubah modal -->
+    <div class="modal fade" id="Mydetail<?php echo $d['ID_TRANSAKSI']; ?>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Detail Pesanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+
+              <div class="modal-body">
+                  <!-- <a class="text-center"> <h4>Ubah Data Jam</h4></a> -->
+              <form action="" method="POST" class="mt-5 mb-5 login-input" enctype="multipart/form-data">
+              <?php
+              
+              //$id = $_GET['tr'];
+              //$tr= $_GET['ID_TRANSAKSI'];
+              $sql2 = mysqli_query($connect ,"SELECT NAMA_PELANGGAN, NAMA_BANK, TANGGAL_TRANSAKSI 
+              FROM transaksi A JOIN pelanggan B ON A.ID_PELANGGAN=B.ID_PELANGGAN JOIN bank C ON A.ID_BANK=C.ID_BANK 
+              WHERE B.ID_PELANGGAN='$st' and A.ID_TRANSAKSI='$tr'");
+              while($q = mysqli_fetch_array($sql2)){
+              ?>
+
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">ID Transaksi</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $tr;?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Nama Pelanggan</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $q['NAMA_PELANGGAN'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Bank</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $q['NAMA_BANK'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Tanggal Transaksi</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $q['TANGGAL_TRANSAKSI'];?>">
+                                        </div>
+                                    </div>
+                                        <a href="../transaksi/nota_pesanan.php?ID_TRANSAKSI=<?=$tr?>" class="float-right btn btn-success">Cetak Nota</a>
+
+                                </form>
                   <?php 
                   }
                   ?>
@@ -160,8 +176,13 @@
               </table>
 
 
+                </div>
 
-</form>
+              <?php } ?>
+                </div>
+            </div>
+        </div>
+<!-- ubah modal -->
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
