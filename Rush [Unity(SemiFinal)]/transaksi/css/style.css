@@ -1,5 +1,4 @@
 
-
 body {
   background: #fff;
   color: #666666;
@@ -475,4 +474,8 @@ border: 2px solid #ffa1a1;
 
 .red-outline{
   border: 1px solid red;
+}
+
+.jam1 {
+  background-color: red;
 }

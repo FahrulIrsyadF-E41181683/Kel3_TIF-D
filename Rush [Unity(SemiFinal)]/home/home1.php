@@ -67,7 +67,7 @@
     <div class="hero-container">
       <h1>Selamat Datang di Rush</h1>
       <h2>RUSH Badminton adalah adalah sebuah tempat bermain olahraga badminton</h2>
-      <a href="homelogin.php" class="btn-get-started">Masuk Sekarang</a>
+      <a href="../transaksi/pilih_lapangan.php" class="btn-get-started">Pesan Sekarang</a>
     </div>
   </section><!-- #hero -->
 
@@ -257,30 +257,24 @@
 
           <div class="col-lg-5 col-md-8">
             <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="nama" class="form-control" id="name" placeholder="Nama" data-rule="minlen:4" data-msg="Masukkan minimal 4 huruf" />
+                  <textarea class="form-control" name="komen" rows="7" placeholder="Tulis Komentar di sini" disabled=true></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Masukkan Email yang Benar" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="komen" rows="5" data-rule="required" placeholder="Tulis Komentar di sini" data-msg="Tulis sesuatu untuk kita"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit">Kirim Pesan</button></div>
+                <div class="text-center"><button id="kirim" type="submit">Kirim Komentar</button></div>
               </form>
             </div>
           </div>
-
         </div>
-
       </div>
     </section><!-- #lokasi -->
+
+    <?php 
+    $st=1;
+    include 'koneksi.php';
+    require_once 'komentar.php';
+    ?>
 
   </main>
 
@@ -369,4 +363,11 @@
   <script src="js/main.js"></script>
 
 </body>
+
+<script>
+    $("#kirim").click(function() {
+      alert('Silahkan masuk untuk mengirim komentar');
+        });
+</script>
+
 </html>

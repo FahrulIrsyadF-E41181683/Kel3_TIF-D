@@ -1,7 +1,11 @@
 <?php
     session_start();
     include 'koneksi.php';
- ?>
+
+    if(empty($_SESSION['ID_PELANGGAN'])){
+      echo "<script>document.location.href='../home/home1.php'</script>\n";
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +81,7 @@
                             <img src="../master/images/pelanggan/<?php echo $foto;?>"  width='100px' height='90px'>
                                 <?php } ?></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['NAMA_PELANGGAN']; ?> </a>
+          <a class="dropdown-item dropdown-menu-center"> <?php echo $namapel=$data['NAMA_PELANGGAN']; ?> </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item dropdown-menu-center"> <?php echo $data['JENIS_KELAMIN']; ?> </a>
           <div class="dropdown-divider"></div>
@@ -306,35 +310,38 @@
           </div>
 
           <div class="col-lg-5 col-md-8">
-            <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
+            <div class="form ">
+              <form action="_kirim_komentar" method="post" role="form" class="contactForm komentar">
                 <div class="form-group">
-                  <input type="text" name="nama" class="form-control" id="name" placeholder="Nama" data-rule="minlen:4" data-msg="Masukkan minimal 4 huruf" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Masukkan Email yang Benar" />
+                <input type="hidden" value="<?php $st ?>" name="id_pl">
+                  <input type="text" name="nama" class="form-control text-center" id="name" placeholder="Nama" value="@<?php echo $namapel; ?>" readonly=true>
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
                   <textarea class="form-control" name="komen" rows="5" data-rule="required" placeholder="Tulis Komentar di sini" data-msg="Tulis sesuatu untuk kita"></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="text-center"><button type="submit">Kirim Pesan</button></div>
+                <div class="text-center"><input name="komentar" type="submit" id="kirim" value="Kirim Pesan" ></div>
               </form>
             </div>
           </div>
 
         </div>
-
       </div>
     </section><!-- #lokasi -->
 
+    <?php if(isset($_POST['komentar'])){
+      echo 'ASWWW';
+    } ?>
+
+
   </main>
 
-  <!--==========================
+    <div class="komentar">
+  <?php require_once 'komentar.php'; ?>
+    </div>
+
+<!--==========================
     Footer
   ============================-->
  
@@ -396,11 +403,11 @@
     </div>
     </hr>
 	</section>
-	<!-- ./Footer -->
+<!-- ./Footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-  <!-- JavaScript Libraries -->
+<!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -415,8 +422,26 @@
   <!-- Contact Form JavaScript File -->
   <script src="contactform/contactform.js"></script>
 
-  <!-- Template Main Javascript File -->
+<!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
 
 </body>
+
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		$("#kirim").click(function(){
+			var data = $('.komentar').serialize();
+			$.ajax({
+				type: 'POST',
+				url: "_kirim_komentar.php",
+				data: data,
+				success: function() {
+					$('.komentar').load("komentar.php");
+				}
+			});
+		});
+	});
+	</script> -->
+
+
 </html>
