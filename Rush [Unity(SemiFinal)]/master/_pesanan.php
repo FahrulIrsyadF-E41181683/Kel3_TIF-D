@@ -66,7 +66,7 @@
                                                 <td>
                                                     <span>
                                                         <div class="btn-group mr-2 mb-2">
-                                                        <a href='#myPesan' class='pesan' id='<?php echo $data['ID_JAM']; ?>' data-toggle='modal'>
+                                                        <a href='#myPesan' class='pesan' id='<?php echo $data['ID_TRANSAKSI']; ?>' data-toggle='modal'>
                                                             <button type="button" class="btn btn-primary">Konfirmasi</button>
                                                         </a>     
                                                         &nbsp;
