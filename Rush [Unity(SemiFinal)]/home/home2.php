@@ -310,10 +310,10 @@
           </div>
 
           <div class="col-lg-5 col-md-8">
-            <div class="form ">
-              <form action="_kirim_komentar" method="post" role="form" class="contactForm komentar">
+            <div class="form">
+              <form action="_kirim_komentar.php" method="post">
                 <div class="form-group">
-                <input type="hidden" value="<?php $st ?>" name="id_pl">
+                  <input type="hidden" value="<?php echo $st ?>" name="id_pl">
                   <input type="text" name="nama" class="form-control text-center" id="name" placeholder="Nama" value="@<?php echo $namapel; ?>" readonly=true>
                   <div class="validation"></div>
                 </div>
@@ -321,7 +321,7 @@
                   <textarea class="form-control" name="komen" rows="5" data-rule="required" placeholder="Tulis Komentar di sini" data-msg="Tulis sesuatu untuk kita"></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="text-center"><input name="komentar" type="submit" id="kirim" value="Kirim Pesan" ></div>
+                <div class="text-center"><button name="komentar" type="submit" id="kirim">Kirim Pesan</button></div>
               </form>
             </div>
           </div>
@@ -330,15 +330,11 @@
       </div>
     </section><!-- #lokasi -->
 
-    <?php if(isset($_POST['komentar'])){
-      echo 'ASWWW';
-    } ?>
-
 
   </main>
 
     <div class="komentar">
-  <?php require_once 'komentar.php'; ?>
+  <?php require 'komentar.php'; ?>
     </div>
 
 <!--==========================

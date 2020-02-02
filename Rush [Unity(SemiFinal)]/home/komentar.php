@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-sm">
                     <h6 class="font-weight-normal mb-1 text-dark"><strong><?php echo $data['NAMA_PELANGGAN'];?></strong></h6>
-                    <p class="mb-1 font-italic text-secondary"><?php echo $data['TANGGAL_KOMENTAR'] ?> <strong>di</strong>  <?php echo $data['WAKTU'];?><p>
+                    <p class="mb-1 font-italic text-secondary"><?php echo $data['TANGGAL_KOMENTAR'] ?> <strong>di</strong>  <?php echo $data['WAKTU'];?> WIB<p>
                     <p></p>
                     
                 </div>

@@ -3,5 +3,5 @@
     session_unset();
     session_destroy();
 
-    header("location: home1.php?keluar=sukses");
+    header("location: homelogin.php?keluar=sukses");
 ?>
