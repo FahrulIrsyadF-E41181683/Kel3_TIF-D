@@ -350,6 +350,25 @@ Footer end
     </script>
 <!-- ajax ubah Pelanggan -->
 
+<!-- ajax ubah Admin -->
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.admin').click(function(){
+                var rowid = $(this).attr('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '_ubah_admin_form.php',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.admin-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
+    </script>
+<!-- ajax ubah Admin -->
+
 <!-- ajax ubah Pesanan -->
 <script type="text/javascript">
         $(document).ready(function(){

@@ -50,7 +50,7 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
-          <li><a href="../transaksi/pesananku.php?id=<?= $_SESSION['ID_PELANGGAN'];?>" height="40px">Pesananku</a></li>
+          <li><a href="../transaksi/pesananku.php" height="40px">Pesananku</a></li>
           <li><a href="#kelebihan">kelebihan</a></li>
           <li><a href="#member">Member</a></li>
           <li><a href="#lapangan">daftar lapangan</a></li>
@@ -85,18 +85,13 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item dropdown-menu-center"> <?php echo $data['JENIS_KELAMIN']; ?> </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['ALAMAT_PELANGGAN']; ?></a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-menu-center"> <?php echo $data['EMAIL_PELANGGAN']; ?></a>
-          <div class="dropdown-divider"></div>
-          <a href="reset2.php" class="dropdown-item dropdown-menu-center masuk2"> Change Password</a>
+          <a href="_ubah_profil_pelanggan.php" class="dropdown-item dropdown-menu-center"> Ubah? </a>
           <div class="dropdown-divider"></div>
           <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
         </div>
         <?php } ?>
               <!-- Kodingan ambil data pelanggan end -->
       </li>
-      
         </ul>
     </div>
   </header><!-- #header -->
@@ -191,62 +186,85 @@
     <!--==========================
       LAPANGAN
     ============================-->
-    <section id="lapangan">
+              
+              <section id="lapangan">
       <div class="container wow fadeInUp">
         <div class="section-header">
           <h3 class="section-title">Daftar Lapangan</h3><br>
           <!-- <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p> -->
         </div>
 
+            <?php 
+                    $sql = mysqli_query($connect, "Select * from lapangan where ID_LAPANGAN='LP0001'");
+                    while($lap = mysqli_fetch_array($sql)){
+            ?>
         <div class="container wow fadeIn">
             <div class="row">
               <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="box">
-                  <img src="img/lapangan/lap1.jpg">
+                  <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
                   <h4>Lapangan 1</h4>
                 </div>
               </div>
+            <?php } ?>
+            
               <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                 <div class="box">
                   <h5>Pilih Lapangan yang Kamu Sukai</h5>
                   <div class="animated infinite heartBeat tombol2"><a href="#"><h3>Pesan Sekarang</h3></a></div>
                 </div>
               </div>
+              
+              <?php 
+                    $sql = mysqli_query($connect, "Select * from lapangan where ID_LAPANGAN='LP0002'");
+                    while($lap = mysqli_fetch_array($sql)){
+            ?>
               <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                 <div class="box">
-                  <img src="img/lapangan/lap2.jpg">
+                  <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
                   <h4>Lapangan 2</h4>
                 </div>
               </div>
             </div>
           </div>
+            <?php } ?>
 
-
-
+          <?php 
+                $sql = mysqli_query($connect, "Select * from lapangan where ID_LAPANGAN='LP0003'");
+                while($lap = mysqli_fetch_array($sql)){
+            ?>
           <div class="container wow fadeIn">
               <div class="row">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.8s">
                     <div class="box">
-                        <img src="img/lapangan/lap3.jpg">
+                        <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
                         <h4>Lapangan 3</h4>
                       </div>
                 </div>
+                <?php } ?>
+
+            
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.0s">
                     <div class="box">
-                        <img src="img/lapangan/center.jpg">
+                    <img src="../master/images/lapangan/center.jpg" width="340">
                       </div>
                 </div>
+
+            <?php 
+            $sql = mysqli_query($connect, "Select * from lapangan where ID_LAPANGAN='LP0004'");
+            while($lap = mysqli_fetch_array($sql)){
+            ?>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.2s">
                     <div class="box">
-                        <img src="img/lapangan/lap4.jpg">
+                        <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
                         <h4>Lapangan 4</h4>
                       </div>
                 </div>
-      
+            <?php } ?>
               </div>
       
             </div>
-
+            </section>
     <!--==========================
       Tata Cara Pemesanan
     ============================-->
@@ -261,24 +279,24 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                   <div class="box">
                     <img src="img/icon/cara1.png">
-                    <h4>Tekan tombol Pesan Sekarang di halaman Web</h4>
+                    <h4>Tekan tombol Pesan Sekarang di halaman Web, masuk/daftar</h4>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="box">
                         <img src="img/icon/cara2.png">
-                        <h4>pilih lapangan yang mau dipesan, jam bermain dan tanggal bermain</h4>
+                        <h4>pilih lapangan yang mau dipesan, jam bermain dan tanggal bermain dan metode pembayaran</h4>
                       </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                   <div class="box">
                     <img src="img/icon/cara3.png">
-                    <h4>lakukan pembayaran di bank terdekat dan lakukan konfirmasi pembayaran</h4>
+                    <h4>lakukan pembayaran di bank terdekat dan lakukan konfirmasi pembayaran di tab pesananku</h4>
                   </div>
                 </div>
               </div>
             </div>
-  
+            </section>
 
     <!--==========================
       Lokasi
@@ -290,8 +308,10 @@
         </div>
       </div>
 
+      <div class="text-center">
       <!-- Uncomment below if you wan to use dynamic maps -->
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1974.6839623508288!2d113.70902124147506!3d-8.165636857757912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3c5639c7bcdde6cd!2sRUSH%20Badminton%20Jember!5e0!3m2!1sen!2sid!4v1576422044648!5m2!1sen!2sid" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.3679253310543!2d113.70775291422329!3d-8.165636794122612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695aa99d14409%3A0x3c5639c7bcdde6cd!2sRUSH%20Badminton%20Jember!5e0!3m2!1sid!2s!4v1580808496920!5m2!1sid!2s" width="1000" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
 
       <div class="container wow fadeInUp mt-5">
         <div class="row justify-content-center">
@@ -310,7 +330,7 @@
           </div>
 
           <div class="col-lg-5 col-md-8">
-            <div class="form">
+            <div class="form" id="komentar">
               <form action="_kirim_komentar.php" method="post">
                 <div class="form-group">
                   <input type="hidden" value="<?php echo $st ?>" name="id_pl">
@@ -318,7 +338,7 @@
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="komen" rows="5" data-rule="required" placeholder="Tulis Komentar di sini" data-msg="Tulis sesuatu untuk kita"></textarea>
+                  <textarea class="form-control" name="komen" rows="5" required placeholder="Tulis Komentar di sini" data-msg="Tulis sesuatu untuk kita"></textarea>
                   <div class="validation"></div>
                 </div>
                 <div class="text-center"><button name="komentar" type="submit" id="kirim">Kirim Pesan</button></div>
@@ -333,7 +353,7 @@
 
   </main>
 
-    <div class="komentar">
+    <div class="komentar" >
   <?php require 'komentar.php'; ?>
     </div>
 
@@ -423,21 +443,23 @@
 
 </body>
 
-<!-- <script type="text/javascript">
-	$(document).ready(function(){
-		$("#kirim").click(function(){
-			var data = $('.komentar').serialize();
-			$.ajax({
-				type: 'POST',
-				url: "_kirim_komentar.php",
-				data: data,
-				success: function() {
-					$('.komentar').load("komentar.php");
-				}
-			});
-		});
-	});
-	</script> -->
-
+<!-- ajax ubah Profil -->
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.pesan').click(function(){
+                var rowid = $(this).attr('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '_konfirm.php',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.pesan-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
+    </script>
+<!-- ajax ubah Pofil -->
 
 </html>

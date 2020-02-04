@@ -59,6 +59,23 @@
     </div>  
 </div>
 
+<!-- ubah modal -->
+<div class="modal fade" id="myAdmin" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Ubah Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="admin-data modal-body">
+                </div>
+                </div>
+            </div>
+        </div>
+<!-- ubah modal -->
+
 <!-- Table -->
 <table class="table table-striped table-bordered zero-configuration">
     <thead>
@@ -94,15 +111,11 @@
             <td>
 <span>
 <div class="btn-group mr-2 mb-2">
-    <a href="_ubah_admin_form.php?id=<?php echo $data['ID_ADMIN']; ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="" data-whatever="@getbootstrap">
-            <i class="fa fa-pencil color-muted m-r-5"></i>
-        </button> 
-
-        <!-- <button type="button" class="view_data btn btn-primary btn-xs" data-toggle="tooltip" id="<?php echo $data['ID_ADMIN']; ?>" data-target="#editmodal">Lihat data</button> -->
-        <!-- <button type="button" class="btn mb-1 btn-primary btn-lg" data-toggle="modal" data-target="#tambahmodal">TAMBAH DATA</button> -->
-
-    </a>                                                              
+        <a href='#myAdmin' class='admin' id='<?php echo $data['ID_ADMIN']; ?>' data-toggle='modal'>
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-pencil color-muted m-r-5"></i>
+                            </button>
+        </a>                                               
 &nbsp;
     <a href="_hapus_admin.php?id=<?php echo $data['ID_ADMIN']; ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" 
         data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus">

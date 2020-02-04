@@ -58,7 +58,7 @@ $pdf->Cell(35,6,'Metode Bayar',1,0,'C');
 $pdf->Cell(30,6,'Jam',1,0,'C');
 $pdf->Cell(40,6,'Harga',1,1,'C');
 $result_detail = mysqli_query($connect, "SELECT 
-transaksi.HARGA_TOTAL, detail_transaksi.JAM, detail_transaksi.NAMA_LAPANGAN, transaksi.METODE
+transaksi.HARGA_TOTAL, detail_transaksi.JAM, detail_transaksi.NAMA_LAPANGAN, transaksi.ID_BANK
 FROM transaksi, detail_transaksi
 WHERE transaksi.ID_TRANSAKSI = detail_transaksi.ID_TRANSAKSI and transaksi.ID_transaksi = '$id_pesanan'");
 $i = 0;
@@ -70,7 +70,7 @@ while($data_detail = mysqli_fetch_assoc($result_detail)){
         }
 
   $i+=1;
-    if($data_detail['METODE']==1){
+    if($data_detail['ID_BANK']==1){
         $ket_metode = 'Transfer Bank';
     }else {
         $ket_metode = 'Bayar Di Tempat';

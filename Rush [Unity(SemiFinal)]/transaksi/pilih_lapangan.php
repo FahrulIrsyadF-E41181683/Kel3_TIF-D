@@ -1,10 +1,7 @@
 <?php
     session_start();
     include 'koneksi.php';
-
-    // if(empty($_SESSION['login'])){
-    //   echo "<script>document.location.href='../home/homelogin.php'</script>\n";
-    // }
+    error_reporting(0);
 ?>
 
 <!DOCTYPE html>
@@ -72,13 +69,15 @@
 
 
     $(document).on("click", "input[type='checkbox']", function(){
-    
     total=0;
+    durasi=0;
     $("input[type='checkbox']:checked").each(function(){
-        // total += parseInt($(this).val())
-        total += parseInt($("#input").val())
+        durasi=durasi+1;
+        total += parseInt($("#input").val());
+        
     })
-    $("input[name='total']").val(total)
+    $("input[name='total']").val(total);
+    $("input[name='durasi']").val(durasi+"  jam");
 })
     });
 </script>
@@ -103,7 +102,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="../home/home2.php">Halaman Utama</a></li>
+          <li><a href="../home/home2.php">Halaman Utama</a></li>
           <li><a href="../transaksi/pesananku.php?id=<?= $_SESSION['ID_PELANGGAN'];?>" height="40px">Pesananku</a></li>
           <li><a href="">cara pemesanan</a></li>
 
@@ -301,7 +300,7 @@ $jumlah_dipilih = 24;
                   </div>
                   <div class="row">
                     <div class="col">
-                      <!-- 1 of 3 -->
+                    <h5>durasi :  <input Readonly type="text" name="durasi" class="form-control input-defaut size-total"/> </h5>
                     </div>
                     <div class="col">
                       <!-- 2 of 3 -->

@@ -2,7 +2,6 @@
 <table class="table table-striped table-bordered zero-configuration">
     <tbody>
         <?php
-
         $query = "SELECT A.ID_KOMENTAR,A.ID_PELANGGAN,A.TANGGAL_KOMENTAR,A.WAKTU,A.KOMENTAR,B.NAMA_PELANGGAN,B.FOTO_PELANGGAN 
                     FROM komentar A JOIN pelanggan B on A.ID_PELANGGAN=B.ID_PELANGGAN ORDER by A.ID_KOMENTAR DESC";
         $sql = mysqli_query($connect, $query);

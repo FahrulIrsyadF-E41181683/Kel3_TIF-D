@@ -2,11 +2,11 @@
 include 'koneksi.php';
 
 if (isset($_POST['komentar'])){
-      echo $nm_pel = $_POST['nama'];
-      echo $id_pel = $_POST['id_pl'];
-      echo $komentar = $_POST['komen'];
-      echo $tgl = date("d/m/Y");
-      echo $jam = date("H:i");
+      $nm_pel = $_POST['nama'];
+      $id_pel = $_POST['id_pl'];
+      $komentar = $_POST['komen'];
+      $tgl = date("d/m/Y");
+      $jam = date("H:i");
 
       
 
@@ -21,17 +21,16 @@ if (isset($_POST['komentar'])){
             $id_km = autonumber($komen2, 3, 3);
             }else{
             $id_km = 'KM0001';
-            }  
- echo $id_km;
+            } 
  // Proses simpan ke Database 
   $sql = mysqli_query($connect, "INSERT INTO `komentar`(`ID_KOMENTAR`, `ID_PELANGGAN`, `TANGGAL_KOMENTAR`, `WAKTU`, `KOMENTAR`) 
                                                 VALUES ('$id_km','$id_pel','$tgl','$jam','$komentar')"); 
 
   if($sql){ // Cek jika proses simpan ke database sukses atau tidak
     // Jika Sukses, Lakukan :
-      echo "<script>alert('Komentar berhasil dikirim');document.location.href='home2.php'</script>\n"; // Redirect ke halaman admin.php
+      echo "<script>alert('Komentar berhasil dikirim');document.location.href='home2.php#komentar'</script>\n"; // Redirect ke halaman admin.php
   }else{
-    echo "<script>alert('gagal');document.location.href='home2.php'</script>\n"; // Redirect ke halaman admin.php
+    echo "<script>alert('gagal');document.location.href='home2.php#komentar'</script>\n"; // Redirect ke halaman admin.php
 
   }
 } ?>

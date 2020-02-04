@@ -94,7 +94,7 @@
                     $id_pl= $_SESSION['id_pl'];
                     $nama_lap = $_SESSION["lap"];
                     $tgl_main = $_SESSION["tgl_main"];
-                    $tgl_transaksi=date('Y/m/d');
+                    $tgl_transaksi=date('d/m/Y');
                     $total=$_SESSION['total'];
                     $jam_pesan=$_SESSION['jam_pesan'];
                     
@@ -176,7 +176,7 @@
                             $id_pl= $_SESSION['id_pl'];
                             $nama_lap = $_SESSION["lap"];
                             $tgl_main = $_SESSION["tgl_main"];
-                            $tgl_transaksi=date('Y/m/d');
+                            $tgl_transaksi=date('d/m/Y');
                             $total=$_SESSION['total'];
                             $jam_pesan=$_SESSION['jam_pesan'];
                             
