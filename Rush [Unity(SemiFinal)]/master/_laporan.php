@@ -16,7 +16,7 @@
     </div>
 <div class="col-sm-12 col-md-6">
     <button type="button" class="btn mb-1 btn-primary btn-lg" data-toggle="modal" data-target="#tambahmodal" data-whatever="@getbootstrap"> <a href="cetak_coba.php">Cetak</a></button>
-    <button type="button" class="btn mb-1 btn-primary btn-lg" data-toggle="modal" data-target="#tambahmodal" data-whatever="@getbootstrap">Laporan periode</button>
+
 <!-- tambahpelanggan -->                                          
 <div class="modal fade" id="tambahmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
