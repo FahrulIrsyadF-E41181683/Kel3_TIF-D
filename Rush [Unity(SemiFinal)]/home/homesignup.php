@@ -60,7 +60,7 @@ if (isset($_POST["signup_submit"])){
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class=""><a href="home1.php">Halaman Utama</a></li>
+          <li class=""><a href="home1.php">Beranda</a></li>
           <li><a href="#">kelebihan</a></li>
           <li><a href="#">daftar lapangan</a></li>
           <li><a href="#">cara pemesanan</a></li>

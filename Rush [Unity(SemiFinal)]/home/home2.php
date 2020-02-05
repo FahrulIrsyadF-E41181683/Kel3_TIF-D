@@ -49,7 +49,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
+          <li class="menu-active"><a href="#hero">Beranda</a></li>
           <li><a href="../transaksi/pesananku.php" height="40px">Pesananku</a></li>
           <li><a href="#kelebihan">kelebihan</a></li>
           <li><a href="#member">Member</a></li>
@@ -85,7 +85,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item dropdown-menu-center"> <?php echo $data['JENIS_KELAMIN']; ?> </a>
           <div class="dropdown-divider"></div>
-          <a href="_ubah_profil_pelanggan.php" class="dropdown-item dropdown-menu-center"> Ubah? </a>
+          <a href="ubah.php" class="dropdown-item dropdown-menu-center"> Ubah? </a>
           <div class="dropdown-divider"></div>
           <a href="logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
         </div>

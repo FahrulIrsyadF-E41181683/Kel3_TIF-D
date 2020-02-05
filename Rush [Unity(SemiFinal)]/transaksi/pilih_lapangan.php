@@ -90,7 +90,7 @@
               $st= $_SESSION['ID_PELANGGAN'];
               $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
               while($data = mysqli_fetch_array($sql)){
-                $foto=$data['FOTO_PELANGGAN']; }
+                $foto=$data['FOTO_PELANGGAN']; 
             ?>
 
 <header id="header">
@@ -143,7 +143,7 @@
               <div class="dropdown-divider"></div>
               <a href="../home/logout.php" class="dropdown-item dropdown-menu-center masuk2"> Keluar?</a>
             </div>
-          <?php } ?>
+          <?php }} ?>
         </ul>
     </div>
   </header><!-- #header -->
@@ -151,7 +151,7 @@
 <!-- #header -->
 <!-- input tanggal dan lapangan -->
   </header>
-  <div class="modal-body bg-krem">
+  <div class="modal-body">
         <form  method="post" enctype="multipart/form-data"> 
             <div class="row">
             <div class="form-group col col-md-6 ml-auto">
@@ -263,15 +263,21 @@ $jumlah_dipilih = 24;
                       while($sql_dj_data=mysqli_fetch_assoc($sql_dj)){
                         $dj_detail_jadwal= $sql_dj_data['ID_DETAIL_JADWAL'];
                       }
-                      $sql_dt=mysqli_query($connect, "SELECT `ID_DETAIL_JADWAL` FROM `detail_transaksi` where ID_DETAIL_JADWAL='$dj_detail_jadwal'"); //ambil data dari detail transaksi
+                      $sql_dt=mysqli_query($connect, "SELECT A.ID_DETAIL_JADWAL, B.STATUS_PEMBAYARAN FROM detail_transaksi A 
+                                                      JOIN transaksi B where ON A.ID_TRANSAKSI=B.ID_TRANSAKSI ID_DETAIL_JADWAL='$dj_detail_jadwal'"); //ambil data dari detail transaksi
                       while($sql_dt_data=mysqli_fetch_array($sql_dt)){
                         $cek=1;
+                        $status=$sql_dj_data['STATUS_PEMBAYARAN'];
                       }
 
                       $sql = mysqli_query($connect, "SELECT JAM FROM jam WHERE ID_JAM='$idjm'");
                         if($cek==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
                             <li class='opacity5'><input type="checkbox" id="<?php echo $idjm ?>"  value="<?php echo $data['JAM']; ?>"  disabled = true >
+                            <label for="<?php echo $idjm ?>"><?php echo $data['JAM']; ?></label></li>
+                          <?php }}else if($status==0 or $status==1){ 
+                            while($data = mysqli_fetch_assoc($sql)){?>
+                            <li ><input name="jam_pesan[]" type="checkbox" id="<?php echo $idjm ?>" value="<?php echo $data['JAM']; ?>">
                             <label for="<?php echo $idjm ?>"><?php echo $data['JAM']; ?></label></li>
                           <?php }}else if($st==1){
                           while($data = mysqli_fetch_assoc($sql)){ ?>
@@ -312,7 +318,7 @@ $jumlah_dipilih = 24;
                 </div>
             
             <br>
-            <button name="pesan" id="pesan" class="btn bg-orange btn-lg btn-block text-white pesan" >Pesan</button>
+            <button name="pesan" id="pesan" class="btn bg-info btn-lg btn-block text-white pesan" >Pesan</button>   
                       
             </div>
 <!-- tombol pesan dan harga total -->

@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   transition: all 0.5s;
   z-index: 997;
-  background: rgba(52, 59, 64, 0.9);
+  background: #3F51B5;
 }
 
 #header #logo {
@@ -400,7 +400,7 @@ display: inline;
   }
 .container2 ul.ks-cboxtags li label{
   display: inline-block;
-  background-color: rgba(58, 255, 68, 0.9);
+  background-color: rgb(58, 255, 68);
   border: 2px solid rgba(136, 136, 136, 0.3);
   color: #ffffff;
   border-radius: 25px;
@@ -462,10 +462,10 @@ border: 2px solid #ffa1a1;
 
 /* Untuk Semua */
 .bg-orange{
-  background-color: #FD5721;
+  background-color: #dc3545;
 }
 .bg-krem{
-  background-color: #FFF5BC;
+  background-color: rgb(230, 252, 255);
 }
 .size-total{
   font-size: 20px;

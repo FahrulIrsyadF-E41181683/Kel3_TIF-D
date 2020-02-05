@@ -14,10 +14,10 @@
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap:300,300i,400,400i,700,700i|Roboto:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -37,17 +37,17 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
+        <a href="#hero"><img src="img/logo.png" alt="Ini Logo"/></img></a>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero">Halaman Utama</a></li>
-          <li><a href="#kelebihan">kelebihan</a></li>
-          <li><a href="#lapangan">daftar lapangan</a></li>
-          <li><a href="#pemesan">cara pemesanan</a></li>
-          <li><a href="#lokasi">lokasi</a></li>
-          <li><a href="#footer">tentang rush</a></li>
+          <li class="menu-active"><a href="#hero">Beranda</a></li>
+          <li><a href="#kelebihan">Kelebihan</a></li>
+          <li><a href="#lapangan">Daftar Lapangan</a></li>
+          <li><a href="#pemesan">Cara Pemesanan</a></li>
+          <li><a href="#lokasi">Lokasi</a></li>
+          <li><a href="#footer">Tentang Rush</a></li>
           <li class="nav-item dropdown">
         <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="img/user.png"  width='40px'>
@@ -67,9 +67,9 @@
   ============================-->
   <section id="hero">
     <div class="hero-container">
-      <h1>Selamat Datang di siBolang</h1>
+      <h1>Selamat datang di SI Bolang</h1>
       <h2>Booking lapangan secara online disini dengan mudah dan cepat</h2>
-      <a href="../transaksi/pilih_lapangan.php" class="btn-get-started">Pesan Sekarang</a>
+      <a href="../transaksi/pilih_lapangan.php" class="btn-get-started">Pesan Sekarang!</a>
     </div>
   </section><!-- #hero -->
 
@@ -89,21 +89,21 @@
             <div class="box">
               <div class="icon"><a href=""><img src="img/icon/waktu.png" width="100px"></a></div>
               <h4 class="title"><a href="">Hemat Waktu</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <p class="description">Dapat memesan lapangan dimanapun dan kapanpun</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><img src="img/icon/tidakribet.png" width="100px"></a></div>
-              <h4 class="title"><a href="">Tidak Ribet</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <h4 class="title"><a href="">Mudah</a></h4>
+              <p class="description">Bertujuan untuk memudahkan para pelanggan ketika ingin memesan lapangan</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
             <div class="box">
               <div class="icon"><a href=""><img src="img/icon/mudah.png" width="100px"></i></a></div>
               <h4 class="title"><a href="">Pembayaran Mudah</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              <p class="description">Tidak perlu mempermasalahkan pembayaran, semuanya ada disini</p>
             </div>
           </div>
 
@@ -119,14 +119,13 @@
       <div class="container wow fadeIn">
         <div class="row">
           <div class="col-lg-9 text-center text-lg-left">
-            <h3 class="cta-title">siBolang</h3>
-            <p class="cta-text"> SI BOLANG (Sistem Informasi Booking Lapangan) adalah sebuah website untuk melakukan proses pemesaan lapangan online yang dapat dilakukan dimana saja dan kapan saja. Website ini bertujuan untuk mempermudah proses transaksi antara penyedia lapangan dan penyewa lapangan agar proses pemesanan berjalan dengan efektif dan efisien. </p>
-          </div>
-          <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#hero">Klik untuk beraksi</a>
+            <h3 class="cta-title">SI BOLANG</h3>
+            <p class="cta-text"> SI BOLANG (Sistem Informasi Booking Lapangan) 
+              adalah sebuah website untuk melakukan proses pemesaan lapangan online yang dapat dilakukan dimana saja dan kapan saja. 
+              Website ini bertujuan untuk mempermudah proses transaksi antara penyedia lapangan dan penyewa lapangan 
+              agar proses pemesanan berjalan dengan efektif dan efisien. </p>
           </div>
         </div>
-
       </div>
     </section><!-- #call-to-action -->
 
@@ -136,8 +135,8 @@
     <section id="lapangan">
       <div class="container wow fadeInUp">
         <div class="section-header">
-          <h3 class="section-title">Daftar Lapangan</h3><br>
-          <!-- <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p> -->
+          <h3 class="section-title text-center">Daftar Lapangan</h3><br>
+          <!-- <h5 class="text-center">Pilih lapangan yang kamu inginkan</h5> -->
         </div>
 
             <?php 
@@ -146,27 +145,21 @@
             ?>
         <div class="container wow fadeIn">
             <div class="row">
-              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+              <div class="col wow fadeInUp" data-wow-delay="0.2s">
                 <div class="box">
-                  <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
+                  <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="525" height="210">
                   <h4>Lapangan 1</h4>
                 </div>
               </div>
             <?php } ?>
             
-              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="box">
-                  <h5 class="text-center">Pilih Lapangan yang Kamu Sukai</h5>
-  
-                </div>
-              </div>
               <?php 
                     $sql = mysqli_query($connect, "Select * from lapangan where ID_LAPANGAN='LP0002'");
                     while($lap = mysqli_fetch_array($sql)){
             ?>
-              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+              <div class="col wow fadeInUp" data-wow-delay="0.6s">
                 <div class="box">
-                  <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
+                  <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="525" height="210">
                   <h4>Lapangan 2</h4>
                 </div>
               </div>
@@ -180,28 +173,21 @@
             ?>
           <div class="container wow fadeIn">
               <div class="row">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.8s">
+                <div class="col wow fadeInUp" data-wow-delay="0.8s">
                     <div class="box">
-                        <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
+                        <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="525" height="210">
                         <h4>Lapangan 3</h4>
                       </div>
                 </div>
                 <?php } ?>
 
-            
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.0s">
-                    <div class="box">
-                    <img src="../master/images/lapangan/center.jpg" width="340">
-                      </div>
-                </div>
-
             <?php 
             $sql = mysqli_query($connect, "Select * from lapangan where ID_LAPANGAN='LP0004'");
             while($lap = mysqli_fetch_array($sql)){
             ?>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.2s">
+                <div class="col wow fadeInUp" data-wow-delay="1.2s">
                     <div class="box">
-                        <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="340" height="190">
+                        <img src="../master/images/lapangan/<?php echo $lap['FOTO_LAPANGAN']; ?>" width="525" height="210">
                         <h4>Lapangan 4</h4>
                       </div>
                 </div>
@@ -225,19 +211,19 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                   <div class="box">
                     <img src="img/icon/cara1.png">
-                    <h4>Tekan tombol Pesan Sekarang di halaman Web, masuk/daftar</h4>
+                    <h4>Tekan tombol pesan sekarang di beranda, kemudian masuk / daftar jika belum mempunyai akun</h4>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="box">
                         <img src="img/icon/cara2.png">
-                        <h4>pilih lapangan yang mau dipesan, jam bermain dan tanggal bermain dan metode pembayaran</h4>
+                        <h4>Pilih lapangan yang mau dipesan, jam bermain dan tanggal bermain dan metode pembayaran</h4>
                       </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                   <div class="box">
                     <img src="img/icon/cara3.png">
-                    <h4>lakukan pembayaran di bank terdekat dan lakukan konfirmasi pembayaran di tab Pesananku</h4>
+                    <h4>Lakukan pembayaran di bank terdekat dan lakukan konfirmasi pembayaran di tab pesananku</h4>
                   </div>
                 </div>
               </div>
@@ -304,7 +290,7 @@
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
 				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>SIBOLANG</h5>
+					<h5>SI BOLANG</h5>
 					<p>SI BOLANG (Sistem Informasi Booking Lapangan) adalah sebuah website untuk
             melakukan proses pemesaan lapangan online yang dapat dilakukan dimana saja
             dan kapan saja. Website ini bertujuan untuk mempermudah proses transaksi
@@ -314,21 +300,20 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Menu</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Halaman Utama</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Kelebihan</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Daftar Lapangan</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Cara Pemesanan</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Apa Itu Member</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Lokasi</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Tentang Rush</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Author</a></li>
+						<li><a href="#hero"><i class="fa fa-angle-double-right"></i>Beranda</a></li>
+						<li><a href="#kelebihan"><i class="fa fa-angle-double-right"></i>Kelebihan</a></li>
+						<li><a href="#lapangan"><i class="fa fa-angle-double-right"></i>Daftar Lapangan</a></li>
+						<li><a href="#pemesan"><i class="fa fa-angle-double-right"></i>Cara Pemesanan</a></li>
+            <li><a href="#lokasi"><i class="fa fa-angle-double-right"></i>Lokasi</a></li>
+            <li><a href="#footer"><i class="fa fa-angle-double-right"></i>Tentang Rush</a></li>
+            <li><a href="..\master\index.php"><i class="fa fa-angle-double-right"></i>Admin</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Informasi RUSH Badminton</h5>
 					<ul class="list-unstyled quick-links">
 						<li><a href="javascript:void();"><img src="img/icon/pemilik.png" width="30px">  Rudi Rahmawan</a></li>
-						<li><a href="javascript:void();"><img src="img/icon/berdiri.png" width="30px">  November 2018</a></li>
+						<li><a href="javascript:void();"><img src="img/icon/berdiri.png" width="30px">  Dibuka pada November 2018</a></li>
 						<li><a href="javascript:void();"><img src="img/icon/alamat.png" width="30px">  Sebelah Neutron - Kampus, 
                                                                                            Jln. Kalimantan, Gg. 14, Krajan Timur, 
                                                                                            Sumbersari, Kec. Sumbersari, Kabupaten 
@@ -337,9 +322,7 @@
 					</ul>
 				</div>
       </div>
-      
-
-
+     
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">

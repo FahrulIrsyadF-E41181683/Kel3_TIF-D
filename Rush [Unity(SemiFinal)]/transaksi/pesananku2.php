@@ -35,27 +35,12 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="../home/img/logo.png" alt="" title="" /></img></a>
+        <a href="#hero"><img src="images/logo.png" alt="" title="" /></img></a>
       </div>
-
-      <?php
-              $st= $_SESSION['ID_PELANGGAN'];
-              $sql = mysqli_query($connect, "Select * from pelanggan where ID_PELANGGAN='".$st."'");
-              while($data = mysqli_fetch_array($sql)){
-                $foto=$data['FOTO_PELANGGAN']; }
-            ?>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="mr-3"><a href="../home/home2.php">Halaman Utama</a></li>
-
-          <a class="nav-link" id="navbarDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <?php if(empty($foto)){ ?>
-                                <img class="rounded-circle" src="../master/images/pelanggan/user.png"  width='40px' height='40px' class="rounded-circle">
-                                    <?php }else{ ?>
-                                <img class="rounded-circle" src="../master/images/pelanggan/<?php echo $foto;?>"  width='40px' height='40px' class="rounded-circle">
-                                    <?php } ?>
-          </a>
+          <li class="menu-active"><a href="../home/home2.php">Halaman Utama</a></li>
         </ul>
     </div>
   </header>
@@ -85,7 +70,7 @@
                   $st = $_SESSION['ID_PELANGGAN'];
                   // $tr = $_GET['ID_TRANSAKSI'];
                   $data = mysqli_query($connect,"SELECT ID_TRANSAKSI, ID_BANK, TANGGAL_TRANSAKSI, STATUS_PEMBAYARAN FROM transaksi
-                  WHERE ID_PELANGGAN='".$st."' order by ID_TRANSAKSI desc");
+                  WHERE ID_PELANGGAN='".$st."'");
                   while($d = mysqli_fetch_array($data)){
                 ?>
                   <tr>
@@ -105,17 +90,13 @@
                     if($d['STATUS_PEMBAYARAN']==0){
                       if( $d['ID_BANK']==1){
                         echo ' Silahkan lakukan pembayaran di kasir';
-                      }else{ ?>
+                      }else{?>
                         <a href="" data-target="#myKonfirmasi" id="<?php echo $d['ID_TRANSAKSI']; ?>" data-toggle="modal" type="button" class="konfirmasi btn btn-primary">
                         Konfirmasi Pembayaran</a>
                     <?php
                       } 
-                    }else if($d['STATUS_PEMBAYARAN']==1){
+                    }else{
                       echo ' <a href="#" class="btn btn-success">Lunas</a>';
-                    }else if($d['STATUS_PEMBAYARAN']==2){
-                      echo ' <a href="#" class="btn btn-danger">Dibatalkan</a>';
-                    }else if($d['STATUS_PEMBAYARAN']==3){
-                      echo ' <a href="#" class="btn btn-danger">Waktu Habis</a>';
                     }
                     ?></td>
                     <td>
@@ -210,6 +191,33 @@
                                         <label class="col-form-label">Upload Bukti Bayar</label>
                                         <input type="file" name="foto" class="form-control input-default">                                            
                                     </div>
+                                    <!-- <table class="table table-striped table-bordered zero-configuration">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>ID Lapangan</th>
+                                                <th>Nama Lapangan</th>
+                                                <th>Harga</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <?php 
+                                        // include 'koneksi.php';
+                                        // $no = 1;
+                                        // $data = mysqli_query($connect,"select * from lapangan");
+                                        // while($d = mysqli_fetch_array($data)){
+                                        //     ?>
+                                        //     <tr>
+                                        //         <td><?php echo $no++; ?></td>
+                                        //         <td><?php echo $d['ID_LAPANGAN']; ?></td>
+                                        //         <td><?php echo $d['NAMA_LAPANGAN']; ?></td>
+                                        //         <td><?php echo $d['HARGA_SEWA']; ?></td>
+                                            </tr>
+                                            <?php 
+                                        //}
+                                        ?>
+                                        </tbody> -->
                                         <button type="submit" name="ubahfoto" class="float-right mt-4 btn btn-info">Konfirmasi</button>
 
                                 </form>

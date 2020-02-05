@@ -23,7 +23,7 @@
 
 					</select>
 					<br>
-					<h6>No. Virtual Account :</h6>
+					<h6>No. Rekening :</h6>
 					<h1><label type="text" name="rek" id="rek" class="text-uppercase text-danger">------------</label></h1>
 
 	<p>waktu pembayaran anda adalah 60 menit, terhitung saat tombol bayar ditekan</p>

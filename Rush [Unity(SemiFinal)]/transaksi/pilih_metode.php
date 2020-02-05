@@ -81,10 +81,22 @@
 	});
 </script>
 
+<?php
+ini_set('date.timezone', 'Asia/Jakarta');
+date_default_timezone_get();
+
+$date = new DateTime( date('H:i:s'));
+date_add($date, date_interval_create_from_date_string('-7 hours'));
+ $waktu_sekarang = date_format($date, 'H:i:s'); //jam sekarang
+
+$date2 = new DateTime( date('H:i:s'));
+date_add($date2, date_interval_create_from_date_string('-6 hours'));
+ $waktu_habis = date_format($date2, 'H:i:s'); //jam habis yang ditambah 1 jam
+?>
+
 <!-- jika diklik tombol bayar di transfer -->
         <?php
             if (isset($_POST["bayar"])){
-
                 $bank=$_POST['bank'];
                 if($bank==''){
                     echo "<script>alert('gagal memesan, Pilih bank dulu');document.location.href='pilih_metode.php'</script>\n";
@@ -123,8 +135,8 @@
     //Proses simpan ke Database Transaksi
             
                     $bank2 = $bank1;
-                    $sql = mysqli_query($connect, "INSERT INTO `transaksi`(`ID_TRANSAKSI`, `ID_PELANGGAN`, `ID_BANK`, `HARGA_TOTAL`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`) 
-                                                                    VALUES ('$id_tr','$id_pl','$bank1','$total','$tgl_transaksi','00:00:00','BELUM MEMBAYAR',0)"); // Eksekusi/ Jalankan query dari variabel $query
+                    $sql = mysqli_query($connect, "INSERT INTO `transaksi`(`ID_TRANSAKSI`, `ID_PELANGGAN`, `ID_BANK`, `HARGA_TOTAL`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`,`WAKTU_TRANSAKSI`, `WAKTU_HABIS`) 
+                                                                    VALUES ('$id_tr','$id_pl','$bank1','$total','$tgl_transaksi','00:00:00','BELUM MEMBAYAR',0,'$waktu_sekarang','$waktu_habis')"); // Eksekusi/ Jalankan query dari variabel $query
                     if($sql){ // Cek jika proses simpan ke database sukses atau tidak
                         // Jika Sukses, Lakukan :
                                             //Proses Simpan ke database detail Transaksi
@@ -196,8 +208,8 @@
                     
             //Proses simpan ke Database Transaksi
                     
-                            $sql = mysqli_query($connect, "INSERT INTO `transaksi`(`ID_TRANSAKSI`, `ID_PELANGGAN`, `ID_BANK`, `HARGA_TOTAL`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`) 
-                                                                            VALUES ('$id_tr','$id_pl','1','$total','$tgl_transaksi','00:00:00','BELUM MEMBAYAR',0)"); // Eksekusi/ Jalankan query dari variabel $query
+                            $sql = mysqli_query($connect, "INSERT INTO `transaksi`(`ID_TRANSAKSI`, `ID_PELANGGAN`, `ID_BANK`, `HARGA_TOTAL`, `TANGGAL_TRANSAKSI`, `WAKTU_PEMBAYARAN`, `BUKTI_PEMBAYARAN`, `STATUS_PEMBAYARAN`,`WAKTU_TRANSAKSI`, `WAKTU_HABIS`) 
+                                                                            VALUES ('$id_tr','$id_pl','1','$total','$tgl_transaksi','00:00:00','BELUM MEMBAYAR',0,'$waktu_sekarang','$waktu_habis')"); // Eksekusi/ Jalankan query dari variabel $query
                             if($sql){ // Cek jika proses simpan ke database sukses atau tidak
                                 // Jika Sukses, Lakukan :
                                                     //Proses Simpan ke database detail Transaksi
